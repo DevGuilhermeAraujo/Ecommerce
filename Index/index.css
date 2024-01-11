@@ -1,0 +1,130 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+body{
+    margin: 0;
+    background-color: #fde2f1;
+}
+#Logo{
+    background-size: cover;
+    font-size: 40px;
+    color: white;
+    text-shadow: 0px 0px 10px rgb(158, 8, 108);
+    background-image: url(../Imagens/Fundos/fundoPrincipal.jpg);
+}
+h1{
+    margin: 0;
+    height: 30vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#nav{
+    background-color: #f5f5f5;
+    display: flex;
+    height: 10vh;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+}
+#nav a, button{
+    width: 10%;
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2%;
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 600;
+    color: #a3015a;
+}
+#nav a:hover{
+    color: #ff008c;
+    transition: 1s;
+}
+#nav button:hover{
+    color: #ff008c;
+    transition: 1s;
+}
+#nav a img, button img{
+    width: 15%;
+    margin-right: 5%;
+}
+#nav button{
+    border: none;
+    background: none;
+}
+form{
+    height: 10vh;
+    width: 95%;
+    display: flex;
+    margin: 2.5%;
+}
+form input,select{
+    font-weight: 600;
+    font-size: 18px;
+}
+form select{
+    width: 15%;
+    text-align: center;
+    border-radius: 10px 0px 0px 10px;
+    background-color: #a3015a;
+    color: white;
+    border: none;
+}
+form input{
+    width: 70%;
+    border: none;
+    color: #a3015a;
+    padding: 1%;
+}
+#procurar{
+    width: 15%;
+    border-radius: 0px 10px 10px 0px;
+    background-color: #a3015a;
+    color: white;
+}
+.modal{
+    position: fixed;
+    background-color: #fde2f1;
+    height: 70vh;
+    width: 40%;
+    top: 15%;
+    left: 30%;
+    border-radius: 20px;
+    box-shadow: 0px 0px 100px #000000;
+    opacity: 100%;
+    padding: 2%;
+    text-align: center;
+    color: #a3015a;
+}
+.fundo{
+    width: 100%;
+    background-color: gray;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    opacity: 40%;
+}
+.formBasico{
+    display: flex;
+    height: 30vh;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+.formBasico input{
+    height: 7vh;
+    width: 100%;
+    border-radius: 10px;
+}
+.logar{
+    background-color: #a3015a;
+    color: white;
+}
+.modal img{
+    width: 5%;
+    margin-left: 95%;
+}
