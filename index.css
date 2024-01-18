@@ -1,13 +1,84 @@
 *{
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    
+    font-weight: 600;
 }
 body{
-    background-color: ;
-
+    margin: 0;
+    background-color: #ffd8ee;
 }
-h1{
-    color: ;
+.barra{
+    width: 5%;
+    height: 100vh;
+    background-color: #a3015a;
+    position: fixed;
 }
-/*Cor dos icones #a3015a
+.barra:hover{
+    width: 20%;
+    transition: 0.5s;
+}
+.barra:hover .menu{
+    display: flex;
+}
+.menu{
+    width: 100%;
+    height: 100vh;
+    display: none;
+    flex-flow: row wrap;
+    justify-content: center;
+}
+.menu h2{
+    color: white;
+    margin: 0;
+}
+.menu a{
+    color: white;
+    width: 80%;
+    height: 10vh;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    border-radius: 10px;
+}
+.menu a:hover{
+    background-color: #ff2aa3;
+}
+.menu img{
+    width: 50%;
+    height: 20vh;
+}
+.menu a img{
+    width: 15%;
+    height: 5vh;
+    margin-right: 5%;
+}
+.ifm{
+    height: 99vh;
+    width: 95%;
+    margin-left: 5%;
+}
+iframe{
+    width: 100%;
+    height: 99vh;
+}
+.fundoModal{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    background-color: gray;
+    opacity: 0.5;
+}
+.modal{
+    position: fixed;
+    display: flex;
+    border-radius: 20px;
+    padding: 1%;
+    box-shadow: 0px 0px 50px black;
+}
+.fecharModal{
+    margin-left: 97%;
+    width: 3%;
+    height: 5vh;
+}
