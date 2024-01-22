@@ -69,6 +69,7 @@ iframe{
     position: fixed;
     background-color: gray;
     opacity: 0.5;
+transition: 1s;    top: 0;
 }
 .modal{
     position: fixed;
@@ -81,4 +82,39 @@ iframe{
     margin-left: 97%;
     width: 3%;
     height: 5vh;
+}
+.nav{
+    display: flex;
+    background-color: #a3015a;
+    justify-content: space-between;
+}
+.nav a,button{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15%;
+    padding: 1%;
+}
+.nav button{
+    background-color: #a3015a;
+    border: none;
+}
+.nav a img{
+    width: 15%;
+    margin-right: 5%;
+}
+.nav button img{
+    width: 15%;
+    margin-right: 5%;
+}
+.nav a:hover{
+    background-color: #ca0073;
+    transition: 1s;
+}
+.nav button:hover{
+    background-color: #ca0073;
+    transition: 1s;
 }
