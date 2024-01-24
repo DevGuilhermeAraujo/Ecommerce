@@ -61,7 +61,7 @@ form h2{
     align-items: center;
     justify-content: center;
     color: #a3015a;
-    font-weight: 700;
+    width: 100%;
 }
 form input,select{
     width: 98%;
@@ -185,20 +185,4 @@ form input,select{
 .right h2 img{
     width: 4%;
     margin-right: 1%;
-}
-.cadProdutos{
-    background-color: #ff8bf9;
-    width: 48%;
-    margin: 1%;
-    border-radius: 20px;
-    padding: 1%;
-    display: flex;
-    flex-flow: row wrap;
-}
-.check{
-    width: 15%;
-    margin: 2% 23% 2% 2%;
-    display: flex;
-    text-align: center;
-    font-size: 18px;
 }

@@ -43,7 +43,8 @@ body{
     border-radius: 10px;
 }
 .menu a:hover{
-    background-color: #ff2aa3;
+    transition: 1s;
+    background-color: #e60082;
 }
 .menu img{
     width: 50%;
@@ -117,4 +118,43 @@ transition: 1s;    top: 0;
 .nav button:hover{
     background-color: #ca0073;
     transition: 1s;
+}
+.cadProduto{
+    width: 44%;
+    margin: 3%;
+    padding: 2%;
+    display: flex;
+    flex-flow: row wrap;
+    border-radius: 20px;
+    background-color: #d897bb;
+    border: #a3015a 5px solid;
+}
+.cadProduto input{
+    width: 100%;
+    
+}
+.cadProduto input,select,textarea{
+    border: none;
+    margin: 1%;
+    padding: 1%;
+    border-radius: 5px;
+    color: #a3015a;
+    font-size: 15px;
+}
+.comLeg{
+    width: 44%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    margin: 3% 3% 3% 3%;
+}
+.comLeg input{
+    height: 3vh;
+    width: 10%;
+}
+.comLeg select{
+    width: 100%;
+}
+.cadProduto h2 img{
+    width: 5%;
 }
