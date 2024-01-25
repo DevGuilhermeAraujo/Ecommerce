@@ -88,6 +88,8 @@ transition: 1s;    top: 0;
     display: flex;
     background-color: #a3015a;
     justify-content: space-between;
+    position: sticky;
+    top:0;
 }
 .nav a,button{
     text-decoration: none;
