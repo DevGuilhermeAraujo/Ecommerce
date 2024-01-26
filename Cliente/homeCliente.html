@@ -32,9 +32,23 @@
     </form>
 
     <!--Paineis dos produtos-->
+    <!--
+        Organização para o retorno dos produtos: 
+
+        <div class="produto">
+            <h3> NOME DO PRODUTO </h3>
+            <img src=" URL DA IMAGEM " alt=" DESCRIÇÃO DA IMG">
+            <p> DESCRIÇÃO DO PRODUTO</p>
+            <h4> PREÇO DO PRODUTO</h4>
+            <div class="comprar">
+                <span>-</span><button>Adicionar ao carrinho ( QUANTIDADE )</button><span>+</span>
+            </div>
+        </div>
+
+    -->
     <div class="prateleira">
         <div class="produto">
-            <h3>Nome do produto</h3>
+            <h3>Max 22 caracteres</h3>
             <img src="../Imagens/Fundos/fundoPrincipal.jpg" alt="icone exemplo">
             <p>Descrição do produto Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque deserunt tempora, iure libero nihil quis reiciendis perferendis cupiditate itaque, dignissimos veniam magni similique fuga ex labore doloribus</p>
             <h4>Preço</h4>
@@ -42,16 +56,6 @@
                 <span>-</span><button>Adicionar ao carrinho (0)</button><span>+</span>
             </div>
         </div>
-        <div class="produto">
-            <h3>Sabonete Facial Melu Uva</h3>
-            <img src="../Imagens/Produtos/Teste1.jpg" alt="icone exemplo">
-            <p>O Sabonete Facial Melu by Ruby Rose Uva é um produto de alta qualidade que oferece limpeza profunda e hidratação para a pele. O extrato de uva é rico em antioxidantes, que ajudam a proteger a pele dos danos causados pelos radicais livres.</p>
-            <h4>R$ 00,00</h4>
-            <div class="comprar">
-                <span>-</span><button>Adicionar ao carrinho (0)</button><span>+</span>
-            </div>
-        </div>
-
     </div>
 
     <!--Fundo para os modals-->
