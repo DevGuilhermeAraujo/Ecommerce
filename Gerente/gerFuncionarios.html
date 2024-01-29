@@ -10,33 +10,52 @@
 <body>
 
     <!--Div contendo o painel de funcionários, divididos em ativos e inativos-->
+    <!--
+    para organizar os funcionários com php, retorne dentro de ativos e inativos 
+    com a seguinte organização: 
+
+        <p>
+            <span>Teste2</span>
+            <button onclick="AbrirModal(GerFuncionarios,editarFuncionario)" style="background-color: #8b0d96;">Editar</button>
+            <button>"Desativar" quando estiver nos ATIVOS e "Reativar" quando estiver nos INATIVOS</button>
+        </p>
+
+    OBS: quando um funcionário estiver desativado, ele deve perder acesso ao sistema
+    -->
     <div id="funcionarios">
         <h2> <img src="../Imagens/Icones/funcionarios.png" alt="icone funcionários">Funcionários</h2>
         <div id="ativos">
-            <p><span>Teste1 ...max 40 caracteres</span><button onclick="AbrirModal(GerFuncionarios,editarFuncionario)" style="background-color: #00008d;">Editar</button><button>Desativar</button></p>
-            <p><span>Teste2</span><button onclick="AbrirModal(GerFuncionarios,editarFuncionario)" style="background-color: #00008d;">Editar</button><button>Desativar</button></p>
-            <p><span>Teste3</span><button onclick="AbrirModal(GerFuncionarios,editarFuncionario)" style="background-color: #00008d;">Editar</button><button>Desativar</button></p>
-            <p><span>Teste4</span><button onclick="AbrirModal(GerFuncionarios,editarFuncionario)" style="background-color: #00008d;">Editar</button><button>Desativar</button></p>
-            <p><span>Teste5</span><button onclick="AbrirModal(GerFuncionarios,editarFuncionario)" style="background-color: #00008d;">Editar</button><button>Desativar</button></p>
-            <p><span>Teste6</span><button onclick="AbrirModal(GerFuncionarios,editarFuncionario)" style="background-color: #00008d;">Editar</button><button>Desativar</button></p>
+            <p><span>Teste1 ...max 40 caracteres</span><button onclick="AbrirModal(GerFuncionarios,editarFuncionario)" style="background-color: #8b0d96;">Editar</button><button>Desativar</button></p>
         </div>
         <div id="inativos">
-            <p><span>Teste7</span><button onclick="AbrirModal(GerFuncionarios,editarFuncionario)" style="background-color: #00008d;">Editar</button><button>Reativar</button></p>
-            <p><span>Teste8</span><button onclick="AbrirModal(GerFuncionarios,editarFuncionario)" style="background-color: #00008d;">Editar</button><button>Reativar</button></p>
-            <p><span>Teste9</span><button onclick="AbrirModal(GerFuncionarios,editarFuncionario)" style="background-color: #00008d;">Editar</button><button>Reativar</button></p>
-            <p><span>Teste10</span><button onclick="AbrirModal(GerFuncionarios,editarFuncionario)" style="background-color: #00008d;">Editar</button><button>Reativar</button></p>
-            <p><span>Teste11</span><button onclick="AbrirModal(GerFuncionarios,editarFuncionario)" style="background-color: #00008d;">Editar</button><button>Reativar</button></p>
-            <p><span>Teste12</span><button onclick="AbrirModal(GerFuncionarios,editarFuncionario)" style="background-color: #00008d;">Editar</button><button>Reativar</button></p>
+            <p><span>Teste7</span><button onclick="AbrirModal(GerFuncionarios,editarFuncionario)" style="background-color: #8b0d96;">Editar</button><button>Reativar</button></p>
         </div>
     </div>
 
     <!--Formulário de cadastro de novos funcionários + botão de analisar currículos-->
+    <!--
+        OBS: 
+
+        Max de caracteres para nome: 20
+
+        Max de caracteres para sobrenome: 20
+
+        Max de caracteres para CPF: 11
+
+        A nova senha deve conter no mínimo 8 caaracteres,
+        pelo menos 1 caractere especial e pelo menos 1 número.
+
+        O campo CONFIRME A NOVA SENHA, deve conter valor igual
+        ao campo NOVA SENHA
+
+    -->
     <div class="right">
         <button onclick="AbrirModal(GerFuncionarios,analisarCurriculos)" id="analisar">Analisar currículos</button>
         <form>
             <h2><img src="../Imagens/Icones/pessoaMais.png" alt="icone adicionar pessoa"> Cadastrar novo funcionário</h2>
             <input type="text" placeholder="Nome">
             <input type="text" placeholder="Sobrenome">
+<<<<<<< HEAD
             <input type="text" placeholder="Logradouro">
             <input type="text" placeholder="Número">
             <input type="text" placeholder="Bairro">
@@ -44,6 +63,14 @@
             <input type="text" placeholder="Telefone">
             <input type="email" placeholder="Email">
             <input type="date">
+=======
+            <input type="text" placeholder="CPF">
+            <input type="text" placeholder="Bairro">
+            <input type="text" placeholder="Rua">
+            <input type="date">
+            <input type="text" placeholder="Telefone">
+            <input type="email" placeholder="E-mail">
+>>>>>>> 50caf199b54adb9f2d88b1ae4067e52d73dd4af8
             <input type="password" placeholder="Nova senha">
             <input type="password" placeholder="Confirme a nova senha">
             <input id="CadFuncionario" type="submit" value="Cadastrar">
@@ -67,6 +94,10 @@
     </div>
 
     <!--Modal para análise de currículos-->
+    <!--
+    Não precisa habilitar por enquanto, vamos dar prioridade aos requisitos
+    do dia 8 de fevereiro
+    -->
     <div style="display: none;" id="analisarCurriculos" class="modal">
         <img onclick="FecharModal(GerFuncionarios,analisarCurriculos)" class="fecharModal" src="../Imagens/Icones/Fechar.png" alt="icone fechar">
         <h2><img src="../Imagens/Icones/curriculo.png" alt="icone curriculos"> Currículos</h2>

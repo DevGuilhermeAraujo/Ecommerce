@@ -5,15 +5,17 @@ body{
 #funcionarios{
     width: 45%;
     margin: 2.5% 0% 2% 2.5%;
-    height: 90vh;
+    height: 100vh;
     overflow: auto;
     border-radius: 10px 0px 0px 10px;
     background-color: #ff8bf9;
+    border: #a3015a 5px solid ;
 }
 #funcionarios p{
     width: 100%;
     height: 5vh;
     display: flex;
+    border-bottom: 2px solid #a3015a;
 }
 #funcionarios p span{
     width: 60%;
@@ -24,21 +26,16 @@ body{
     border: none;
     height: 5vh;
     color: white;
-    border-radius: 20px;
+    border-radius: 5px;
+    font-size: 15px;
+    background-color: #a3015a;
 }
 #ativos{
     padding: 1%;
-    background-color: rgb(179, 250, 179);
-}
-#ativos button{
-    background-color: green;
+    background-color: #ffffff;
 }
 #inativos{
     padding: 1%;
-    background-color: rgb(255, 112, 112);
-}
-#inativos button{
-    background-color: red;
 }
 #funcionarios h2{
     text-align: center;
@@ -176,7 +173,7 @@ form input,select{
     margin: 2.5% 2.5% 2% 0%;
     width: 47.5%;
     background-color: #ff8bf9;
-    height: 90vh;
+    height: 100vh;
     border-radius: 0px 10px 10px 0px;
 }
 .interagir{
