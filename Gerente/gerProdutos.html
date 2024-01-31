@@ -24,12 +24,13 @@
     -->
     <form class="cadProduto">
         <h2><img src="../Imagens/Icones/compra.png" alt="icone de compra"> Novo produto <img src="../Imagens/Icones/compra.png" alt="icone compra"></h2>
-        <input type="text" placeholder="Nome do produto">
-        <textarea cols="100%" rows="5" placeholder="Descrição do produto"></textarea>
+        <input type="text" placeholder="Nome do produto" name="nomeProd">
+        <textarea cols="100%" rows="5" placeholder="Descrição do produto" name="descProd"></textarea>
+        <input type="file" name="imgProd">
         <input type="text" placeholder="URL da imagem">
         <input type="text" placeholder="Valor do produto">
         <div class="comLeg">
-            <label for="">Tipo</label>
+            <label for="">Categoria</label>
             <select>
                 <option value="">Geral</option>
             </select>

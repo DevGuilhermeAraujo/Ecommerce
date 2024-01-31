@@ -62,13 +62,13 @@
     <div style="display: none;" id="HomeCliente" class="fundoModal"></div>
 
     <!--Modal para login-->
-   <form style="display: none;" id="login" class="modal">
+   <form style="display: none;" id="login" class="modal" action="../BackEnd/login/validaLogin.php" method="POST">
      <img onclick="FecharModal(HomeCliente,login)" class="fecharModal" src="../Imagens/Icones/Fechar.png" alt="icone fechar">
      <h2><img src="../Imagens/Icones/flor.png" alt="icone flor"> Espaço beleza rosa <img src="../Imagens/Icones/flor.png" alt="icone flor"></h2>
      <img id="loginImg" src="../Imagens/Icones/usuario.png" alt="icone usuario">
      <p>Faça login em sua conta</p>
-     <input type="email" placeholder="E-mail">
-     <input type="password" placeholder="Senha">
+     <input type="email" placeholder="E-mail" name="email">
+     <input type="password" placeholder="Senha" name="senha">
      <input id="logar" type="submit" value="Login">
    </form>
 
