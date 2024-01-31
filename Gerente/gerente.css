@@ -183,3 +183,35 @@ form input,select{
     width: 4%;
     margin-right: 1%;
 }
+
+@media screen and (max-width: 1100px){
+    #funcionarios{
+        width: 95%;
+        border-radius: 20px;
+        overflow: hidden;
+        height: auto;
+    }
+    .right{
+        width: 95%;
+        margin-left: 2.5%;
+        border-radius: 20px;
+        border: 5px solid #a3015a;
+        height: auto;
+    }
+    form input,select{
+        width: 47%;
+        margin: 1%;
+    }
+    #CadFuncionario{
+        width: 96.5%;
+    }
+    #funcionarios p button{
+        height: 10vh;
+    }
+    #editarFuncionario form{
+        height: 40vh;
+    }
+    #edtFunc{
+        width: 97%;
+    }
+}
