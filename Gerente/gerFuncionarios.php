@@ -51,28 +51,20 @@
     -->
     <div class="right">
         <button onclick="AbrirModal(GerFuncionarios,analisarCurriculos)" id="analisar">Analisar currículos</button>
-        <form>
+        <form action="../BackEnd/cadastroFunc/processCadastroFunc.php?solicitaCad" method="POST">
             <h2><img src="../Imagens/Icones/pessoaMais.png" alt="icone adicionar pessoa"> Cadastrar novo funcionário</h2>
-            <input type="text" placeholder="Nome">
-            <input type="text" placeholder="Sobrenome">
-<<<<<<< HEAD
-            <input type="text" placeholder="Logradouro">
-            <input type="text" placeholder="Número">
-            <input type="text" placeholder="Bairro">
-            <input type="date">
-            <input type="text" placeholder="Telefone">
-            <input type="email" placeholder="Email">
-            <input type="date">
-=======
-            <input type="text" placeholder="CPF">
-            <input type="text" placeholder="Bairro">
-            <input type="text" placeholder="Rua">
-            <input type="date">
-            <input type="text" placeholder="Telefone">
-            <input type="email" placeholder="E-mail">
->>>>>>> 50caf199b54adb9f2d88b1ae4067e52d73dd4af8
-            <input type="password" placeholder="Nova senha">
-            <input type="password" placeholder="Confirme a nova senha">
+            <input type="text" placeholder="Nome" name="nome">
+            <input type="text" placeholder="Sobrenome" name="sobrenome">
+            <input type="text" placeholder="CPF" name="cpf">
+            <input type="text" placeholder="Logradouro" name="logradouro">
+            <input type="text" placeholder="Número" name="numero">
+            <input type="text" placeholder="Bairro" name="bairro">
+            <input type="date" name="dtNasc">
+            <input type="text" placeholder="Telefone" name="telefone">
+            <input type="email" placeholder="Email" name="email">
+            <input type="date" name="dtRegistro">
+            <input type="password" placeholder="Nova senha" name="senha">
+            <input type="password" placeholder="Confirme a nova senha" name="confirmaSenha">
             <input id="CadFuncionario" type="submit" value="Cadastrar">
         </form>
     </div>
