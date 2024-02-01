@@ -1,31 +1,15 @@
 <?php
 include_once "conexao.php";
 session_start();
-//Constantes de ambiente
-//Legado - Remover posteriormente
-
-const SESSION_CPF = "UserCpf";
-$db = new Conexao();
-if (isset($_GET['loginSucess'])) {
-    $email = $_GET['email'];
-    $dados = $db->executar("SELECT id, first_name, last_name, email, employee FROM users WHERE email = '$email'");
-}
-function getName()
-{
-    return getName();
-}
-
-
-
 
 //Constantes de ambiente
-const SESSION_USER_ID = "UserId";
+const SESSION_USER_EMAIL = "Useremail";
 const SESSION_USERNAME = "UserName";
 const SESSION_USER_IDPERMISSION = "UserIdPermission";
 
 const PERMISSION_GERENTE = 1;
-const PERMISSION_PROFESSOR = 2;
-const PERMISSION_ALUNO = 3;
+const PERMISSION_FUNCIONARIO = 2;
+const PERMISSION_CLIENTE = 3;
 
 //Pegar diretamente do banco:
 //function PERMISSION_GERENTE(){include_once "conexao.php"; return (new Conexao())->executar("SELECT cod FROM tipos WHERE nomeTipo='Gerente';")[0][0];}
@@ -36,7 +20,7 @@ const PERMISSION_ALUNO = 3;
 //Funções para o Front-End
 function Logued(?Int $permission = null)
 {
-    if (isset($_SESSION[SESSION_USER_ID]) && $_SESSION[SESSION_USER_ID] != "") {
+    if (isset($_SESSION[SESSION_USER_EMAIL]) && $_SESSION[SESSION_USER_EMAIL] != "") {
         if ($permission != null)
             if ($_SESSION[SESSION_USER_IDPERMISSION] != $permission)
                 return false;
@@ -63,7 +47,7 @@ function requiredLogin(?Int $permission = null, ?String $URL = null)
 function logout()
 {
     //Sair do usuario (deslogar)
-    unset($_SESSION[SESSION_USER_RA_ID]);
+    unset($_SESSION[SESSION_USER_EMAIL]);
     unset($_SESSION[SESSION_USERNAME]);
     unset($_SESSION[SESSION_USER_IDPERMISSION]);
     unset($_SESSION);
@@ -72,12 +56,12 @@ function logout()
 
 function redirectByPermission($_permission)
 {
-    if ($_permission == PERMISSION_ALUNO) {
+    if ($_permission == PERMISSION_CLIENTE) {
         //header("Location: ")
         header("Location: ../Alunos/indexAluno.php");
         exit();
     }
-    if ($_permission == PERMISSION_PROFESSOR) {
+    if ($_permission == PERMISSION_FUNCIONARIO) {
         header("Location: ../Professores/indexProfessores.php");
         exit();
     }

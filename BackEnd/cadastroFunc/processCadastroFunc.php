@@ -2,18 +2,18 @@
 include_once "../conexao.php";
 $db = new Conexao();
 if (isset($_GET['solicitaCad'])) {
-    $nome = $_POST['nome'];
-    $sobrenome = $_POST['sobrenome'];
-    $cpf = $_POST['cpf'];
-    $logradouro = $_POST['logradouro'];
-    $numero = $_POST['numero'];
-    $bairro = $_POST['bairro'];
-    $dtNasc = $_POST['dtNasc'];
-    $telefone = $_POST['telefone'];
-    $email = $_POST['email'];
-    $dtRegistro = $_POST['dtRegistro'];
-    $senha = $_POST['senha'];
-    $confirmaSenha = $_POST['confirmaSenha'];
+    $nome = htmlspecialchars($_POST['nome'], ENT_QUOTES, 'UTF-8');
+    $sobrenome = htmlspecialchars($_POST['sobrenome'], ENT_QUOTES, 'UTF-8');
+    $cpf = htmlspecialchars($_POST['cpf'], ENT_QUOTES, 'UTF-8');
+    $logradouro = htmlspecialchars($_POST['logradouro'], ENT_QUOTES, 'UTF-8');
+    $numero = htmlspecialchars($_POST['numero'], ENT_QUOTES, 'UTF-8');
+    $bairro = htmlspecialchars($_POST['bairro'], ENT_QUOTES, 'UTF-8');
+    $dtNasc = htmlspecialchars($_POST['dtNasc'], ENT_QUOTES, 'UTF-8');
+    $telefone = htmlspecialchars($_POST['telefone'], ENT_QUOTES, 'UTF-8');
+    $email = htmlspecialchars($_POST['email'], ENT_QUOTES, 'UTF-8');
+    $dtRegistro = htmlspecialchars($_POST['dtRegistro'], ENT_QUOTES, 'UTF-8');
+    $senha = htmlspecialchars($_POST['senha'], ENT_QUOTES, 'UTF-8');
+    $confirmaSenha = htmlspecialchars($_POST['confirmaSenha'], ENT_QUOTES, 'UTF-8');
     $sql = "SELECT * FROM users WHERE cpf = :cpf";
     $parametros = [
         ':cpf' => $cpf,
@@ -27,6 +27,7 @@ if (isset($_GET['solicitaCad'])) {
         $result = $db->executar($sql, $parametros, true);
         if ($result->rowCount() == 0) {
             if ($senha === $confirmaSenha) {
+                $senhacriptografada = password_hash($senha, PASSWORD_DEFAULT);
                 $sql = "INSERT INTO users(first_name, last_name, cpf, public_place, residenceNumber, neighborhood, date_Of_Birth, registration_Date, phone, email, passwordUser, employee, active) VALUES(:nome, :sobrenome, :cpf, :logradouro, :numero, :bairro, :dtNasc, :dtRegistro, :telefone, :email, :senha, :funcionario, :ativo)";
                 // Defina os parâmetros para a consulta
                 $parametros = [
@@ -40,7 +41,7 @@ if (isset($_GET['solicitaCad'])) {
                     ':dtRegistro' => $dtRegistro,
                     ':telefone' => $telefone,
                     ':email' => $email,
-                    ':senha' => $senha,
+                    ':senha' => $senhacriptografada,
                     ':funcionario' => 'S',
                     ':ativo' => 'S',
                 ];
@@ -53,16 +54,16 @@ if (isset($_GET['solicitaCad'])) {
                 if ($result->rowCount() == 0) {
                     header("Location: ../../Gerente/gerFuncionarios.php?ERROR=3");
                     exit();
-                } elseif ($result->rowCount() > 0) {
+                } else {
                     header("Location: ../../Gerente/gerFuncionarios.php?SUCESS=1");
                     exit();
                 }
             }
-        } elseif ($result->rowCount() > 0) {
+        } else {
             header("Location: ../../Gerente/gerFuncionarios.php?ERROR=2");
             exit();
         }
-    } elseif ($result->rowCount() > 0) {
+    } else {
         header("Location: ../../Gerente/gerFuncionarios.php?ERROR=1");
         exit();
     }

@@ -69,8 +69,7 @@ class Conexao
         if ($fullObject) {
             return $stmt;
         } else {
-            $result = $stmt->fetchAll();
-            return $result;
+            return $stmt->fetchAll();
         }
     }
 }
