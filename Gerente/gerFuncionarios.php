@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>editar funcionarios</title>
     <link rel="stylesheet" href="../index.css">
     <link rel="stylesheet" href="gerente.css">
+    <script src="../BackEnd/script.js"></script>
 </head>
+
 <body>
 
     <!--Div contendo o painel de funcionários, divididos em ativos e inativos-->
@@ -51,38 +54,60 @@
     -->
     <div class="right">
         <button onclick="AbrirModal(GerFuncionarios,analisarCurriculos)" id="analisar">Analisar currículos</button>
-        <form action="../BackEnd/cadastroFunc/processCadastroFunc.php?solicitaCad" method="POST">
+        <form action="../BackEnd/cadastroFunc/processCadastroFunc.php?solicitaCad" method="POST" onsubmit="return validateForm()" novalidate>
             <h2><img src="../Imagens/Icones/pessoaMais.png" alt="icone adicionar pessoa"> Cadastrar novo funcionário</h2>
-            <input type="text" placeholder="Nome" name="nome">
-            <input type="text" placeholder="Sobrenome" name="sobrenome">
-            <input type="text" placeholder="CPF" name="cpf">
-            <input type="text" placeholder="Logradouro" name="logradouro">
-            <input type="text" placeholder="Número" name="numero">
-            <input type="text" placeholder="Bairro" name="bairro">
-            <input type="date" name="dtNasc">
-            <input type="text" placeholder="Telefone" name="telefone">
-            <input type="email" placeholder="Email" name="email">
-            <input type="date" name="dtRegistro">
-            <input type="password" placeholder="Nova senha" name="senha">
-            <input type="password" placeholder="Confirme a nova senha" name="confirmaSenha">
+            <input type="text" id="nome" placeholder="Nome" name="nome">
+            <input type="text" id="sobrenome" placeholder="Sobrenome" name="sobrenome">
+            <input type="text" id="cpf" placeholder="CPF" name="cpf" oninput="maskCPF()">
+            <input type="text" id="logradouro" placeholder="Logradouro" name="logradouro">
+            <input type="text" id="numero" placeholder="Número" name="numero">
+            <input type="text" id="bairro" placeholder="Bairro" name="bairro">
+            <input type="date" id="dtNasc" name="dtNasc">
+            <input type="text" id="telefone" placeholder="Telefone" name="telefone">
+            <input type="email" id="email" placeholder="Email" name="email">
+            <input type="date" id="dtRegistro" name="dtRegistro">
+            <input type="password" id="senha" placeholder="Nova senha" name="senha">
+            <input type="password" id="confirmaSenha" placeholder="Confirme a nova senha" name="confirmaSenha">
             <input id="CadFuncionario" type="submit" value="Cadastrar">
+            <div class="msgN">
+                <span id="nomeError">
+                    <?php if (isset($nomeError)) {
+                        echo $nomeError;
+                    } ?></span>
+
+                <span id="cpfError"><?php if (isset($cpfError)) {
+                                        echo $cpfError;
+                                    } ?></span>
+
+                <span id="dtError"><?php if (isset($dtError)) {
+                                        echo $dtError;
+                                    } ?></span>
+
+                <span id="emailError"><?php if (isset($emailError)) {
+                                            echo $emailError;
+                                        } ?></span>
+
+                <span id="passwordError"><?php if (isset($passwordError)) {
+                                                echo $passwordError;
+                                            } ?></span>
+            </div>
         </form>
     </div>
 
     <!--Fundo para os modais-->
     <div style="display: none;" id="GerFuncionarios" class="fundoModal"></div>
-    
+
     <!--Modal para edição de funcionários-->
     <div style="display: none;" class="modal" id="editarFuncionario">
         <img onclick="FecharModal(GerFuncionarios,editarFuncionario)" class="fecharModal" src="../Imagens/Icones/Fechar.png" alt="icone fechar">
         <h3>Nome do funcionario</h3>
-       <form id="Edição">
+        <form id="Edição">
             <input type="text" placeholder="Mudar endereço">
             <input type="text" placeholder="Mudar Telefone">
             <input type="password" placeholder="Mudar senha">
             <input type="password" placeholder="Confirmar nova senha">
             <input id="edtFunc" style="background-color: #a3015a;color: white;height: 10vh;font-size: 20px;" type="submit" value="Atualizar">
-       </form>
+        </form>
     </div>
 
     <!--Modal para análise de currículos-->
@@ -100,7 +125,7 @@
             <p><span>Telefone:</span> Telefone</p>
             <p><span>Objetivo</span> Objetivo Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium eaque laboriosam dolorem facere provident praesentium magni quae blanditiis asperiores itaque recusandae possimus nisi, nemo perferendis, dolore obcaecati, mollitia molestiae fugit.</p>
             <p><span>Habilidades</span> Habilidades Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum libero ipsam aliquam sunt inventore. Saepe asperiores, voluptas voluptate aliquam, harum aspernatur pariatur in enim ab explicabo quo repudiandae excepturi cupiditate.</p>
-           <div class="interagir"> <button class="aceitar"><img src="../Imagens/Icones/aceitar.png" alt="icone aceitar"> Aceitar</button><button class="excluir"><img src="../Imagens/Icones/lixeira.png" alt="icone lixeira"> Excluir</button></div>
+            <div class="interagir"> <button class="aceitar"><img src="../Imagens/Icones/aceitar.png" alt="icone aceitar"> Aceitar</button><button class="excluir"><img src="../Imagens/Icones/lixeira.png" alt="icone lixeira"> Excluir</button></div>
         </div>
         <div class="curriculo">
             <h3>Nome + Sobrenome</h3>
@@ -123,5 +148,8 @@
     </div>
 
     <script src="../index.js"></script>
+
 </body>
+
+
 </html>

@@ -31,12 +31,6 @@ if ($db->errorCode != 0) {
             break;
         }
     }*/
-//             $sql = "SELECT * FROM users WHERE cpf = :cpf";
-//             $parametros = [
-//                 ':cpf' => $cpf,
-//             ];
-//             $result = $db->executar($sql, $parametros, true);
-//             if ($result->rowCount() == 0) {
 $sql = "SELECT email from users WHERE email = :email";
 $parametros = [
     ':email' => $email,
@@ -53,9 +47,9 @@ $sql = "SELECT passwordUser from users WHERE email = :email";
 $parametros = [
     ':email' => $email,
 ];
-$result = $db->executar($sql, $parametros, true);
+$result = $db->executar($sql, $parametros);
 //if(!password_verify($password, $result[0]['senha']) && $result[0][0] != $password){ // IMPORTANTE -> A segunda parte do '&&' (E) deve ser removida após a padronização da criptografia!
-if (!password_verify($password, $result[0]['passwordUser'])) {
+if (!password_verify($senha, $result[0]['passwordUser'])) { 
     header("Location: ../../Cliente/homeCliente.php?invalidLogin");
     exit();
 }
@@ -64,7 +58,11 @@ if (!password_verify($password, $result[0]['passwordUser'])) {
 include_once "../sessao.php";
 $_SESSION[SESSION_USER_EMAIL] = $email;
 
-$result = $db->executar("SELECT nome FROM usuarios WHERE ra = $ra_id;");
+$sql ="SELECT CONCAT(first_name, ' ', last_name) AS nome FROM users WHERE email = :email";
+$parametros = [
+    ':email' => $email,
+];
+$result = $db->executar($sql, $parametros);
 $_SESSION[SESSION_USERNAME] = $result[0][0];
 
 $result = $db->executar("SELECT tipo FROM usuarios WHERE ra = $ra_id", true);

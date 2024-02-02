@@ -14,10 +14,10 @@
         <button onclick="Trocar(btnMenu,menu2)" id="btnMenu"><img src="../Imagens/Icones/menu.png" alt="icone menu">Menu</button>
         <div style="display: none;" id="menu2" class="menu2">
             <button id="fecharMenu" onclick="Trocar(menu2,btnMenu)"><img src="../Imagens/Icones/Fechar2.png" alt="icone fechar"></button>
-            <a href="../Cliente/homeCliente.html"><img src="../Imagens/Icones/sair.png" alt="icone sair"> Sair</a>
+            <a href="../Cliente/homeCliente.php"><img src="../Imagens/Icones/sair.png" alt="icone sair"> Sair</a>
             <a href=""><img src="../Imagens/Icones/home.png" alt="icone home"> Home</a>
-            <a target="funçõesGerente" href="gerFuncionarios.html"><img src="../Imagens/Icones/equipe.png" alt="icone equipe"> Funcionários</a>
-            <a target="funçõesGerente" href="gerProdutos.html"><img src="../Imagens/Icones/carrinho.png" alt="icone carrinho"> Produtos</a>
+            <a target="funçõesGerente" href="gerFuncionarios.php"><img src="../Imagens/Icones/equipe.png" alt="icone equipe"> Funcionários</a>
+            <a target="funçõesGerente" href="gerProdutos.php"><img src="../Imagens/Icones/carrinho.png" alt="icone carrinho"> Produtos</a>
             <a target="funçõesGerente" href=""><img src="../Imagens/Icones/comunicação.png" alt="icone comunicação"> Comunicação</a>
         </div>
     </div>
@@ -27,17 +27,17 @@
         <div class="menu">
             <h2>Acesso gerente</h2>
             <img src="../Imagens/Icones/rosa.png" alt="icone flor">
-            <a href="../Cliente/homeCliente.html"><img src="../Imagens/Icones/sair.png" alt="icone sair"> Sair</a>
+            <a href="../Cliente/homeCliente.php"><img src="../Imagens/Icones/sair.png" alt="icone sair"> Sair</a>
             <a href=""><img src="../Imagens/Icones/home.png" alt="icone home"> Home</a>
-            <a target="funçõesGerente" href="gerFuncionarios.html"><img src="../Imagens/Icones/equipe.png" alt="icone equipe"> Funcionários</a>
-            <a target="funçõesGerente" href="gerProdutos.html"><img src="../Imagens/Icones/carrinho.png" alt="icone carrinho"> Produtos</a>
+            <a target="funçõesGerente" href="gerFuncionarios.php"><img src="../Imagens/Icones/equipe.png" alt="icone equipe"> Funcionários</a>
+            <a target="funçõesGerente" href="gerProdutos.php"><img src="../Imagens/Icones/carrinho.png" alt="icone carrinho"> Produtos</a>
             <a target="funçõesGerente" href=""><img src="../Imagens/Icones/comunicação.png" alt="icone comunicação"> Comunicação</a>
         </div>
     </div>
 
     <!--Area de trabalho do gerente-->
     <div class="ifm">
-        <iframe name="funçõesGerente" src="homeGerente.html" frameborder="0"></iframe>
+        <iframe name="funçõesGerente" src="homeGerente.php" frameborder="0"></iframe>
     </div>
     
     <script src="../index.js"></script>
