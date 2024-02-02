@@ -17,7 +17,11 @@
             <a href="../Cliente/homeCliente.php"><img src="../Imagens/Icones/sair.png" alt="icone sair"> Sair</a>
             <a href=""><img src="../Imagens/Icones/home.png" alt="icone home"> Home</a>
             <a target="funçõesGerente" href="gerFuncionarios.php"><img src="../Imagens/Icones/equipe.png" alt="icone equipe"> Funcionários</a>
+<<<<<<< HEAD:Gerente/indexGerente.php
             <a target="funçõesGerente" href="gerProdutos.php"><img src="../Imagens/Icones/carrinho.png" alt="icone carrinho"> Produtos</a>
+=======
+            <a target="funçõesGerente" href="gerProdutos.html"><img src="../Imagens/Icones/carrinho.png" alt="icone carrinho"> Produtos</a>
+>>>>>>> 7d1d427f796c56ced9c3b65a3bf8024eeb330c0f:Gerente/indexGerente.html
             <a target="funçõesGerente" href=""><img src="../Imagens/Icones/comunicação.png" alt="icone comunicação"> Comunicação</a>
         </div>
     </div>
