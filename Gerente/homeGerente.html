@@ -14,27 +14,6 @@
         <p><input type="checkbox"><span>Funcionario x</span> efetuou uma venda no valor de <i> R$00,00</i></p>
         <p><input type="checkbox"><span>Funcionario y</span> editou <b>"shampoo teste"</b></p>
         <p><input type="checkbox"><span>Funcionario z</span> cadastrou um novo produto <b>"shampoo teste"</b> por <i>R$00,00</i></p>
-        <p><input type="checkbox"><span>Funcionario x</span> efetuou uma venda no valor de <i> R$00,00</i></p>
-        <p><input type="checkbox"><span>Funcionario y</span> editou <b>"shampoo teste"</b></p>
-        <p><input type="checkbox"><span>Funcionario z</span> cadastrou um novo produto <b>"shampoo teste"</b> por <i>R$00,00</i></p>
-        <p><input type="checkbox"><span>Funcionario x</span> efetuou uma venda no valor de <i> R$00,00</i></p>
-        <p><input type="checkbox"><span>Funcionario y</span> editou <b>"shampoo teste"</b></p>
-        <p><input type="checkbox"><span>Funcionario z</span> cadastrou um novo produto <b>"shampoo teste"</b> por <i>R$00,00</i></p>
-        <p><input type="checkbox"><span>Funcionario x</span> efetuou uma venda no valor de <i> R$00,00</i></p>
-        <p><input type="checkbox"><span>Funcionario y</span> editou <b>"shampoo teste"</b></p>
-        <p><input type="checkbox"><span>Funcionario z</span> cadastrou um novo produto <b>"shampoo teste"</b> por <i>R$00,00</i></p>
-        <p><input type="checkbox"><span>Funcionario x</span> efetuou uma venda no valor de <i> R$00,00</i></p>
-        <p><input type="checkbox"><span>Funcionario y</span> editou <b>"shampoo teste"</b></p>
-        <p><input type="checkbox"><span>Funcionario z</span> cadastrou um novo produto <b>"shampoo teste"</b> por <i>R$00,00</i></p>
-        <p><input type="checkbox"><span>Funcionario x</span> efetuou uma venda no valor de <i> R$00,00</i></p>
-        <p><input type="checkbox"><span>Funcionario y</span> editou <b>"shampoo teste"</b></p>
-        <p><input type="checkbox"><span>Funcionario z</span> cadastrou um novo produto <b>"shampoo teste"</b> por <i>R$00,00</i></p>
-        <p><input type="checkbox"><span>Funcionario x</span> efetuou uma venda no valor de <i> R$00,00</i></p>
-        <p><input type="checkbox"><span>Funcionario y</span> editou <b>"shampoo teste"</b></p>
-        <p><input type="checkbox"><span>Funcionario z</span> cadastrou um novo produto <b>"shampoo teste"</b> por <i>R$00,00</i></p>
-        <p><input type="checkbox"><span>Funcionario x</span> efetuou uma venda no valor de <i> R$00,00</i></p>
-        <p><input type="checkbox"><span>Funcionario y</span> editou <b>"shampoo teste"</b></p>
-        <p><input type="checkbox"><span>Funcionario z</span> cadastrou um novo produto <b>"shampoo teste"</b> por <i>R$00,00</i></p>
     </div>
     <script src="../index.js"></script>
 </body>
