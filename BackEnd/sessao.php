@@ -58,11 +58,11 @@ function redirectByPermission($_permission)
 {
     if ($_permission == PERMISSION_CLIENTE) {
         //header("Location: ")
-        header("Location: ../Alunos/indexAluno.php");
+        header("Location: ../Cliente/homeCliente.php");
         exit();
     }
     if ($_permission == PERMISSION_FUNCIONARIO) {
-        header("Location: ../Professores/indexProfessores.php");
+        header("Location: ../Funcionarios/indexFuncionarios.php");
         exit();
     }
     if ($_permission == PERMISSION_GERENTE) {
@@ -71,15 +71,15 @@ function redirectByPermission($_permission)
     }
     //Se algo der errado
     //Limpar sessão e reportar erro
-    error_log("Falha ao tentar fazer login, Cógido = Erro processLogin, return 2, Erro: Não foi possivel determinar o tipo do usuário; Falha ocorreu na tentativa do usuário: id=" . $_SESSION[SESSION_USER_RA_ID] . ", Falha de permissão retornado=$_permission", 3, "C:\PhpSiteEscolaErrorsLog.log");
+    error_log("Falha ao tentar fazer login, Cógido = Erro processLogin, return 2, Erro: Não foi possivel determinar o tipo do usuário; Falha ocorreu na tentativa do usuário: id=" . $_SESSION[SESSION_USER_EMAIL] . ", Falha de permissão retornado=$_permission", 3, "C:\PhpSiteEscolaErrorsLog.log");
     logout();
     header("Location: ../Login/pagLogin.php?ERROR=2");
 }
 
 
-function getIdRa()
+function getEmail()
 {
-    return $_SESSION[SESSION_USER_RA_ID];
+    return $_SESSION[SESSION_USER_EMAIL];
 }
 
 function getNome()
@@ -93,14 +93,13 @@ function getPermission()
     try{
         include_once "conexao.php";
         $db = new Conexao();
-        return $db->executar("SELECT tipo FROM usuarios WHERE ra = '".$_SESSION[SESSION_USER_RA_ID]."'")[0][0];
+        return $db->executar("SELECT tipo FROM usuarios WHERE ra = '".$_SESSION[SESSION_USER_EMAIL]."'")[0][0];
     }catch(Exception $e){
         logout();
         header("Location: ../Login/pagLogin.php?ERROR=3");
         exit();
     }
 }
-
 
 //Menssagem Pop-up com/sem background
 const MSG_POSITIVE = 1;

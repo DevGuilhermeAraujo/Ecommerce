@@ -1,3 +1,4 @@
+//Função para receber informações do formulário de cadastro de funcionário
 function getData() {
     var formData = {};
     var inputs = document.querySelectorAll('input');
@@ -8,6 +9,7 @@ function getData() {
 
     return formData;
 }
+//Função para validar campos do formulário
 function validateForm() {
     var formData = getData();
     //Expressão regular para validar nome
