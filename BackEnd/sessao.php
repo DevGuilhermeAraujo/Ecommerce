@@ -17,7 +17,7 @@ const PERMISSION_CLIENTE = 'client';
 
 
 //Funções para o Front-End
-function Logued(?Int $permission = null)
+function Logued(?String $permission = null)
 {
     if (isset($_SESSION[SESSION_USER_EMAIL]) && $_SESSION[SESSION_USER_EMAIL] != "") {
         if ($permission != null)
@@ -30,7 +30,7 @@ function Logued(?Int $permission = null)
     return false;
 }
 
-function requiredLogin(?Int $permission = null, ?String $URL = null)
+function requiredLogin(?String $permission = null, ?String $URL = null)
 {
     if (!Logued($permission)) {
         if (is_null($URL)) {
@@ -64,7 +64,7 @@ function redirectByPermission($_permission)
         header("Location: ../../Funcionarios/indexFuncionarios.php");
         exit();
     }
-    
+
     //Se algo der errado
     //Limpar sessão e reportar erro
     // error_log("Falha ao tentar fazer login, Cógido = Erro processLogin, return 2, Erro: Não foi possivel determinar o tipo do usuário; Falha ocorreu na tentativa do usuário: id=" . $_SESSION[SESSION_USER_EMAIL] . ", Falha de permissão retornado=$_permission", 3, "C:\PhpSiteEscolaErrorsLog.log");
@@ -86,11 +86,11 @@ function getNome()
 function getPermission()
 {
     //return $_SESSION[SESSION_USER_IDPERMISSION];
-    try{
+    try {
         include_once "conexao.php";
         $db = new Conexao();
-        return $db->executar("SELECT tipo FROM usuarios WHERE ra = '".$_SESSION[SESSION_USER_EMAIL]."'")[0][0];
-    }catch(Exception $e){
+        return $db->executar("SELECT tipo FROM usuarios WHERE ra = '" . $_SESSION[SESSION_USER_EMAIL] . "'")[0][0];
+    } catch (Exception $e) {
         logout();
         header("Location: ../Cliente/homeCliente.php?ERROR=3");
         exit();
@@ -126,22 +126,23 @@ function msg(int $type, string $message, ?string $class = "", ?string $style = "
             throw new Exception('Entrada invalida na função msg().');
     }
 
-    if(!$hideTimer == 0){
+    if (!$hideTimer == 0) {
         //Se a menssagem vai desaparecer
         //Tenta inserir o javascript caso não esteja na pagina (melhorar depois)
-        if($importJsUri == null){
+        if ($importJsUri == null) {
             //Tenta importar de um caminho padrão
             echo '<script src="../BackEnd/script.js"></script>';
-        }else{
+        } else {
             //Importa de um caminho determinado
-            echo '<script src="'.$importJsUri.'"></script>';
+            echo '<script src="' . $importJsUri . '"></script>';
         }
         //Chamar o metodo javascript para interação no lado cliente
         echo "<script>deleteMsg($hideTimer,$id);</script>";
     }
 }
 
-function redirectPOST(string $url, string $values, ?string $importJsUri = "../BackEnd/script.js"){
+function redirectPOST(string $url, string $values, ?string $importJsUri = "../BackEnd/script.js")
+{
     echo "<script src='$importJsUri'></script>";
     //Chamar o metodo javascript para interação no lado cliente
     echo "<script>redirectPOSTAjax('$url', '$values');</script>";

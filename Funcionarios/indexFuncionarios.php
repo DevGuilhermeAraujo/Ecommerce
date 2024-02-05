@@ -1,3 +1,7 @@
+<?php
+include_once "../BackEnd/sessao.php";
+requiredLogin(PERMISSION_FUNCIONARIO);
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

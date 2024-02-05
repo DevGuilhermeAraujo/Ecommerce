@@ -63,7 +63,7 @@ $parametros = [
     ':email' => $email,
 ];
 $result = $db->executar($sql, $parametros);
-$_SESSION[SESSION_USERNAME] = $result[0][1];
+$_SESSION[SESSION_USERNAME] = $result[0][0];
 // $result = $db->executar("SELECT tipo FROM view_client_user_combined WHERE ra = $ra_id", true);
 // $permisson = 0;
 // if ($result[0][3] == 'client') {
@@ -87,12 +87,6 @@ if ($result == 'client') {
     $permisson = $result[0][0];
 }
 $_SESSION[SESSION_USER_IDPERMISSION] = $permisson;
-
-
-//Redirecionar
-redirectByPermission($permisson);
-
-
 
 
 //Redirecionar
