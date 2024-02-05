@@ -18,16 +18,16 @@ requiredLogin(PERMISSION_FUNCIONARIO);
         <div class="menu">
             <h2>Acesso Funcionário</h2>
             <img src="../Imagens/Icones/rosa.png" alt="icone flor">
-            <a href="../Cliente/homeCliente.php"><img src="../Imagens/Icones/sair.png" alt="icone sair"> Sair</a>
+            <a href="../BackEnd/logout.php"><img src="../Imagens/Icones/sair.png" alt="icone sair"> Sair</a>
             <a href=""><img src="../Imagens/Icones/home.png" alt="icone home"> Home</a>
-            <a target="funçõesFuncionário" href="funProdutos.html"><img src="../Imagens/Icones/carrinho.png" alt="icone carrinho"> Produtos</a>
+            <a target="funçõesFuncionário" href="funProdutos.php"><img src="../Imagens/Icones/carrinho.png" alt="icone carrinho"> Produtos</a>
             <a target="funçõesFuncionário" href=""><img src="../Imagens/Icones/comunicação.png" alt="icone comunicação"> Comunicação</a>
         </div>
     </div>
 
     <!--Area de trabalho dos funcionários-->
     <div class="ifm">
-        <iframe name="funçõesFuncionário" src="homeFuncionário.html" frameborder="0"></iframe>
+        <iframe name="funçõesFuncionário" src="homeFuncionario.php" frameborder="0"></iframe>
     </div>
     
 </body>

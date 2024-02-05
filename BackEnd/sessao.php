@@ -89,7 +89,7 @@ function getPermission()
     try {
         include_once "conexao.php";
         $db = new Conexao();
-        return $db->executar("SELECT tipo FROM usuarios WHERE ra = '" . $_SESSION[SESSION_USER_EMAIL] . "'")[0][0];
+        return $db->executar("SELECT tipo FROM view_client_user_combined WHERE email = '" . $_SESSION[SESSION_USER_EMAIL] . "'")[0][0];
     } catch (Exception $e) {
         logout();
         header("Location: ../Cliente/homeCliente.php?ERROR=3");

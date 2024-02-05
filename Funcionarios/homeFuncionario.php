@@ -1,3 +1,6 @@
+<?php
+include_once "../BackEnd/sessao.php";
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -6,6 +9,7 @@
     <title>home funcionário</title>
 </head>
 <body>
-    <h1>Funcionário</h1>
+    <h1><?= getNome() ?></h1>
+
 </body>
 </html>
