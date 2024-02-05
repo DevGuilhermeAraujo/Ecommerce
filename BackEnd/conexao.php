@@ -65,7 +65,7 @@ class Conexao
 
         if ($autoExec || !$fullObject)
             $stmt->execute();
-
+        
         if ($fullObject) {
             return $stmt;
         } else {

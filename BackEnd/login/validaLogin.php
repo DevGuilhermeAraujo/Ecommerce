@@ -31,7 +31,7 @@ if ($db->errorCode != 0) {
             break;
         }
     }*/
-$sql = "SELECT email from users WHERE email = :email";
+$sql = "SELECT email FROM view_client_user_combined WHERE email = :email";
 $parametros = [
     ':email' => $email,
 ];
@@ -43,13 +43,13 @@ if (!$userValid) {
 }
 
 //Valida senha
-$sql = "SELECT passwordUser from users WHERE email = :email";
+$sql = "SELECT passwordUser FROM view_client_user_combined WHERE email = :email UNION ALL SELECT passwordUser FROM clients WHERE email = :email";
 $parametros = [
     ':email' => $email,
 ];
 $result = $db->executar($sql, $parametros);
 //if(!password_verify($password, $result[0]['senha']) && $result[0][0] != $password){ // IMPORTANTE -> A segunda parte do '&&' (E) deve ser removida após a padronização da criptografia!
-if (!password_verify($senha, $result[0]['passwordUser'])) { 
+if (!password_verify($senha, $result[0]['passwordUser'])) {
     header("Location: ../../Cliente/homeCliente.php?invalidLogin");
     exit();
 }
@@ -58,22 +58,41 @@ if (!password_verify($senha, $result[0]['passwordUser'])) {
 include_once "../sessao.php";
 $_SESSION[SESSION_USER_EMAIL] = $email;
 
-$sql ="SELECT CONCAT(first_name, ' ', last_name) AS nome FROM users WHERE email = :email";
+$sql = "SELECT CONCAT(first_name, ' ', last_name) AS nome FROM view_client_user_combined WHERE email = :email";
 $parametros = [
     ':email' => $email,
 ];
 $result = $db->executar($sql, $parametros);
-$_SESSION[SESSION_USERNAME] = $result[0][0];
+$_SESSION[SESSION_USERNAME] = $result[0][1];
+// $result = $db->executar("SELECT tipo FROM view_client_user_combined WHERE ra = $ra_id", true);
+// $permisson = 0;
+// if ($result[0][3] == 'client') {
+//     $permisson = PERMISSION_CLIENTE;
+// } 
+// if ($result[0][3] == 'employee'){
+//     $permisson = PERMISSION_FUNCIONARIO;
+// }
+// $_SESSION[SESSION_USER_IDPERMISSION] = $permisson;
 
-$result = $db->executar("SELECT tipo FROM usuarios WHERE ra = $ra_id", true);
+$sql = "SELECT tipo FROM view_client_user_combined WHERE email = :email";
+$parametros = [
+    ':email' => $email,
+];
+$result = $db->executar($sql, $parametros, true);
 $permisson = 0;
-if ($result->rowCount() == 3) {
+if ($result == 'client') {
     $permisson = PERMISSION_CLIENTE;
 } else {
     $result = $result->fetchAll();
     $permisson = $result[0][0];
 }
 $_SESSION[SESSION_USER_IDPERMISSION] = $permisson;
+
+
+//Redirecionar
+redirectByPermission($permisson);
+
+
 
 
 //Redirecionar

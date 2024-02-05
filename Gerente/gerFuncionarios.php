@@ -65,7 +65,6 @@
             <input type="date" id="dtNasc" name="dtNasc">
             <input type="text" id="telefone" placeholder="Telefone" name="telefone">
             <input type="email" id="email" placeholder="Email" name="email">
-            <input type="date" id="dtRegistro" name="dtRegistro">
             <input type="password" id="senha" placeholder="Nova senha" name="senha">
             <input type="password" id="confirmaSenha" placeholder="Confirme a nova senha" name="confirmaSenha">
             <input id="CadFuncionario" type="submit" value="Cadastrar">

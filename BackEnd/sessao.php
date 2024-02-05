@@ -7,9 +7,8 @@ const SESSION_USER_EMAIL = "Useremail";
 const SESSION_USERNAME = "UserName";
 const SESSION_USER_IDPERMISSION = "UserIdPermission";
 
-const PERMISSION_GERENTE = 1;
-const PERMISSION_FUNCIONARIO = 2;
-const PERMISSION_CLIENTE = 3;
+const PERMISSION_FUNCIONARIO = 'employee';
+const PERMISSION_CLIENTE = 'client';
 
 //Pegar diretamente do banco:
 //function PERMISSION_GERENTE(){include_once "conexao.php"; return (new Conexao())->executar("SELECT cod FROM tipos WHERE nomeTipo='Gerente';")[0][0];}
@@ -35,7 +34,7 @@ function requiredLogin(?Int $permission = null, ?String $URL = null)
 {
     if (!Logued($permission)) {
         if (is_null($URL)) {
-            header("Location: ../Login/pagLogin.php");
+            header("Location: ../Cliente/homeCliente.php");
             exit();
         } else {
             header("Location: " . $URL);
@@ -62,18 +61,15 @@ function redirectByPermission($_permission)
         exit();
     }
     if ($_permission == PERMISSION_FUNCIONARIO) {
-        header("Location: ../Funcionarios/indexFuncionarios.php");
+        header("Location: ../../Funcionarios/indexFuncionarios.php");
         exit();
     }
-    if ($_permission == PERMISSION_GERENTE) {
-        header("Location: ../Gerente/indexGerente.php");
-        exit();
-    }
+    
     //Se algo der errado
     //Limpar sessão e reportar erro
-    error_log("Falha ao tentar fazer login, Cógido = Erro processLogin, return 2, Erro: Não foi possivel determinar o tipo do usuário; Falha ocorreu na tentativa do usuário: id=" . $_SESSION[SESSION_USER_EMAIL] . ", Falha de permissão retornado=$_permission", 3, "C:\PhpSiteEscolaErrorsLog.log");
+    // error_log("Falha ao tentar fazer login, Cógido = Erro processLogin, return 2, Erro: Não foi possivel determinar o tipo do usuário; Falha ocorreu na tentativa do usuário: id=" . $_SESSION[SESSION_USER_EMAIL] . ", Falha de permissão retornado=$_permission", 3, "C:\PhpSiteEscolaErrorsLog.log");
     logout();
-    header("Location: ../Login/pagLogin.php?ERROR=2");
+    header("Location: ../Cliente/homeCliente.php?ERROR=2");
 }
 
 
@@ -96,7 +92,7 @@ function getPermission()
         return $db->executar("SELECT tipo FROM usuarios WHERE ra = '".$_SESSION[SESSION_USER_EMAIL]."'")[0][0];
     }catch(Exception $e){
         logout();
-        header("Location: ../Login/pagLogin.php?ERROR=3");
+        header("Location: ../Cliente/homeCliente.php?ERROR=3");
         exit();
     }
 }
