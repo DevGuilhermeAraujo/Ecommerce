@@ -10,6 +10,7 @@ include_once "../BackEnd/sessao.php";
 </head>
 <body>
     <h1><?= getNome() ?></h1>
+    <h1><?= getIdUser() ?></h1>
 
 </body>
 </html>

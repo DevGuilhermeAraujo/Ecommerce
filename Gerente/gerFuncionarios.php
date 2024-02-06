@@ -54,7 +54,7 @@
     -->
     <div class="right">
         <button onclick="AbrirModal(GerFuncionarios,analisarCurriculos)" id="analisar">Analisar currículos</button>
-        <form action="../BackEnd/cadastros/processCadastroFunc.php?solicitaCad" method="POST" onsubmit="return validateForm()" novalidate>
+        <form action="../BackEnd/cadastros/processCadastroFunc.php" method="POST" onsubmit="return validateForm()" novalidate>
             <h2><img src="../Imagens/Icones/pessoaMais.png" alt="icone adicionar pessoa"> Cadastrar novo funcionário</h2>
             <input type="text" id="nome" placeholder="Nome" name="nome">
             <input type="text" id="sobrenome" placeholder="Sobrenome" name="sobrenome">

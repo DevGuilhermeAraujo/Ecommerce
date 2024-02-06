@@ -1,7 +1,7 @@
 <?php
 include_once "../conexao.php";
 $db = new Conexao();
-if (isset($_GET['solicitaCad'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nome = htmlspecialchars($_POST['nome'], ENT_QUOTES, 'UTF-8');
     $sobrenome = htmlspecialchars($_POST['sobrenome'], ENT_QUOTES, 'UTF-8');
     $cpf = htmlspecialchars($_POST['cpf'], ENT_QUOTES, 'UTF-8');

@@ -6,6 +6,7 @@ session_start();
 const SESSION_USER_EMAIL = "Useremail";
 const SESSION_USERNAME = "UserName";
 const SESSION_USER_IDPERMISSION = "UserIdPermission";
+const SESSION_USER_ID = "UserId";
 
 const PERMISSION_FUNCIONARIO = 'employee';
 const PERMISSION_CLIENTE = 'client';
@@ -81,6 +82,11 @@ function getEmail()
 function getNome()
 {
     return $_SESSION[SESSION_USERNAME];
+}
+
+function getIdUser()
+{
+    return $_SESSION[SESSION_USER_ID];
 }
 
 function getPermission()
