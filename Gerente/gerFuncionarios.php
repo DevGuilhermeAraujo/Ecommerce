@@ -1,3 +1,10 @@
+<?php
+include_once "../BackEnd/sessao.php";
+include_once "../BackEnd/conexao.php";
+$db = new Conexao();
+$url = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
+redirectURL($url, 'indexGerente.php');
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -62,9 +69,21 @@
             <input type="text" id="logradouro" placeholder="Logradouro" name="logradouro">
             <input type="text" id="numero" placeholder="Número" name="numero">
             <input type="text" id="bairro" placeholder="Bairro" name="bairro">
-            <input type="date" id="dtNasc" name="dtNasc">
             <input type="text" id="telefone" placeholder="Telefone" name="telefone">
             <input type="email" id="email" placeholder="Email" name="email">
+            <select name="departamento" id="">
+                <option value="">Departamento</option>
+                <?php
+                $sql = "SELECT id, description_dep FROM departments";
+                $parametros = null;
+                $result = $db->executar($sql, $parametros);
+                foreach ($result as $departamentos) {
+                    $idDep = $departamentos['id'];
+                    $descDep = $departamentos['description_dep'];
+                    echo "<option value='$idDep'>$descDep</option>";
+                }
+                ?>
+            </select>
             <input type="password" id="senha" placeholder="Nova senha" name="senha">
             <input type="password" id="confirmaSenha" placeholder="Confirme a nova senha" name="confirmaSenha">
             <input id="CadFuncionario" type="submit" value="Cadastrar">
