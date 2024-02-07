@@ -232,6 +232,44 @@ form input,select{
 .chat p b{
     color: #a3015a;
 }
+.imgPerfil{
+    border-radius: 20px;
+    height: 40vh;
+    width: 40%;
+}
+.craxa{
+    background-color: #ff8bf9;
+    border-radius: 20px;
+    width: 50%;
+    margin: 5%;
+    padding: 1%;
+    display: flex;
+}
+.infoPerfil{
+    height: 40vh;
+    width: 50%;
+    margin: 0% 5% 0% 5%;
+    color: #a3015a;
+}
+.infoPerfil button{
+    width: 40%;
+    margin-left: 30%;
+    border: none;
+    padding: 1%;
+    border-radius: 10px;
+    background-color: #a3015a;
+}
+.infoPerfil h2{
+    font-size: 30px;
+}
+.infoPerfil p span{
+    color: black;
+    font-size: 20px;
+}
+
+/*
+Tela para tablets e celulares na horizontal
+*/
 @media screen and (max-width: 1100px){
     #funcionarios{
         width: 95%;

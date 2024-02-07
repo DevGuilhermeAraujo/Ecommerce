@@ -14,8 +14,16 @@
         <h1>Olá, seja bem vindo(a)</h1>
     </div>
 
+    <!--Botão de menu (apenas para celulares-->
+    <div id="menuResponsivo">
+        <button onclick="Trocar(btnMenu,nav)" id="btnMenu"><img src="../Imagens/Icones/menu.png" alt="icone menu"></button>
+        <h2><img src="../Imagens/Icones/flor.png" alt="icone flor"> Espaço Beleza rosa <img src="../Imagens/Icones/flor.png" alt="icone flor"></h2>
+    </div>
+
     <!--Nav com os links das pags do cliente-->
-    <div class="nav">
+    <div id="nav" class="nav">
+        <img onclick="Trocar(nav,btnMenu)" id="fecharMenuResponsivo" src="../Imagens/Icones/Fechar2.png" alt="icone fechar">
+        <img id="florResponsiva" src="../Imagens/Icones/rosa.png" alt="icone flor">
         <a href=""><img src="../Imagens/Icones/novidades.png" alt="icone novidades"> Novidades</a>
         <a href=""><img src="../Imagens/Icones/carrinho.png" alt="icone carrinho"> Carrinho</a>
         <a href=""><img src="../Imagens/Icones/comunicação.png" alt="icone comunicação">Comunicação</a>
@@ -50,20 +58,43 @@
         <div class="produto">
             <h3>Max 22 caracteres</h3>
             <img src="../Imagens/Fundos/fundoPrincipal.jpg" alt="icone exemplo">
-            <p>Descrição do produto Lorem ipsum dolor sit, amet consectetur adipisicing elit. Cumque deserunt tempora, iure libero nihil quis reiciendis perferendis cupiditate itaque, dignissimos veniam magni similique fuga ex labore doloribus</p>
+            <h4>Preço</h4>
+            <div class="comprar">
+                <span>-</span><button>Adicionar ao carrinho (0)</button><span>+</span>
+            </div>
+        </div>
+        <div class="produto">
+            <h3>Max 22 caracteres</h3>
+            <img src="../Imagens/Fundos/fundoPrincipal.jpg" alt="icone exemplo">
+            <h4>Preço</h4>
+            <div class="comprar">
+                <span>-</span><button>Adicionar ao carrinho (0)</button><span>+</span>
+            </div>
+        </div>
+        <div class="produto">
+            <h3>Max 22 caracteres</h3>
+            <img src="../Imagens/Fundos/fundoPrincipal.jpg" alt="icone exemplo">
+            <h4>Preço</h4>
+            <div class="comprar">
+                <span>-</span><button>Adicionar ao carrinho (0)</button><span>+</span>
+            </div>
+        </div>
+        <div class="produto">
+            <h3>Max 22 caracteres</h3>
+            <img src="../Imagens/Fundos/fundoPrincipal.jpg" alt="icone exemplo">
             <h4>Preço</h4>
             <div class="comprar">
                 <span>-</span><button>Adicionar ao carrinho (0)</button><span>+</span>
             </div>
         </div>
     </div>
-
+    
     <!--Fundo para os modals-->
     <div style="display: none;" id="HomeCliente" class="fundoModal"></div>
 
     <!--Modal para login-->
    <form style="display: none;" id="login" class="modal" action="../BackEnd/login/validaLogin.php" method="POST">
-     <img onclick="FecharModal(HomeCliente,login)" class="fecharModal" src="../Imagens/Icones/Fechar.png" alt="icone fechar">
+     <img id="fecharLogin" onclick="FecharModal(HomeCliente,login)" class="fecharModal" src="../Imagens/Icones/Fechar.png" alt="icone fechar">
      <h2><img src="../Imagens/Icones/flor.png" alt="icone flor"> Espaço beleza rosa <img src="../Imagens/Icones/flor.png" alt="icone flor"></h2>
      <img id="loginImg" src="../Imagens/Icones/usuario.png" alt="icone usuario">
      <p>Faça login em sua conta</p>
