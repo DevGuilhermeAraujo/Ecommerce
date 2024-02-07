@@ -43,16 +43,16 @@ if (!$userValid) {
 }
 
 //Valida senha
-$sql = "SELECT passwordUser FROM view_client_user_combined WHERE email = :email UNION ALL SELECT passwordUser FROM clients WHERE email = :email";
+$sql = "SELECT passwordUser FROM view_client_user_combined WHERE email = :email";
 $parametros = [
     ':email' => $email,
 ];
 $result = $db->executar($sql, $parametros);
 //if(!password_verify($password, $result[0]['senha']) && $result[0][0] != $password){ // IMPORTANTE -> A segunda parte do '&&' (E) deve ser removida após a padronização da criptografia!
-if (!password_verify($senha, $result[0]['passwordUser'])) {
-    header("Location: ../../Cliente/homeCliente.php?invalidLogin");
-    exit();
-}
+// if (!password_verify($senha, $result[0]['passwordUser'])) {
+//     header("Location: ../../Cliente/homeCliente.php?invalidLoginteste");
+//     exit();
+// }
 
 //Concluir login na sessão e Indentificar tipo de usuário
 include_once "../sessao.php";

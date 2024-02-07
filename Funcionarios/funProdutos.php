@@ -1,3 +1,8 @@
+<?php
+include_once "../BackEnd/sessao.php";
+$url = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
+redirectURL($url, 'indexFuncionarios.php');
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>

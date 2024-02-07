@@ -44,6 +44,15 @@ function requiredLogin(?String $permission = null, ?String $URL = null)
     }
 }
 
+function redirectURL($urlfilha, $urlpai){
+    // Verifica se o referenciador é da página principal
+if (strpos($urlfilha, $urlpai) === false) {
+    // Redireciona para a página principal ou exibe uma mensagem de erro
+    header("Location: $urlpai ");
+    exit;
+}
+}
+
 function logout()
 {
     //Sair do usuario (deslogar)
@@ -72,7 +81,6 @@ function redirectByPermission($_permission)
     logout();
     header("Location: ../Cliente/homeCliente.php?ERROR=2");
 }
-
 
 function getEmail()
 {
