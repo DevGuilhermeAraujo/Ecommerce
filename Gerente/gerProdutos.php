@@ -26,7 +26,7 @@ redirectURL($url, 'indexGerente.php');
         quando a checkBox NOVIDADE estiver marcada durante o caddastro, 
         o produto ir-a aparecer em uma tabela novidades por 30 dias
     -->
-    <form class="cadProduto">
+    <form class="cadProduto" action="../BackEnd/cadastros/processCadastroProd.php" method="POST" enctype="multipart/form-data">
         <h2><img src="../Imagens/Icones/compra.png" alt="icone de compra"> Novo produto <img src="../Imagens/Icones/compra.png" alt="icone compra"></h2>
         <input type="text" placeholder="Nome do produto" name="nomeProd">
         <textarea cols="100%" rows="5" placeholder="Descrição do produto" name="descProd"></textarea>
