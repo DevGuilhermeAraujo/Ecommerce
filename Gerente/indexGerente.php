@@ -25,13 +25,13 @@
     <!--Menu do gerente-->
     <div class="barra">
         <div class="menu">
-            <h2>Acesso gerente</h2>
             <img src="../Imagens/Icones/rosa.png" alt="icone flor">
             <a href="../Cliente/homeCliente.php"><img src="../Imagens/Icones/sair.png" alt="icone sair"> Sair</a>
             <a href=""><img src="../Imagens/Icones/home.png" alt="icone home"> Home</a>
             <a target="funçõesGerente" href="gerFuncionarios.php"><img src="../Imagens/Icones/equipe.png" alt="icone equipe"> Funcionários</a>
             <a target="funçõesGerente" href="gerProdutos.php"><img src="../Imagens/Icones/carrinho.png" alt="icone carrinho"> Produtos</a>
             <a target="funçõesGerente" href=""><img src="../Imagens/Icones/comunicação.png" alt="icone comunicação"> Comunicação</a>
+            <a target="funçõesGerente" href="perfilGerente.php"><img src="../Imagens/Icones/perfil.png" alt="icone perfil"> Perfil</a>
         </div>
     </div>
 

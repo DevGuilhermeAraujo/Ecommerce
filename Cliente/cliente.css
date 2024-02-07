@@ -61,6 +61,7 @@
 }
 #pesquisa{
     padding: 1%;
+    font-size: 15px;
 }
 #filtro input,select{
     height: 10vh;
@@ -141,6 +142,14 @@
 #florResponsiva{
     display: none;
 }
+#fecharMenuResponsivo{
+    display: none;
+}
+
+/*
+Tela para celular vertical
+menos de 350px
+*/
 @media screen and (max-width: 350px){
     #Top{
         display: none;
@@ -241,7 +250,7 @@
     #login{
         width: 90%;
         margin: 5%;
-        height: 70vh;
+        height: 75vh;
     }
     #fecharLogin{
         width: 10%;
