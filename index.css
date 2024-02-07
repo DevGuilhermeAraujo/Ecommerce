@@ -165,7 +165,6 @@ transition: 1s;    top: 0;
     display: none;
 }
 
-
 /*
 Responsividade para tablets
 e celulares em horizontal
@@ -242,15 +241,17 @@ em vertical
         position: fixed;
         top: 0;
         left: 0;
-        width: 50%;
+        width: 70%;
         height: 100vh;
         box-shadow: 0px 0px 10px #a3015a;
         flex-flow: row wrap;
+        justify-content: center;
+        align-content: flex-start;
     }
     .nav a,button{
         width: 100%;
         font-size: 15px;
-        border: 2px solid red;
         height: 10vh;
+        margin-top: 5%;
     }
 }

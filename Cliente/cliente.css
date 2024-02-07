@@ -138,6 +138,9 @@
 #menuResponsivo{
     display: none;
 }
+#florResponsiva{
+    display: none;
+}
 @media screen and (max-width: 350px){
     #Top{
         display: none;
@@ -225,5 +228,36 @@
         margin: 1%;
         font-size: 12px;
         height: 4vh;
+    }
+    #florResponsiva{
+        display: flex;
+        width: 50%;
+        height: 20vh;
+    }
+    #fecharMenuResponsivo{
+        width: 10%;
+        margin: 5% 0% 5% 80%;
+    }
+    #login{
+        width: 90%;
+        margin: 5%;
+        height: 70vh;
+    }
+    #fecharLogin{
+        width: 10%;
+        margin: 5% 5% 5% 85%;
+    }
+    #login h2 img{
+        width: 10%;
+    }
+    #login h2{
+        font-size: 18px;
+    }
+    #loginImg{
+        width: 30%;
+        margin: 5% 0% 0% 35%;
+    }
+    #login input{
+        font-size: 15px;
     }
 }

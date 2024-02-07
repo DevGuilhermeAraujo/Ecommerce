@@ -22,6 +22,8 @@
 
     <!--Nav com os links das pags do cliente-->
     <div id="nav" class="nav">
+        <img onclick="Trocar(nav,btnMenu)" id="fecharMenuResponsivo" src="../Imagens/Icones/Fechar2.png" alt="icone fechar">
+        <img id="florResponsiva" src="../Imagens/Icones/rosa.png" alt="icone flor">
         <a href=""><img src="../Imagens/Icones/novidades.png" alt="icone novidades"> Novidades</a>
         <a href=""><img src="../Imagens/Icones/carrinho.png" alt="icone carrinho"> Carrinho</a>
         <a href=""><img src="../Imagens/Icones/comunicação.png" alt="icone comunicação">Comunicação</a>
@@ -92,7 +94,7 @@
 
     <!--Modal para login-->
    <form style="display: none;" id="login" class="modal" action="../BackEnd/login/validaLogin.php" method="POST">
-     <img onclick="FecharModal(HomeCliente,login)" class="fecharModal" src="../Imagens/Icones/Fechar.png" alt="icone fechar">
+     <img id="fecharLogin" onclick="FecharModal(HomeCliente,login)" class="fecharModal" src="../Imagens/Icones/Fechar.png" alt="icone fechar">
      <h2><img src="../Imagens/Icones/flor.png" alt="icone flor"> Espaço beleza rosa <img src="../Imagens/Icones/flor.png" alt="icone flor"></h2>
      <img id="loginImg" src="../Imagens/Icones/usuario.png" alt="icone usuario">
      <p>Faça login em sua conta</p>
