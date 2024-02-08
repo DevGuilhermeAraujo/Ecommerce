@@ -1,0 +1,133 @@
+/*CRIAÇÃO DA TABELA DEPARTAMENTOS*/
+CREATE TABLE departments(
+		id INT(3) PRIMARY KEY AUTO_INCREMENT,
+		description_dep VARCHAR(30) NOT NULL,
+		input_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+		change_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+		creator_user INT(5) NOT NULL,
+		change_user INT(5)
+	);
+	
+/*CRIAÇÃO DA TABELA USUARIOS(FUNCIONARIOS)*/
+	CREATE TABLE users(
+		id INT(5) PRIMARY KEY AUTO_INCREMENT,
+		first_name VARCHAR(20) NOT NULL,
+		last_name VARCHAR(40) NOT NULL,
+		cpf VARCHAR(14) UNIQUE,
+		public_place VARCHAR(50),
+		residenceNumber VARCHAR(50),
+		neighborhood VARCHAR(50),
+		date_Of_Birth DATE,
+		phone VARCHAR(15),
+		email VARCHAR(50) NOT NULL,
+		passwordUser VARCHAR(60) NOT NULL,
+		departments INT(3),
+		active TINYINT(1) DEFAULT 1,
+		token VARCHAR(255),
+		token_expiration INT,
+		confirmed INT(1),
+		tipo VARCHAR(255) DEFAULT 'employee',
+		input_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL,
+		date_deactivation DATE
+    );
+	
+/*CRIAÇÃO DA TABELA CATEGORIAS(PRODUTOS)*/
+	CREATE TABLE category(
+		id INT(3) PRIMARY KEY AUTO_INCREMENT,
+		description_cat VARCHAR(30) NOT NULL,
+		input_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+		change_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+		creator_user INT(5) NOT NULL,
+		change_user INT(5)
+    );
+	
+/*CRIAÇÃO DA TABELA PRODUTOS*/
+	CREATE TABLE products(
+		id INT(9) PRIMARY KEY AUTO_INCREMENT,
+		prod_name VARCHAR(100),
+		prod_desc LONGTEXT,
+		prod_value DECIMAL(10,2),
+		prod_category INT(3),
+		prod_news INT(1),
+		url_img VARCHAR(255),
+		input_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+		change_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+		creator_user INT(5) NOT NULL,
+		change_user INT(5)
+    );
+	
+/*CRIAÇÃO DA TABELA CLIENTES*/
+	CREATE TABLE clients(
+		id INT(5) PRIMARY KEY AUTO_INCREMENT,
+		first_name VARCHAR(20) NOT NULL,
+		last_name VARCHAR(40) NOT NULL,
+		cpf VARCHAR(14) NOT NULL,
+		public_place VARCHAR(50),
+		residenceNumber VARCHAR(50),
+		neighborhood VARCHAR(50),
+		CEP VARCHAR(9),
+		city VARCHAR(30),
+		state VARCHAR(30),
+		date_Of_Birth DATE NOT NULL,
+		phone VARCHAR(15) NOT NULL,
+		email VARCHAR(50) NOT NULL,
+		passwordUser VARCHAR(60) NOT NULL,
+		token VARCHAR(255),
+		token_expiration INT,
+		confirmed INT(1),
+		tipo VARCHAR(255) DEFAULT 'client',
+		input_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
+    );
+	
+/*CRIAÇÃO DA VIEW ENTRE TABELA USUARIOS E CLIENTES*/
+	CREATE VIEW view_client_user_combined AS
+	SELECT id, first_name, SUBSTRING_INDEX(last_name, ' ', 1) AS last_name, email, passwordUser, tipo
+	FROM clients
+	UNION ALL
+	SELECT id, first_name, SUBSTRING_INDEX(last_name, ' ', 1) AS last_name, email, passwordUser, tipo
+	FROM users;
+	
+/*INSERSÃO DE USUARIOS PADRÕES*/
+	INSERT INTO users(first_name, last_name, email, passwordUser, departments, tipo) VALUES
+		('Administrador', 'Sys', 'devshostinger@gmail.com', 'Devs*hostMG00all', 1, 'manager'),
+		('Andreia', 'BelezaRosa', 'andreiabelezarosa@gmail.com', 'Coco2124@', 2, 'manager');
+		
+/*INSERSÃO DE DEPARTAMENTOS*/
+	INSERT INTO departments(description_dep, creator_user, change_user) VALUES
+		('Gerenciador', 1, 1),
+		('Direção', 1, 1),
+		('Vendedores', 1, 1);
+		
+/*INSERSÃO DE CATEGORIAS*/
+	INSERT INTO category(description_cat, creator_user, change_user) VALUES
+		('Perfumaria', 1, 1),
+		('Corpo e banho', 1, 1),
+		('Maquiagem', 1, 1),
+		('Cabelos', 1, 1),
+		('Skincare', 1, 1),
+		('Encapsulados', 1, 1),
+		('Sexshop', 1, 1);
+		
+/*CRIAÇÃO DE RELACIONAMENTO DA TABELA DEPARTAMENTOS*/
+	ALTER TABLE departments
+	ADD CONSTRAINT FK_creator_user_table_departments FOREIGN KEY (creator_user) REFERENCES users(id),
+    ADD CONSTRAINT FK_change_user_table_departments FOREIGN KEY (change_user) REFERENCES users(id);
+	
+/*CRIAÇÃO DE RELACIONAMENTO DA TABELA CATEGORIAS*/
+	ALTER TABLE category
+    ADD CONSTRAINT FK_creator_user_table_category FOREIGN KEY (creator_user) REFERENCES users(id),
+    ADD CONSTRAINT FK_change_user_table_category  FOREIGN KEY (change_user) REFERENCES users(id);
+	
+/*CRIAÇÃO DE RELACIONAMENTO DA TABELA USUARIOS*/
+	ALTER TABLE users
+	ADD CONSTRAINT FK_department_user_table_users FOREIGN KEY (departments) REFERENCES departments(id),
+	ADD CONSTRAINT FK_cpf_unique UNIQUE (cpf);
+	
+/*CRIAÇÃO DE RELACIONAMENTO DA TABELA PRODUTOS*/
+	ALTER TABLE products
+	ADD CONSTRAINT FK_creator_user_table_products FOREIGN KEY (creator_user) REFERENCES users(id),
+	ADD CONSTRAINT FK_change_user_table_products FOREIGN KEY (change_user) REFERENCES users(id),
+	ADD CONSTRAINT FK_category_prod_table_products FOREIGN KEY (prod_category) REFERENCES category(id);
+	
+	
+		

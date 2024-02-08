@@ -11,6 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $dtNasc = htmlspecialchars($_POST['dtNasc'], ENT_QUOTES, 'UTF-8');
     $telefone = htmlspecialchars($_POST['telefone'], ENT_QUOTES, 'UTF-8');
     $email = htmlspecialchars($_POST['email'], ENT_QUOTES, 'UTF-8');
+    $departamento = htmlspecialchars($_POST['departamento'], ENT_QUOTES, 'UTF-8');
     $senha = htmlspecialchars($_POST['senha'], ENT_QUOTES, 'UTF-8');
     $confirmaSenha = htmlspecialchars($_POST['confirmaSenha'], ENT_QUOTES, 'UTF-8');
     $sql = "SELECT * FROM users WHERE cpf = :cpf";
@@ -27,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($result->rowCount() == 0) {
             if ($senha === $confirmaSenha) {
                 $senhacriptografada = password_hash($senha, PASSWORD_DEFAULT);
-                $sql = "INSERT INTO users(first_name, last_name, cpf, public_place, residenceNumber, neighborhood, date_Of_Birth, phone, email, passwordUser, active) VALUES(:nome, :sobrenome, :cpf, :logradouro, :numero, :bairro, :dtNasc, :telefone, :email, :senha, :ativo)";
+                $sql = "INSERT INTO users(first_name, last_name, cpf, public_place, residenceNumber, neighborhood, date_Of_Birth, phone, email, departments, passwordUser, active) VALUES(:nome, :sobrenome, :cpf, :logradouro, :numero, :bairro, :dtNasc, :telefone, :email, :departamento, :senha, :ativo)";
                 // Defina os parâmetros para a consulta
                 $parametros = [
                     ':nome' => $nome,
@@ -39,6 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     ':dtNasc' => $dtNasc,
                     ':telefone' => $telefone,
                     ':email' => $email,
+                    ':departamento' => $departamento,
                     ':senha' => $senhacriptografada,
                     ':ativo' => '1',
                 ];
