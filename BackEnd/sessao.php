@@ -8,6 +8,7 @@ const SESSION_USERNAME = "UserName";
 const SESSION_USER_IDPERMISSION = "UserIdPermission";
 const SESSION_USER_ID = "UserId";
 
+const PERMISSION_GERENTE = 'manager';
 const PERMISSION_FUNCIONARIO = 'employee';
 const PERMISSION_CLIENTE = 'client';
 
@@ -44,6 +45,16 @@ function requiredLogin(?String $permission = null, ?String $URL = null)
     }
 }
 
+function redirectURL($urlfilha, $urlpai)
+{
+    // Verifica se o referenciador é da página principal
+    if (strpos($urlfilha, $urlpai) === false) {
+        // Redireciona para a página principal ou exibe uma mensagem de erro
+        header("Location: $urlpai ");
+        exit;
+    }
+}
+
 function logout()
 {
     //Sair do usuario (deslogar)
@@ -65,6 +76,10 @@ function redirectByPermission($_permission)
         header("Location: ../../Funcionarios/indexFuncionarios.php");
         exit();
     }
+    if ($_permission == PERMISSION_GERENTE) {
+        header("Location: ../../Gerente/indexGerente.php");
+        exit();
+    }
 
     //Se algo der errado
     //Limpar sessão e reportar erro
@@ -74,11 +89,21 @@ function redirectByPermission($_permission)
 }
 
 
+
 function getEmail()
 {
     return $_SESSION[SESSION_USER_EMAIL];
 }
-
+function getIdade()
+{
+    $db = new Conexao();
+    $sql = "SELECT YEAR(CURDATE()) - YEAR(date_Of_Birth) - (RIGHT(CURDATE(), 5) < RIGHT(date_Of_Birth, 5)) AS idade FROM users WHERE email = :email;";
+    $parametros = [
+        ':email' => getEmail(),
+    ];
+    $result = $db->executar($sql, $parametros);
+    return $result[0][0];
+}
 function getNome()
 {
     return $_SESSION[SESSION_USERNAME];
@@ -153,3 +178,16 @@ function redirectPOST(string $url, string $values, ?string $importJsUri = "../Ba
     //Chamar o metodo javascript para interação no lado cliente
     echo "<script>redirectPOSTAjax('$url', '$values');</script>";
 }
+
+
+function criptografiaPassword()
+{
+    $db = new Conexao();
+    $result = $db->executar("SELECT id, passwordUser FROM users WHERE LENGTH(passwordUser) < 60");
+    foreach ($result as $user) {
+        $senhacriptografada = password_hash($user['passwordUser'], PASSWORD_DEFAULT);
+        $db->executar("UPDATE users SET passwordUser='$senhacriptografada' WHERE id=" . $user['id']);
+    }
+}
+
+criptografiaPassword();

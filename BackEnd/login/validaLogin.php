@@ -43,7 +43,7 @@ if (!$userValid) {
 }
 
 //Valida senha
-$sql = "SELECT passwordUser FROM view_client_user_combined WHERE email = :email UNION ALL SELECT passwordUser FROM clients WHERE email = :email";
+$sql = "SELECT passwordUser FROM view_client_user_combined WHERE email = :email";
 $parametros = [
     ':email' => $email,
 ];

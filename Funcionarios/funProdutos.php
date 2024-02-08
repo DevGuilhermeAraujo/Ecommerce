@@ -1,5 +1,13 @@
+<?php
+include_once "../BackEnd/sessao.php";
+include_once "../BackEnd/conexao.php";
+$db = new Conexao();
+$url = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
+redirectURL($url, 'indexFuncionarios.php');
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +15,7 @@
     <link rel="stylesheet" href="../index.css">
     <link rel="stylesheet" href="funcionario.css">
 </head>
+
 <body>
 
     <!--Formulário de cadastro de produtos-->
@@ -32,9 +41,16 @@
             <label for="">Tipo</label>
             <select name="categoria">
                 <option value="1">Geral</option>
-                <option value="2">Perfumes</option>
-                <option value="3">Maquiagens</option>
-                <option value="4">Roupas</option>
+                <?php
+                $sql = "SELECT id, description_cat FROM category";
+                $parametros = null;
+                $result = $db->executar($sql, $parametros);
+                foreach ($result as $categorias) {
+                    $idCat = $categorias['id'];
+                    $descCat = $categorias['description_cat'];
+                    echo "<option value='$idCat'>$descCat</option>";
+                }
+                ?>
             </select>
         </div>
         <div class="comLeg">
@@ -46,4 +62,5 @@
 
     <script src="../index.js"></script>
 </body>
+
 </html>

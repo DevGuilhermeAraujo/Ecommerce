@@ -1,5 +1,10 @@
+<?php
+include_once "../BackEnd/sessao.php";
+requiredLogin(PERMISSION_GERENTE);
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,6 +12,7 @@
     <link rel="stylesheet" href="../index.css">
     <link rel="stylesheet" href="gerente.css">
 </head>
+
 <body>
 
     <!--Menu para menos de 1005px-->
@@ -18,7 +24,10 @@
             <a href=""><img src="../Imagens/Icones/home.png" alt="icone home"> Home</a>
             <a target="funçõesGerente" href="gerFuncionarios.php"><img src="../Imagens/Icones/equipe.png" alt="icone equipe"> Funcionários</a>
             <a target="funçõesGerente" href="gerProdutos.php"><img src="../Imagens/Icones/carrinho.png" alt="icone carrinho"> Produtos</a>
-            <a target="funçõesGerente" href=""><img src="../Imagens/Icones/comunicação.png" alt="icone comunicação"> Comunicação</a>
+            <<<<<<< HEAD <a target="funçõesGerente" href="gerProdutos.html"><img src="../Imagens/Icones/carrinho.png" alt="icone carrinho"> Produtos</a>
+                =======
+                >>>>>>> 314d86579a9053e4bfaac4084115e2e02a81ef46
+                <a target="funçõesGerente" href=""><img src="../Imagens/Icones/comunicação.png" alt="icone comunicação"> Comunicação</a>
         </div>
     </div>
 
@@ -39,7 +48,8 @@
     <div class="ifm">
         <iframe name="funçõesGerente" src="homeGerente.php" frameborder="0"></iframe>
     </div>
-    
+
     <script src="../index.js"></script>
 </body>
+
 </html>
