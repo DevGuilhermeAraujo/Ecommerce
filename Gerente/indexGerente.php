@@ -20,14 +20,11 @@ requiredLogin(PERMISSION_GERENTE);
         <button onclick="Trocar(btnMenu,menu2)" id="btnMenu"><img src="../Imagens/Icones/menu.png" alt="icone menu">Menu</button>
         <div style="display: none;" id="menu2" class="menu2">
             <button id="fecharMenu" onclick="Trocar(menu2,btnMenu)"><img src="../Imagens/Icones/Fechar2.png" alt="icone fechar"></button>
-            <a href="../Cliente/homeCliente.php"><img src="../Imagens/Icones/sair.png" alt="icone sair"> Sair</a>
+            <a href="../BackEnd/logout.php"><img src="../Imagens/Icones/sair.png" alt="icone sair"> Sair</a>
             <a href=""><img src="../Imagens/Icones/home.png" alt="icone home"> Home</a>
             <a target="funçõesGerente" href="gerFuncionarios.php"><img src="../Imagens/Icones/equipe.png" alt="icone equipe"> Funcionários</a>
             <a target="funçõesGerente" href="gerProdutos.php"><img src="../Imagens/Icones/carrinho.png" alt="icone carrinho"> Produtos</a>
-            <<<<<<< HEAD <a target="funçõesGerente" href="gerProdutos.html"><img src="../Imagens/Icones/carrinho.png" alt="icone carrinho"> Produtos</a>
-                =======
-                >>>>>>> 314d86579a9053e4bfaac4084115e2e02a81ef46
-                <a target="funçõesGerente" href=""><img src="../Imagens/Icones/comunicação.png" alt="icone comunicação"> Comunicação</a>
+            <a target="funçõesGerente" href=""><img src="../Imagens/Icones/comunicação.png" alt="icone comunicação"> Comunicação</a>
         </div>
     </div>
 
@@ -35,7 +32,7 @@ requiredLogin(PERMISSION_GERENTE);
     <div class="barra">
         <div class="menu">
             <img src="../Imagens/Icones/rosa.png" alt="icone flor">
-            <a href="../Cliente/homeCliente.php"><img src="../Imagens/Icones/sair.png" alt="icone sair"> Sair</a>
+            <a href="../BackEnd/logout.php"><img src="../Imagens/Icones/sair.png" alt="icone sair"> Sair</a>
             <a href=""><img src="../Imagens/Icones/home.png" alt="icone home"> Home</a>
             <a target="funçõesGerente" href="gerFuncionarios.php"><img src="../Imagens/Icones/equipe.png" alt="icone equipe"> Funcionários</a>
             <a target="funçõesGerente" href="gerProdutos.php"><img src="../Imagens/Icones/carrinho.png" alt="icone carrinho"> Produtos</a>
