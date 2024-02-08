@@ -38,7 +38,7 @@ class Conexao
 {
     private $host = "localhost";
     private $port = "3306";
-    private $user = "";
+    private $user = "root";
     private $pass = "";
     private $dbName = "ecommercebelezarosa";
     private $pdo = null;
