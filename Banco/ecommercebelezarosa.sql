@@ -180,7 +180,7 @@ CREATE TABLE `view_client_user_combined` (
 --
 DROP TABLE IF EXISTS `view_client_user_combined`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`` SQL SECURITY DEFINER VIEW `view_client_user_combined`  AS SELECT `clients`.`id` AS `id`, `clients`.`first_name` AS `first_name`, substring_index(`clients`.`last_name`,' ',1) AS `last_name`, `clients`.`email` AS `email`, `clients`.`passwordUser` AS `passwordUser`, `clients`.`tipo` AS `tipo` FROM `clients` union all select `users`.`id` AS `id`,`users`.`first_name` AS `first_name`,substring_index(`users`.`last_name`,' ',1) AS `last_name`,`users`.`email` AS `email`,`users`.`passwordUser` AS `passwordUser`,`users`.`tipo` AS `tipo` from `users`  ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@'localhost' SQL SECURITY DEFINER VIEW `view_client_user_combined`  AS SELECT `clients`.`id` AS `id`, `clients`.`first_name` AS `first_name`, substring_index(`clients`.`last_name`,' ',1) AS `last_name`, `clients`.`email` AS `email`, `clients`.`passwordUser` AS `passwordUser`, `clients`.`tipo` AS `tipo` FROM `clients` union all select `users`.`id` AS `id`,`users`.`first_name` AS `first_name`,substring_index(`users`.`last_name`,' ',1) AS `last_name`,`users`.`email` AS `email`,`users`.`passwordUser` AS `passwordUser`,`users`.`tipo` AS `tipo` from `users`  ;
 
 --
 -- Índices para tabelas despejadas
