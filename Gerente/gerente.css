@@ -244,9 +244,10 @@ form input,select{
     margin: 5%;
     padding: 1%;
     display: flex;
+    border: 4px solid #a3015a;
 }
 .infoPerfil{
-    height: 40vh;
+    height: 45vh;
     width: 50%;
     margin: 0% 5% 0% 5%;
     color: #a3015a;
@@ -265,6 +266,13 @@ form input,select{
 .infoPerfil p span{
     color: black;
     font-size: 20px;
+}
+#modificarPerfil{
+    top: 20vh;
+    left: 20%;
+    width: 60%;
+    height: 60vh;
+    background-color: white;
 }
 
 /*

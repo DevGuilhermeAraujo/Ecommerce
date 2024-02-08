@@ -17,17 +17,17 @@ redirectURL($url, 'indexGerente.php');
 </head>
 
 <body>
-    <div class="craxa">
+   <div class="craxa">
         <img class="imgPerfil" src="../Imagens/Fundos/fundoPrincipal.jpg" alt="imagem de perfil">
         <div class="infoPerfil">
-            <h2><?=getNome()?></h2>
-            <p>Idade: <span><?= getIdade()?></span></p>
-            <p>Cargo: <span><?= getPermission()?></span></p>
+            <h2>Nome completo</h2>
+            <p>Idade: <span>00</span></p>
+            <p>Cargo: <span>Gerente</span></p>
             <p>Endereço: <span>xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</span></p>
             <p>Email: <span><?=getEmail()?></span></p>
             <button>Editar</button>
         </div>
-    </div>
+   </div>
 </body>
 
 </html>
