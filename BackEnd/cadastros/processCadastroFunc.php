@@ -8,7 +8,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $logradouro = htmlspecialchars($_POST['logradouro'], ENT_QUOTES, 'UTF-8');
     $numero = htmlspecialchars($_POST['numero'], ENT_QUOTES, 'UTF-8');
     $bairro = htmlspecialchars($_POST['bairro'], ENT_QUOTES, 'UTF-8');
-    $dtNasc = htmlspecialchars($_POST['dtNasc'], ENT_QUOTES, 'UTF-8');
     $telefone = htmlspecialchars($_POST['telefone'], ENT_QUOTES, 'UTF-8');
     $email = htmlspecialchars($_POST['email'], ENT_QUOTES, 'UTF-8');
     $departamento = htmlspecialchars($_POST['departamento'], ENT_QUOTES, 'UTF-8');
@@ -37,7 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     ':logradouro' => $logradouro,
                     ':numero' => $numero,
                     ':bairro' => $bairro,
-                    ':dtNasc' => $dtNasc,
                     ':telefone' => $telefone,
                     ':email' => $email,
                     ':departamento' => $departamento,
