@@ -46,6 +46,31 @@ requiredLogin(PERMISSION_GERENTE);
         <iframe name="funçõesGerente" src="homeGerente.php" frameborder="0"></iframe>
     </div>
 
+    <?php
+    //Menssagem de falha no Banco
+    if (isset($_GET["ERROR"]) && $_GET["ERROR"] == 1) {
+        msg(MSG_NEGATIVE_BG, "Falha ao cadastrar usuario. Este CPF já está sendo utilizado");
+    }
+
+    //Menssagem de falha no Banco 
+    if (isset($_GET["ERROR"]) && $_GET["ERROR"] == 2) {
+        msg(MSG_NEGATIVE_BG, "Falha ao cadastrar usuario. Este e-mail já está sendo utilizado");
+    }
+
+    if (isset($_GET["ERROR"]) && $_GET["ERROR"] == 3) {
+        msg(MSG_NEGATIVE_BG, "Falha ao cadastrar usuario. Tente novamente");
+    }
+
+    if (isset($_GET["SUCESS"]) && $_GET["SUCESS"] == 1) {
+        msg(MSG_POSITIVE_BG, "Usuário cadastrado com sucesso");
+    }
+
+    //Menssagem de erro geral
+    if (isset($_GET["ERROR"]) && $_GET["ERROR"] == null) {
+        msg(MSG_NEGATIVE_BG, "Erro desconhecido, por favor entre em contato com o adminstrador do sistema.");
+    }
+    ?>
+
     <script src="../index.js"></script>
 </body>
 

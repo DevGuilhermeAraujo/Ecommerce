@@ -1,51 +1,72 @@
 //Função para receber informações do formulário de cadastro de funcionário
 function getData() {
     var formData = {};
-    var inputs = document.querySelectorAll('input');
+    var inputsAndSelects = document.querySelectorAll('input, select');
 
-    inputs.forEach(function (input) {
-        formData[input.name] = input.value;
+    inputsAndSelects.forEach(function (element) {
+        formData[element.name] = element.value;
     });
 
     return formData;
 }
 //Função para validar campos do formulário
 function validateForm() {
-
     var formData = getData();
     //Expressão regular para validar nome
-
-    var nomeError = document.getElementById("nomeError");
+    var cadastroError = document.getElementById("cadastroError");
     if (formData.nome.trim() === "" || formData.sobrenome.trim() === "") {
-        nomeError.innerHTML = "Nome - Campo obrigatório";
+        cadastroError.innerHTML = "Nome - Campo obrigatório";
         return false;
     } else {
-        nomeError.innerHTML = "";
+        cadastroError.innerHTML = "";
         //Expressão regular para validar cpf
-        var cpfError = document.getElementById("cpfError");
         if (formData.cpf.length < 14) {
-            cpfError.innerHTML = "CPF inválido";
+            cadastroError.innerHTML = "CPF inválido";
             return false;
         } else {
-            cpfError.innerHTML = "";
+            cadastroError.innerHTML = "";
             // Expressão regular para validar e-mail
-            var emailError = document.getElementById("emailError");
             var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
             if (!emailPattern.test(formData.email)) {
-                emailError.innerHTML = "Digite um e-mail válido.";
+                cadastroError.innerHTML = "Digite um e-mail válido.";
                 return false;
             } else {
-                emailError.innerHTML = "";
-                //Expressão regular para validar senha
-                var passwordError = document.getElementById("passwordError");
-                if (formData.senha.length < 8 || !/[!@#$%^&*(),.?":{}|<>]/.test(formData.senha)) {
-                    passwordError.innerHTML = "A senha deve conter pelo menos 8 caracteres e incluir caracteres especiais.";
+                cadastroError.innerHTML = "";
+                //Expressão regular para validar endereço
+                if (formData.logradouro.trim() === "" || formData.numero.trim() === "" || formData.bairro.trim() === "") {
+                    cadastroError.innerHTML = "É necessário o endereço para finalizar o cadastro";
                     return false;
                 } else {
-                    passwordError.innerHTML = "";
-                    return true;
+                    cadastroError.innerHTML = "";
+                    //Expressão regular para validar número
+                    if (formData.telefone.length < 15) {
+                        cadastroError.innerHTML = "Número de telefone inválido";
+                        return false;
+                    } else {
+                        cadastroError.innerHTML = "";
+                        //Expressão regular para validar departamento
+                        if (formData.departamento == "" || formData.departamento == null) {
+                            cadastroError.innerHTML = "É necessário um departamento finalizar o cadastro!";
+                            return false;
+                        } else {
+                            cadastroError.innerHTML = "";
+                            //Expressão regular para validar senha
+                            if (formData.senha.length < 8 || !/[!@#$%^&*(),.?":{}|<>]/.test(formData.senha)) {
+                                cadastroError.innerHTML = "A senha deve conter pelo menos 8 caracteres e incluir caracteres especiais.";
+                                return false;
+                            } else {
+                                cadastroError.innerHTML = "";
+                                if (formData.senha != formData.confirmaSenha) {
+                                    cadastroError.innerHTML = "As senhas não correspondem";
+                                    return false;
+                                } else {
+                                    cadastroError.innerHTML = "";
+                                    return true;
+                                }
+                            }
+                        }
+                    }
                 }
-                // Retorna true se ambos email e senha forem válidos, caso contrário, retorna false
             }
         }
     }
@@ -72,4 +93,50 @@ function maskCPF() {
             target.value = input.slice(0, 3) + '.' + input.slice(3, 6) + '.' + input.slice(6, 9) + '-' + input.slice(9);
         }
     });
+}
+
+function maskPhone() {
+    document.getElementById('telefone').addEventListener('input', function (event) {
+        let inputValue = event.target.value.replace(/\D/g, ''); // Remove caracteres não numéricos
+        let formattedValue = '';
+
+        if (inputValue.length > 2) {
+            formattedValue += `(${inputValue.substring(0, 2)})`;
+
+            if (inputValue.length > 6) {
+                formattedValue += ` ${inputValue.substring(2, 7)}`;
+
+                if (inputValue.length > 10) {
+                    formattedValue += `-${inputValue.substring(7, 11)}`;
+                } else {
+                    formattedValue += `-${inputValue.substring(7)}`;
+                }
+            } else {
+                formattedValue += ` ${inputValue.substring(2)}`;
+            }
+        } else {
+            formattedValue = inputValue;
+        }
+
+        event.target.value = formattedValue;
+    });
+}
+
+
+
+//Animação de desaparecer menssagem na tela
+async function deleteMsg(_timer, _idObject) {
+    //await new Promise(r => setTimeout(r, 5000));
+    //Pegar objeto por id
+    obj = document.getElementById(_idObject);
+    if (obj == null)
+        //Se for null; O PHP já manda o objeto inteiro.
+        obj = _idObject;
+    //Aguarda o tempo determinado
+    await new Promise(r => setTimeout(r, _timer));
+    //Chama a animação de desaparecer
+    obj.classList.toggle("msgHide");
+    //Aguarda o tempo de 1s da animação CSS para remover o elemento do HTML
+    await new Promise(r => setTimeout(r, 1000));
+    obj.remove();
 }

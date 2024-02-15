@@ -66,11 +66,11 @@ redirectURL($url, 'indexGerente.php');
             <input type="text" id="nome" placeholder="Nome" name="nome">
             <input type="text" id="sobrenome" placeholder="Sobrenome" name="sobrenome">
             <input type="text" id="cpf" placeholder="CPF" name="cpf" oninput="maskCPF()">
+            <input type="email" id="email" placeholder="Email" name="email">
             <input type="text" id="logradouro" placeholder="Logradouro" name="logradouro">
             <input type="text" id="numero" placeholder="Número" name="numero">
             <input type="text" id="bairro" placeholder="Bairro" name="bairro">
-            <input type="text" id="telefone" placeholder="Telefone" name="telefone">
-            <input type="email" id="email" placeholder="Email" name="email">
+            <input type="text" id="telefone" placeholder="Telefone" name="telefone" oninput="maskPhone()">
             <select name="departamento" id="">
                 <option value="">Departamento</option>
                 <?php
@@ -88,29 +88,11 @@ redirectURL($url, 'indexGerente.php');
             <input type="password" id="confirmaSenha" placeholder="Confirme a nova senha" name="confirmaSenha">
             <input id="CadFuncionario" type="submit" value="Cadastrar">
             <div class="msgN">
-                <span id="nomeError">
-                    <?php
-                    if (isset($nomeError)) {
+                <span id="cadastroError">
+                    <?php if (isset($nomeError)) {
                         echo $nomeError;
-                    }
-                    ?>
+                    } ?>
                 </span>
-
-                <span id="cpfError"><?php if (isset($cpfError)) {
-                                        echo $cpfError;
-                                    } ?></span>
-
-                <span id="dtError"><?php if (isset($dtError)) {
-                                        echo $dtError;
-                                    } ?></span>
-
-                <span id="emailError"><?php if (isset($emailError)) {
-                                            echo $emailError;
-                                        } ?></span>
-
-                <span id="passwordError"><?php if (isset($passwordError)) {
-                                                echo $passwordError;
-                                            } ?></span>
             </div>
         </form>
     </div>

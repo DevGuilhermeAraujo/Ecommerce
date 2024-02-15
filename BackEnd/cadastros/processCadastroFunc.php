@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($result->rowCount() == 0) {
             if ($senha === $confirmaSenha) {
                 $senhacriptografada = password_hash($senha, PASSWORD_DEFAULT);
-                $sql = "INSERT INTO users(first_name, last_name, cpf, public_place, residenceNumber, neighborhood, date_Of_Birth, phone, email, departments, passwordUser, active) VALUES(:nome, :sobrenome, :cpf, :logradouro, :numero, :bairro, :dtNasc, :telefone, :email, :departamento, :senha, :ativo)";
+                $sql = "INSERT INTO users(first_name, last_name, cpf, public_place, residenceNumber, neighborhood, phone, email, passwordUser, departments, active) VALUES(:nome, :sobrenome, :cpf, :logradouro, :numero, :bairro, :telefone, :email, :senha, :departamento, :ativo)";
                 // Defina os parâmetros para a consulta
                 $parametros = [
                     ':nome' => $nome,
@@ -38,9 +38,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     ':bairro' => $bairro,
                     ':telefone' => $telefone,
                     ':email' => $email,
-                    ':departamento' => $departamento,
                     ':senha' => $senhacriptografada,
-                    ':ativo' => '1',
+                    ':departamento' => $departamento,
+                    ':ativo' => 1,
                 ];
                 $db->executar($sql, $parametros);
                 $sql = "SELECT * FROM users WHERE cpf = :cpf";
@@ -49,22 +49,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 ];
                 $result = $db->executar($sql, $parametros, true);
                 if ($result->rowCount() == 0) {
-                    header("Location: ../../Gerente/gerFuncionarios.php?ERROR=3");
+                    header("Location: ../../Gerente/indexGerente.php?ERROR=3");
                     exit();
                 } else {
-                    header("Location: ../../Gerente/gerFuncionarios.php?SUCESS=1");
+                    header("Location: ../../Gerente/indexGerente.php?SUCESS=1");
                     exit();
                 }
             }
         } else {
-            header("Location: ../../Gerente/gerFuncionarios.php?ERROR=2");
+            header("Location: ../../Gerente/indexGerente.php?ERROR=2");
             exit();
         }
     } else {
-        header("Location: ../../Gerente/gerFuncionarios.php?ERROR=1");
+        header("Location: ../../Gerente/indexGerente.php?ERROR=1");
         exit();
     }
 } elseif (!isset($_GET['solicitaCad'])) {
-    header("Location: ../../Gerente/gerFuncionarios.php");
+    header("Location: ../../Gerente/indexGerente.php");
     exit();
 }
