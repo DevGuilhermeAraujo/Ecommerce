@@ -55,6 +55,7 @@ redirectURL($url, 'indexGerente.php');
         </div>
         <input style="background-color: #a3015a;color: white;padding: 1%;" type="submit" value="Cadastrar">
     </form>
+    
     <script src="../index.js"></script>
 </body>
 
