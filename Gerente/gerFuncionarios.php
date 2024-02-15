@@ -88,13 +88,11 @@ redirectURL($url, 'indexGerente.php');
             <input type="password" id="confirmaSenha" placeholder="Confirme a nova senha" name="confirmaSenha">
             <input id="CadFuncionario" type="submit" value="Cadastrar">
             <div class="msgN">
-<<<<<<< HEAD
                 <span id="cadastroError">
                     <?php if (isset($nomeError)) {
                         echo $nomeError;
                     } ?>
                 </span>
-=======
                 <span id="nomeError">
                     <?php if (isset($nomeError)) {
                         echo $nomeError;
@@ -115,7 +113,6 @@ redirectURL($url, 'indexGerente.php');
                 <span id="passwordError"><?php if (isset($passwordError)) {
                                                 echo $passwordError;
                                             } ?></span>
->>>>>>> bf8a0bd20653f0cb731017027cac38fe455be180
             </div>
         </form>
     </div>
