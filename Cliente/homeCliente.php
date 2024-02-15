@@ -22,15 +22,15 @@ $db = new Conexao();
     </div>
 
     <!--Botão de menu (apenas para celulares-->
-    <div id="menuResponsivo">
-        <button onclick="Trocar(btnMenu,nav)" id="btnMenu"><img src="../Imagens/Icones/menu.png" alt="icone menu"></button>
+    <div class="menuResponsivo">
+        <button onclick="Trocar(btnMenu,nav)" id="btnMenu" class="btnMenu"><img src="../Imagens/Icones/menu.png" alt="icone menu"></button>
         <h2><img src="../Imagens/Icones/flor.png" alt="icone flor"> Espaço Beleza rosa <img src="../Imagens/Icones/flor.png" alt="icone flor"></h2>
     </div>
 
     <!--Nav com os links das pags do cliente-->
     <div id="nav" class="nav">
-        <img onclick="Trocar(nav,btnMenu)" id="fecharMenuResponsivo" src="../Imagens/Icones/Fechar2.png" alt="icone fechar">
-        <img id="florResponsiva" src="../Imagens/Icones/rosa.png" alt="icone flor">
+        <img onclick="Trocar(nav,btnMenu)" class="fecharMenuResponsivo" src="../Imagens/Icones/Fechar2.png" alt="icone fechar">
+        <img class="florResponsiva" src="../Imagens/Icones/rosa.png" alt="icone flor">
         <a href=""><img src="../Imagens/Icones/novidades.png" alt="icone novidades"> Novidades</a>
         <a href=""><img src="../Imagens/Icones/carrinho.png" alt="icone carrinho"> Carrinho</a>
         <a href=""><img src="../Imagens/Icones/comunicação.png" alt="icone comunicação">Comunicação</a>

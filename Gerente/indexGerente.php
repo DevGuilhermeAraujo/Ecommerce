@@ -14,24 +14,16 @@ requiredLogin(PERMISSION_GERENTE);
 </head>
 
 <body>
-
-    <!--Menu para menos de 1005px-->
-    <div class="barra2">
-        <button onclick="Trocar(btnMenu,menu2)" id="btnMenu"><img src="../Imagens/Icones/menu.png" alt="icone menu">Menu</button>
-        <div style="display: none;" id="menu2" class="menu2">
-            <button id="fecharMenu" onclick="Trocar(menu2,btnMenu)"><img src="../Imagens/Icones/Fechar2.png" alt="icone fechar"></button>
-            <a href="../BackEnd/logout.php"><img src="../Imagens/Icones/sair.png" alt="icone sair"> Sair</a>
-            <a href=""><img src="../Imagens/Icones/home.png" alt="icone home"> Home</a>
-            <a target="funçõesGerente" href="gerFuncionarios.php"><img src="../Imagens/Icones/equipe.png" alt="icone equipe"> Funcionários</a>
-            <a target="funçõesGerente" href="gerProdutos.php"><img src="../Imagens/Icones/carrinho.png" alt="icone carrinho"> Produtos</a>
-            <a target="funçõesGerente" href=""><img src="../Imagens/Icones/comunicação.png" alt="icone comunicação"> Comunicação</a>
-        </div>
+    <!--Botão de menu (apenas para celulares-->
+    <div class="menuResponsivo">
+        <button onclick="Trocar(btnMenuGerente,barra)" id="btnMenuGerente" class="btnMenu"><img src="../Imagens/Icones/menu.png" alt="icone menu"></button>
+        <h2><img src="../Imagens/Icones/flor.png" alt="icone flor"> Espaço Beleza rosa <img src="../Imagens/Icones/flor.png" alt="icone flor"></h2>
     </div>
 
     <!--Menu do gerente-->
-    <div class="barra">
+    <div id="barra" class="barra">
         <div class="menu">
-            <img src="../Imagens/Icones/rosa.png" alt="icone flor">
+            <img onclick="Trocar(barra,btnMenuGerente)" class="fecharMenuResponsivo" src="../Imagens/Icones/Fechar2.png" alt="icone fechar">
             <a href="../BackEnd/logout.php"><img src="../Imagens/Icones/sair.png" alt="icone sair"> Sair</a>
             <a href=""><img src="../Imagens/Icones/home.png" alt="icone home"> Home</a>
             <a target="funçõesGerente" href="gerFuncionarios.php"><img src="../Imagens/Icones/equipe.png" alt="icone equipe"> Funcionários</a>

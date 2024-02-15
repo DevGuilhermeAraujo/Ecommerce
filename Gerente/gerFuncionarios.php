@@ -33,7 +33,7 @@ redirectURL($url, 'indexGerente.php');
     OBS: quando um funcionário estiver desativado, ele deve perder acesso ao sistema
     -->
     <div id="funcionarios">
-        <h2> <img src="../Imagens/Icones/funcionarios.png" alt="icone funcionários">Funcionários</h2>
+        <h2><img src="../Imagens/Icones/funcionarios.png" alt="icone funcionários">Funcionários<img src="../Imagens/Icones/funcionarios.png" alt="icone funcionários"></h2>
         <div id="ativos">
             <p><span>Teste1 ...max 40 caracteres</span><button onclick="AbrirModal(GerFuncionarios,editarFuncionario)" style="background-color: #8b0d96;">Editar</button><button>Desativar</button></p>
         </div>
@@ -62,7 +62,7 @@ redirectURL($url, 'indexGerente.php');
     <div class="right">
         <button onclick="AbrirModal(GerFuncionarios,analisarCurriculos)" id="analisar">Analisar currículos</button>
         <form action="../BackEnd/cadastros/processCadastroFunc.php" method="POST" onsubmit="return validateForm()" novalidate>
-            <h2><img src="../Imagens/Icones/pessoaMais.png" alt="icone adicionar pessoa"> Cadastrar novo funcionário</h2>
+            <h2><img src="../Imagens/Icones/pessoaMais.png" alt="icone adicionar pessoa"> Novo funcionário <img src="../Imagens/Icones/pessoaMais.png" alt="icone adicionar pessoa"></h2>
             <input type="text" id="nome" placeholder="Nome" name="nome">
             <input type="text" id="sobrenome" placeholder="Sobrenome" name="sobrenome">
             <input type="text" id="cpf" placeholder="CPF" name="cpf" oninput="maskCPF()">
@@ -71,19 +71,6 @@ redirectURL($url, 'indexGerente.php');
             <input type="text" id="bairro" placeholder="Bairro" name="bairro">
             <input type="text" id="telefone" placeholder="Telefone" name="telefone">
             <input type="email" id="email" placeholder="Email" name="email">
-            <select name="departamento" id="">
-                <option value="">Departamento</option>
-                <?php
-                $sql = "SELECT id, description_dep FROM departments";
-                $parametros = null;
-                $result = $db->executar($sql, $parametros);
-                foreach ($result as $departamentos) {
-                    $idDep = $departamentos['id'];
-                    $descDep = $departamentos['description_dep'];
-                    echo "<option value='$idDep'>$descDep</option>";
-                }
-                ?>
-            </select>
             <input type="password" id="senha" placeholder="Nova senha" name="senha">
             <input type="password" id="confirmaSenha" placeholder="Confirme a nova senha" name="confirmaSenha">
             <input id="CadFuncionario" type="submit" value="Cadastrar">
