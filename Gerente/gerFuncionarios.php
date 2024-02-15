@@ -76,9 +76,12 @@ redirectURL($url, 'indexGerente.php');
             <input id="CadFuncionario" type="submit" value="Cadastrar">
             <div class="msgN">
                 <span id="nomeError">
-                    <?php if (isset($nomeError)) {
+                    <?php
+                    if (isset($nomeError)) {
                         echo $nomeError;
-                    } ?></span>
+                    }
+                    ?>
+                </span>
 
                 <span id="cpfError"><?php if (isset($cpfError)) {
                                         echo $cpfError;
