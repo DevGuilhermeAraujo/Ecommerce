@@ -31,8 +31,7 @@ redirectURL($url, 'indexGerente.php');
         <input type="text" placeholder="Nome do produto" name="nomeProd">
         <textarea cols="100%" rows="5" placeholder="Descrição do produto" name="descProd"></textarea>
         <input type="file" name="imgProd">
-        <input type="text" placeholder="URL da imagem">
-        <input type="text" placeholder="Valor do produto">
+        <input type="text" placeholder="Valor do produto" name="valorProd">
         <div class="comLeg">
             <label for="">Categoria</label>
             <select name="categoria">
@@ -50,12 +49,12 @@ redirectURL($url, 'indexGerente.php');
             </select>
         </div>
         <div class="comLeg">
-            <input type="checkbox" name="novidade">
+            <input type="checkbox" name="novidade" value="1">
             <label for="">Novidade</label>
         </div>
         <input style="background-color: #a3015a;color: white;padding: 1%;" type="submit" value="Cadastrar">
     </form>
-    
+
     <script src="../index.js"></script>
 </body>
 

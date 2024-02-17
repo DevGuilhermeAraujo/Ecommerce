@@ -58,14 +58,16 @@ class Conexao
     public function executar($sql, $parametros = [], $fullObject = false, $autoExec = true)
     {
         $stmt = $this->pdo->prepare($sql);
-        foreach ($parametros as $chave => $valor) {
-            // Vincula os parâmetros
-            $stmt->bindValue($chave, $valor);
+        if ($parametros != null) {
+            foreach ($parametros as $chave => $valor) {
+                // Vincula os parâmetros
+                $stmt->bindValue($chave, $valor);
+            }
         }
 
         if ($autoExec || !$fullObject)
             $stmt->execute();
-        
+
         if ($fullObject) {
             return $stmt;
         } else {
