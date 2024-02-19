@@ -56,8 +56,10 @@ if (!password_verify($senha, $result[0]['passwordUser'])) {
 
 //Concluir login na sessão e Indentificar tipo de usuário
 include_once "../sessao.php";
+//Amarzenar o email do usuário na sessão
 $_SESSION[SESSION_USER_EMAIL] = $email;
 
+//Amarzenar o nome do usuário na sessão
 $sql = "SELECT CONCAT(first_name, ' ', last_name) AS nome FROM view_client_user_combined WHERE email = :email";
 $parametros = [
     ':email' => $email,
@@ -65,12 +67,14 @@ $parametros = [
 $result = $db->executar($sql, $parametros);
 $_SESSION[SESSION_USERNAME] = $result[0][0];
 
+//Armazenar o id do usuário dentro da sessão
 $sql = "SELECT id FROM view_client_user_combined WHERE email = :email";
 $parametros = [
     ':email' => $email,
 ];
 $result = $db->executar($sql, $parametros);
 $_SESSION[SESSION_USER_ID] = $result[0][0];
+
 // $result = $db->executar("SELECT tipo FROM view_client_user_combined WHERE ra = $ra_id", true);
 // $permisson = 0;
 // if ($result[0][3] == 'client') {
@@ -95,6 +99,38 @@ if ($result == 'client') {
 }
 $_SESSION[SESSION_USER_IDPERMISSION] = $permisson;
 
+if (validarEmail(getIdUser())) {
+    redirectByPermission($_SESSION[SESSION_USER_IDPERMISSION]);
+} else {
+    // Exemplo de uso:
+    // Gere um token único
+    $token = bin2hex(random_bytes(16));
+    // Calcule o tempo de expiração (por exemplo, 24 horas a partir do momento atual)
+    // $tempoExpiracao = time() + (24 * 60 * 60);
 
-//Redirecionar
-redirectByPermission($permisson);
+    // Armazene o token e o tempo de expiração no banco de dados associado ao usuário
+    $sql = "UPDATE users SET token = :token WHERE id = :id";
+    $parametros = [
+        ':token' => $token,
+        // ':token_expiration' => $tempoExpiracao,
+        ':id' => getIdUser(),
+    ];
+    $db->executar($sql, $parametros);
+
+    // Envie o e-mail de confirmação
+    $assunto = "Confirmação de Registro - Ecommerce Beleza Rosa";
+    $mensagem = "Olá [Nome do Usuário], \n
+    Obrigado por se cadastrar no Ecommerce Beleza Rosa! Para concluir o processo de registro, precisamos verificar seu endereço de e-mail. \n
+    Clique no link abaixo para confirmar seu e-mail: \n
+    https://127.0.0.1/projetoEcommerce/BackEnd/vailidaEmail.php?token=$token \n
+    Se você não se registrou no Ecommerce Beleza Rosa, ignore este e-mail. \n
+    Atenciosamente, \n
+    Equipe Ecommerce Beleza Rosa \n";
+    // $mensagem .= "https://seusite.com/confirmacao.php?token=$token";
+
+    // Utilize a função mail() ou um serviço de envio de e-mail para enviar a mensagem
+    mail($email, $assunto, $mensagem);
+
+    // logout();
+    // header("Location: ../../index.php");
+}

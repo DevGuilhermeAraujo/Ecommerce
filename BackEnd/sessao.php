@@ -61,6 +61,7 @@ function logout()
     unset($_SESSION[SESSION_USER_EMAIL]);
     unset($_SESSION[SESSION_USERNAME]);
     unset($_SESSION[SESSION_USER_IDPERMISSION]);
+    unset($_SESSION[SESSION_USER_ID]);
     unset($_SESSION);
     session_destroy();
 }
@@ -187,6 +188,23 @@ function criptografiaPassword()
     foreach ($result as $user) {
         $senhacriptografada = password_hash($user['passwordUser'], PASSWORD_DEFAULT);
         $db->executar("UPDATE users SET passwordUser='$senhacriptografada' WHERE id=" . $user['id']);
+    }
+}
+
+criptografiaPassword();
+
+function validarEmail($id)
+{
+    $db = new Conexao();
+    $sql = ('SELECT * FROM users WHERE id = :id AND confirmed IS NULL');
+    $parametros = [
+        ':id' => $id,
+    ];
+    $result = $db->executar($sql, $parametros, true);
+    if (empty($result->fetch())) {
+        return true;
+    } else {
+        return false;
     }
 }
 
