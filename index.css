@@ -124,13 +124,9 @@ iframe {
 }
 .cadProduto {
     width: 100%;
-    margin: 3%;
     padding: 2%;
     display: flex;
     flex-flow: row wrap;
-    border-radius: 20px;
-    background-color: #d897bb;
-    border: #a3015a 5px solid;
 }
 .cadProduto input,textarea {
     width: 100%;
@@ -214,6 +210,21 @@ Menssagens de erro
     align-items: center;
     justify-content: center;
     transition: 1s linear;
+}
+.menuResponsivo{
+    display: none
+}
+.florResponsiva{
+    display: none;
+}
+.fecharMenuResponsivo{
+    display: none;
+}
+#btnArq{
+    background-color: #a3015a;
+    color: white;
+    border: none;
+    border-radius: 5px;
 }
 
 /*
@@ -303,5 +314,32 @@ em vertical
         width: 100%;
         margin: 5% 0% 0% 0%;
     }
-
+    .cadProduto {
+       
+    }
+    .cadProduto input,textarea {
+        
+    }
+    .cadProduto input,select,textarea {
+        margin: 5% 0% 0% 1%;
+        font-size: 10px;
+        border-radius: 5px;
+    }
+    .comLeg {
+        font-size: 10px;
+    }
+    .comLeg input {
+        height: 3vh;
+        width: 10%;
+    }
+    .comLeg select {
+        width: 100%;
+    }
+    .cadProduto h2 img {
+        width: 10%;
+        margin: 2%;
+    }
+    .cadProduto h2{
+        margin-top: 20%;
+    }
 }

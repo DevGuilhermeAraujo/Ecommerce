@@ -30,7 +30,7 @@ redirectURL($url, 'indexGerente.php');
         <h2><img src="../Imagens/Icones/compra.png" alt="icone de compra"> Novo produto <img src="../Imagens/Icones/compra.png" alt="icone compra"></h2>
         <input type="text" placeholder="Nome do produto" name="nomeProd">
         <textarea cols="100%" rows="5" placeholder="Descrição do produto" name="descProd"></textarea>
-        <input type="file" name="imgProd">
+        <input id="btnArq" type="file" name="imgProd">
         <input type="text" placeholder="Valor do produto" name="valorProd">
         <div class="comLeg">
             <label for="">Categoria</label>

@@ -390,4 +390,27 @@ form input,select{
         margin: 3% 0% 5% 85%;
         width: 10%;
     }
+    .chat{
+        width: 90%;
+        margin: 25% 0% 5% 5%;
+        height: auto;
+    }
+    .chat h2{
+        font-size: 15px;
+    }
+    .chat h3{
+        font-size: 12px;
+    }
+    .chat h3 button{
+        font-size: 10px;
+        width: 50%;
+        height: 7vh;
+        border-radius: 5px;
+    }
+    .chat p{
+        font-size: 10px;
+    }
+    .chat p i{
+        font-size: 12px;
+    }
 }

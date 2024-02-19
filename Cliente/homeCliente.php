@@ -96,7 +96,7 @@ $db = new Conexao();
     <!--Modal para login-->
     <form style="display: none;" id="login" class="modal" action="../BackEnd/login/validaLogin.php" method="POST">
         <img id="fecharLogin" onclick="FecharModal(HomeCliente,login)" class="fecharModal" src="../Imagens/Icones/Fechar.png" alt="icone fechar">
-        <h2><img src="../Imagens/Icones/flor.png" alt="icone flor"> ESPAÇO BELEZA ROSA <img src="../Imagens/Icones/flor.png" alt="icone flor"></h2>
+        <h2><img src="../Imagens/Icones/flor.png" alt="icone flor"> Espaço beleza rosa <img src="../Imagens/Icones/flor.png" alt="icone flor"></h2>
         <img id="loginImg" src="../Imagens/Icones/usuario.png" alt="icone usuario">
         <p>Faça login em sua conta</p>
         <input type="email" placeholder="E-mail" name="email">
