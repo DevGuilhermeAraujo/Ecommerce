@@ -99,12 +99,12 @@ form input,select{
     font-size: 25px;
     color: #a3015a;
 }
-#Edição{
+#editarDadosFunc{
     width: 100%;
     height: 50vh;
     background-color: white;
 }
-#Edição input{
+#editarDadosFunc input{
     background-color: rgb(236, 236, 236);
     color: #a3015a;
 }
@@ -347,7 +347,7 @@ form input,select{
         font-size: 15px;
         color: #a3015a;
     }
-    #Edição{
+    #editarDadosFunc{
         height: auto;
     }
     #editarFuncionario img{

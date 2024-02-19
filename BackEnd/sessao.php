@@ -190,4 +190,3 @@ function criptografiaPassword()
     }
 }
 
-criptografiaPassword();
