@@ -119,18 +119,21 @@ if (validarEmail(getIdUser())) {
 
     // Envie o e-mail de confirmação
     $assunto = "Confirmação de Registro - Ecommerce Beleza Rosa";
-    $mensagem = "Olá $_SESSION[SESSION_USERNAME], \n
+    $mensagem = "Olá, \n
     Obrigado por se cadastrar no Ecommerce Beleza Rosa! Para concluir o processo de registro, precisamos verificar seu endereço de e-mail. \n
     Clique no link abaixo para confirmar seu e-mail: \n
-    https://127.0.0.1/projetoEcommerce/BackEnd/vailidaEmail.php?token=$token&email=$email \n
+    $token \n
     Se você não se registrou no Ecommerce Beleza Rosa, ignore este e-mail. \n
     Atenciosamente, \n
     Equipe Ecommerce Beleza Rosa \n";
-    // $mensagem .= "https://seusite.com/confirmacao.php?token=$token";
 
     // Utilize a função mail() ou um serviço de envio de e-mail para enviar a mensagem
-    mail($email, $assunto, $mensagem);
-
+    $result = mail($email, $assunto, $mensagem);
+    if($result == true){
+        echo"O email foi enviado";
+    } else{
+        echo "o email falhou";
+    }
     // logout();
     // header("Location: ../../index.php");
 }

@@ -191,9 +191,7 @@ function criptografiaPassword()
     }
 }
 
-criptografiaPassword();
-
-function validarEmail($id)
+function validarEmail(int $id)
 {
     $db = new Conexao();
     $sql = ('SELECT * FROM users WHERE id = :id AND confirmed IS NULL');
