@@ -1,9 +1,9 @@
 //Função para receber informações do formulário de cadastro de funcionário
 function getData() {
     var formData = {};
-    var inputsAndSelects = document.querySelectorAll('input, select');
+    var inputsAndSelectsAndTextarea = document.querySelectorAll('input, select, textarea');
 
-    inputsAndSelects.forEach(function (element) {
+    inputsAndSelectsAndTextarea.forEach(function (element) {
         formData[element.name] = element.value;
     });
 
@@ -64,6 +64,50 @@ function validateForm() {
                                     return true;
                                 }
                             }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+function validateFormProduct() {
+    var formData = getData();
+    var cadastroProdError = document.getElementById("cadastroProdError");
+    if (formData.nomeProd.trim() === "") {
+        cadastroProdError.innerHTML = "Campo Título do Produto - Obrigatório";
+        return false;
+    } else {
+        cadastroProdError.innerHTML = "";
+        if (formData.descProd.trim() === "") {
+            cadastroProdError.innerHTML = "Campo Descrição do Produto - Obrigatório";
+            return false;
+        } else {
+            cadastroProdError.innerHTML = "";
+            if (formData.imgProd.length == 0) {
+                cadastroProdError.innerHTML = "Campo Imagem do Produto - Obrigatório!";
+                return false;
+            } else {
+                cadastroProdError.innerHTML = "";
+                var fileName = formData.imgProd.files[0].name;
+                var fileExtension = fileName.split('.').pop().toLowerCase();
+                if (fileExtension == '.jpg') {
+                    cadastroProdError.innerHTML = "Campo Imagem do Produto - Arquivo Inválido!";
+                    return false;
+                } else {
+                    cadastroProdError.innerHTML = "";
+                    if (formData.valorProd.trim() == "") {
+                        cadastroProdError.innerHTML = "Campo Valor do Produto - Obrigatório!";
+                        return false;
+                    } else {
+                        cadastroProdError.innerHTML = "";
+                        if (formData.categoria.trim() == "") {
+                            cadastroProdError.innerHTML = "Campo Categoria do Produto - Obrigatório!";
+                            return false;
+                        } else {
+                            cadastroProdError.innerHTML = "";
+                            return true;
                         }
                     }
                 }

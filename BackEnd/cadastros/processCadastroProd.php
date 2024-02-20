@@ -30,7 +30,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $sql = "SELECT LAST_INSERT_ID() AS posicao_atual";
             $parametros = null;
             $idProd = $db->executar($sql, $parametros);
-            $caminhoDestino = '../../Imagens/Produtos/' . $idProd[0][0] . '.' . $extensaoArquivo;
+            $urlProd = $idProd[0][0] . '.' . $extensaoArquivo;
+            $sql = "UPDATE products SET url_img = :urlImg";
+            $parametros = [
+                ':urlImg' => $urlProd,
+                ];
+            $db->executar($sql, $parametros);
+            $caminhoDestino = '../../Imagens/Produtos/' . $urlProd;
             // Move o arquivo para o diretório desejado
             $result = move_uploaded_file($_FILES['imgProd']['tmp_name'], $caminhoDestino);
             if (!isset($result)) {

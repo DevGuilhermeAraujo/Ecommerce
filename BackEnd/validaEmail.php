@@ -22,7 +22,7 @@ if (empty($result->fetch())) {
         ':email' => $email,
     ];
     $result = $db->executar($sql, $parametros);
-    if (empty($result->fetch())) {
+    if ($result == false) {
         logout();
         header("Location: ../index.php");
         exit();

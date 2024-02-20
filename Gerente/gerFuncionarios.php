@@ -100,30 +100,10 @@ redirectURL($url, 'indexGerente.php');
             <input id="CadFuncionario" type="submit" value="Cadastrar">
             <div class="msgN">
                 <span id="cadastroError">
-                    <?php if (isset($nomeError)) {
-                        echo $nomeError;
+                    <?php if (isset($cadastroError)) {
+                        echo $cadastroError;
                     } ?>
                 </span>
-                <span id="nomeError">
-                    <?php if (isset($nomeError)) {
-                        echo $nomeError;
-                    } ?></span>
-
-                <span id="cpfError"><?php if (isset($cpfError)) {
-                                        echo $cpfError;
-                                    } ?></span>
-
-                <span id="dtError"><?php if (isset($dtError)) {
-                                        echo $dtError;
-                                    } ?></span>
-
-                <span id="emailError"><?php if (isset($emailError)) {
-                                            echo $emailError;
-                                        } ?></span>
-
-                <span id="passwordError"><?php if (isset($passwordError)) {
-                                                echo $passwordError;
-                                            } ?></span>
             </div>
         </form>
     </div>
@@ -136,7 +116,7 @@ redirectURL($url, 'indexGerente.php');
         <img onclick="FecharModal(GerFuncionarios,editarFuncionario)" class="fecharModal" src="../Imagens/Icones/Fechar.png" alt="icone fechar">
         <h3>Nome do funcionario</h3>
         <form id="editarDadosFunc">
-            <input type="text" id="idFuncionario" name="idFuncionario">
+            <input type="text" id="idFuncionario" name="idFuncionario" readonly>
             <input type="text" placeholder="Mudar endereço">
             <input type="text" placeholder="Mudar Número">
             <input type="email" placeholder="Mudar email">

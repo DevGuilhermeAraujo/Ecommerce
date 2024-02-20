@@ -119,7 +119,7 @@ if (validarEmail(getIdUser())) {
 
     // Envie o e-mail de confirmação
     $assunto = "Confirmação de Registro - Ecommerce Beleza Rosa";
-    $mensagem = "Olá [Nome do Usuário], \n
+    $mensagem = "Olá $_SESSION[SESSION_USERNAME], \n
     Obrigado por se cadastrar no Ecommerce Beleza Rosa! Para concluir o processo de registro, precisamos verificar seu endereço de e-mail. \n
     Clique no link abaixo para confirmar seu e-mail: \n
     https://127.0.0.1/projetoEcommerce/BackEnd/vailidaEmail.php?token=$token&email=$email \n

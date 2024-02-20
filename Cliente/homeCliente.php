@@ -15,7 +15,6 @@ $db = new Conexao();
 </head>
 
 <body>
-
     <!--Painel superior-->
     <div id="Top">
         <h1>Olá, seja bem vindo(a)</h1>
