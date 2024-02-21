@@ -104,12 +104,14 @@ $db = new Conexao();
     </form>
     <?php
     if (isset($_GET['SUCESS']) && ($_GET['SUCESS'] == 11)) {
+        echo '<script>';
+        echo 'window.onload = function() {';
+        echo '    AbrirModal(HomeCliente, tokenEmail);';
+        echo '};';
+        echo '</script>';
     ?>
-        <script>
-            AbrirModal(HomeCliente, tokenEmail);
-        </script>
-        <form style="display: none;" id="tokenEmail" class="modal" action="../BackEnd/login/validaLogin.php" method="POST">
-            <img id="fecharLogin" onclick="FecharModal(HomeCliente,login)" class="fecharModal" src="../Imagens/Icones/Fechar.png" alt="icone fechar">
+        <form style="display: none;" id="tokenEmail" class="modal" action="../BackEnd/validaEmail/validaEmail.php" method="POST">
+            <img id="fecharLogin" onclick="FecharModal(HomeCliente,tokenEmail)" class="fecharModal" src="../Imagens/Icones/Fechar.png" alt="icone fechar">
             <input type="codConfirm" placeholder="Código de confirmação" name="codConfirm">
             <input id="logar" type="submit" value="Login">
         </form>
