@@ -102,6 +102,20 @@ $db = new Conexao();
         <input type="password" placeholder="Senha" name="senha">
         <input id="logar" type="submit" value="Login">
     </form>
+    <?php
+    if (isset($_GET['SUCESS']) && ($_GET['SUCESS'] == 11)) {
+    ?>
+        <script>
+            AbrirModal(HomeCliente, tokenEmail);
+        </script>
+        <form style="display: none;" id="tokenEmail" class="modal" action="../BackEnd/login/validaLogin.php" method="POST">
+            <img id="fecharLogin" onclick="FecharModal(HomeCliente,login)" class="fecharModal" src="../Imagens/Icones/Fechar.png" alt="icone fechar">
+            <input type="codConfirm" placeholder="Código de confirmação" name="codConfirm">
+            <input id="logar" type="submit" value="Login">
+        </form>
+    <?php
+    }
+    ?>
 
     <script src="../index.js"></script>
 </body>
