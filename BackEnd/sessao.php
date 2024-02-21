@@ -115,6 +115,22 @@ function getIdUser()
     return $_SESSION[SESSION_USER_ID];
 }
 
+/** 
+* @return Conexao
+*/
+function getDb()
+{
+   return new Conexao();
+}
+
+/**
+ * return servicoEmail
+ */
+
+ function getServEmail(){
+    return include_once "validaEmail/servicoDeEmail.php";
+ }
+
 function getPermission()
 {
     //return $_SESSION[SESSION_USER_IDPERMISSION];

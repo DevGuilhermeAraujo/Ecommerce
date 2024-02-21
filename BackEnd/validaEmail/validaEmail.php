@@ -1,7 +1,7 @@
 <?php
 include_once "../sessao.php";
-include_once "../conexao.php";
-$db = new Conexao();
+
+$db = getDb();
 
 $token = $_POST['codConfirm'];
 $sql = "SELECT * FROM users WHERE email = :email AND token = :token";
@@ -29,5 +29,4 @@ if (empty($result->fetch())) {
         redirectByPermission($_SESSION[SESSION_USER_IDPERMISSION]);
     }
 }
-
 // Agora você pode usar $token e $email conforme necessário

@@ -1,8 +1,7 @@
 <?php
-include_once "../conexao.php";
-$db = new Conexao();
-
-
+include_once "../sessao.php";
+$db = getDb();
+getServEmail();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $senha = $_POST['senha'];
@@ -57,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     //Concluir login na sessão e Indentificar tipo de usuário
-    include_once "../sessao.php";
+
     //Amarzenar o email do usuário na sessão
     $_SESSION[SESSION_USER_EMAIL] = $email;
 
@@ -104,31 +103,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (validarEmail(getIdUser())) {
         redirectByPermission($_SESSION[SESSION_USER_IDPERMISSION]);
     } else {
-        // Exemplo de uso:
-        // Gere um token único
-        $token = mt_rand(100000, 999999);
-        // Calcule o tempo de expiração (por exemplo, 24 horas a partir do momento atual)
-        // $tempoExpiracao = time() + (24 * 60 * 60);
-
-        // Armazene o token e o tempo de expiração no banco de dados associado ao usuário
-        $sql = "UPDATE users SET token = :token WHERE id = :id";
-        $parametros = [
-            ':token' => $token,
-            // ':token_expiration' => $tempoExpiracao,
-            ':id' => getIdUser(),
-        ];
-        $db->executar($sql, $parametros);
-        include_once "../validaEmail/conexaoServicoEmail.php";
-        // Envie o e-mail de confirmação
-        $assunto = "Confirmação de Registro - Ecommerce Beleza Rosa";
-        $mensagem = "Olá, \n
-    Obrigado por se cadastrar no Ecommerce Beleza Rosa! Para concluir o processo de registro, precisamos verificar seu endereço de e-mail. \n
-    Clique no link abaixo para confirmar seu e-mail: \n
-    $token \n
-    Se você não se registrou no Ecommerce Beleza Rosa, ignore este e-mail. \n
-    Atenciosamente, \n
-    Equipe Ecommerce Beleza Rosa \n";
-        conectEmail($email, getNome(), $assunto, $mensagem);
+        validEmail();
     }
     // Utilize a função mail() ou um serviço de envio de e-mail para enviar a mensagem
     // $result = mail($email, $assunto, $mensagem);
