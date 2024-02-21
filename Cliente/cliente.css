@@ -165,7 +165,7 @@
 Tela para celular vertical
 menos de 350px
 */
-@media screen and (max-width: 350px){
+@media screen and (max-width: 850px){
     #Top{
         display: none;
     }
@@ -241,5 +241,9 @@ menos de 350px
     }
     #login input{
         font-size: 15px;
+    }
+    #fecharLogin{
+        width: 10%;
+        margin: 5% 0% 5% 88%;
     }
 }

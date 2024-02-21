@@ -231,7 +231,7 @@ Menssagens de erro
 Responsividade para celulares
 em vertical
 */
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 850px) {
     .menu img {
         width: 10%;
         height: 5vh;
@@ -313,12 +313,6 @@ em vertical
     .ifm {
         width: 100%;
         margin: 5% 0% 0% 0%;
-    }
-    .cadProduto {
-       
-    }
-    .cadProduto input,textarea {
-        
     }
     .cadProduto input,select,textarea {
         margin: 5% 0% 0% 1%;
