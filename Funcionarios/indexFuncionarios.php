@@ -30,5 +30,6 @@ requiredLogin(PERMISSION_FUNCIONARIO);
         <iframe name="funçõesFuncionário" src="homeFuncionario.php" frameborder="0"></iframe>
     </div>
     
+    <div ></div>
 </body>
 </html>
