@@ -50,7 +50,19 @@ redirectURL($url, 'indexGerente.php');
             ?>
         </div>
         <div id="inativos">
-            <p><span>Teste7</span><button onclick="AbrirModal(GerFuncionarios,editarFuncionario)" style="background-color: #8b0d96;">Editar</button><button>Reativar</button></p>
+        <?php
+            $sql = ("SELECT id, CONCAT(first_name, ' ', last_name) AS nomeFunc FROM users WHERE tipo = :tipo AND active = :active");
+            $parametros = [
+                ':tipo' => 'employee',
+                ':active' => 0,
+            ];
+            $result = $db->executar($sql, $parametros, true);
+            foreach ($result as $funcionarios) {
+            ?>
+                <p><span><?= $funcionarios['nomeFunc'] ?></span><button onclick="AbrirModal(GerFuncionarios, editarFuncionario, <?=$funcionarios['id']?>)" style="background-color: #8b0d96;">Editar</button><button>Desativar</button></p>
+            <?php
+            }
+            ?>
         </div>
     </div>
 
