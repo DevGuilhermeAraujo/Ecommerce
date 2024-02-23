@@ -63,6 +63,7 @@ requiredLogin(PERMISSION_GERENTE);
     }
     ?>
 
+    
 
     <script src="../index.js"></script>
 </body>

@@ -37,8 +37,8 @@ $db = new Conexao();
     </div>
 
     <!--Filtro de produtos-->
-    <form id="filtro">
-        <select name="categoria" id="tipo">
+    <form class="filtroProdutos">
+        <select class="tipoProduto" name="categoria">
             <option value="1">Geral</option>
             <?php
             $sql = "SELECT id, description_cat FROM category";
@@ -51,8 +51,8 @@ $db = new Conexao();
             }
             ?>
         </select>
-        <input id="pesquisa" type="text" placeholder="Procura algo em específico ?">
-        <input id="filtrar" type="submit" value="Filtrar">
+        <input class="nomeProduto" type="text" placeholder="Procura algo em específico ?">
+        <input class="filtrarProduto" type="submit" value="Filtrar">
     </form>
 
     <!--Paineis dos produtos-->
@@ -94,9 +94,9 @@ $db = new Conexao();
 
     <!--Modal para login-->
     <form style="display: none;" id="login" class="modal" action="../BackEnd/login/validaLogin.php" method="POST">
-        <img id="fecharLogin" onclick="FecharModal(HomeCliente,login)" class="fecharModal" src="../Imagens/Icones/Fechar.png" alt="icone fechar">
+        <img onclick="FecharModal(HomeCliente,login)" class="fecharModal" src="../Imagens/Icones/Fechar.png" alt="icone fechar">
         <h2><img src="../Imagens/Icones/flor.png" alt="icone flor"> Espaço beleza rosa <img src="../Imagens/Icones/flor.png" alt="icone flor"></h2>
-        <img id="loginImg" src="../Imagens/Icones/usuario.png" alt="icone usuario">
+        <img id="imgLogin" src="../Imagens/Icones/usuario.png" alt="icone usuario">
         <p>Faça login em sua conta</p>
         <input type="email" placeholder="E-mail" name="email">
         <input type="password" placeholder="Senha" name="senha">

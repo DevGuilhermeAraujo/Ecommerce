@@ -2,14 +2,13 @@ body{
     display: flex;
     flex-flow: row wrap;
 }
+
+/*Painel de funcionários*/
 #funcionarios{
-    width: 45%;
-    margin: 2.5% 0% 2% 2.5%;
-    height: 100vh;
-    overflow: auto;
-    border-radius: 10px 0px 0px 10px;
-    background-color: #ff8bf9;
-    border: #a3015a 5px solid ;
+    width: 98%;
+    margin: 1%;
+    border-radius: 10px;
+    background-color: white;
 }
 #funcionarios p{
     width: 100%;
@@ -27,8 +26,9 @@ body{
     height: 5vh;
     color: white;
     border-radius: 5px;
-    font-size: 15px;
+    font-size: 20px;
     background-color: #a3015a;
+    padding: 2%;
 }
 #ativos{
     padding: 1%;
@@ -39,104 +39,27 @@ body{
 }
 #funcionarios h2{
     text-align: center;
-    padding: 2%;
     margin: 0;
-    text-align: center;
     color: #a3015a;
-    font-weight: 700;
-    font-size: 35px;
+    font-size: 25px;
     border-bottom: 5px solid #a3015a;
+    padding: 2%;
 }
 #funcionarios h2 img{
-    width: 10%;
-    margin: 0% 3% 0% 3%;
+    width: 2%;
+    margin: 0% 1% 0% 1%;
 }
-form h2{
-    text-align: center;
-    margin: 1%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #a3015a;
-    width: 100%;
-}
-form input,select{
-    width: 98%;
-    margin: 1%;
-    padding: 0.8%;
-    border: none;
-    font-size: 16px;
-    border-radius: 5px;
-    color: #a3015a;
-}
-#CadFuncionario{
-    padding: 2%;
-    border: none;
-    background-color: #a3015a;
-    color: white;
-    font-size: 20px;
-}
-#analisar{
-    width: 98%;
-    margin: 1%;
-    border: none;
-    padding: 1%;
-    border-radius: 5px;
-    font-size: 17px;
-    background-color: #a3015a;
-    color: white;
-}
-#editarFuncionario{
-    width: 75%;
-    height: 75vh;
-    background-color: white;
-    top: 15vh;
-    left: 10%;
-    flex-flow: row wrap;
-}
-#editarFuncionario h3{
-    width: 100%;
-    font-size: 25px;
-    color: #a3015a;
-}
-#editarDadosFunc{
-    width: 100%;
-    height: 50vh;
-    background-color: white;
-}
-#editarDadosFunc input{
-    background-color: rgb(236, 236, 236);
-    color: #a3015a;
-}
-#analisarCurriculos{
-    background-color: white;
-    top: 10%;
-    left: 10%;
-    width: 80%;
-    height: 80vh;
-    flex-flow: row wrap;
-    overflow: auto;
-}
-#analisarCurriculos h2{
-    height: 10vh;
-    width: 100%;
-    text-align: center;
-    font-size: 35px;
-    font-weight: 600;
-    color: #a3015a;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-#analisarCurriculos h2 img{
-    width: 5%;
-}
+
+/*Modal para currículos*/
 .curriculo{
     padding: 1%;
     margin: 1%;
     border-radius: 20px;
     background-color: rgb(248, 181, 226);
-    border: 5px solid #a3015a;
+    border: 2px solid #a3015a;
+}
+.curriculo p{
+    margin-bottom: 2%;
 }
 .curriculo h3{
     font-size: 25px;
@@ -144,9 +67,8 @@ form input,select{
 }
 .curriculo button{
     border: none;
-    padding: 1%;
-    width: 20%;
-    margin: 2% 15% 1% 15%;
+    width: 40%;
+    margin: 2% 5% 1% 5%;
     border-radius: 10px;
     font-size: 18px;
     color: white;
@@ -155,7 +77,7 @@ form input,select{
     justify-content: center;
 }
 .curriculo button img{
-    width: 15%;
+    width: 10%;
     margin-right: 5%;
 }
 .curriculo span{
@@ -169,19 +91,9 @@ form input,select{
 .excluir{
     background-color: red;
 }
-.right{
-    margin: 2.5% 2.5% 2% 0%;
-    width: 47.5%;
-    background-color: #ff8bf9;
-    height: 100vh;
-    border-radius: 0px 10px 10px 0px;
-}
+
 .interagir{
     display: flex;
-}
-.right h2 img{
-    width: 4%;
-    margin-right: 1%;
 }
 .chat{
     background-color: white;
@@ -275,6 +187,7 @@ form input,select{
     background-color: white;
 }
 
+
 /*
  Responsividade para celulares
 */
@@ -313,52 +226,6 @@ form input,select{
         border: none;
         font-size: 10px;
     }
-    .right{
-        width: 90%;
-        margin: 0% 0% 5% 5%;
-        padding: 1%;
-        height: auto;
-        border-radius: 0px 0px 10px 10px;
-    }
-    #analisar{
-        font-size: 15px;
-    }
-    form h2{
-        margin-top: 5%;
-        font-size: 15px;
-    }
-    .right form h2 img{
-        width: 10%;
-        margin: 2%;
-    }
-    form input,select{
-        font-size: 10px;
-        margin-top: 3%;
-    }
-    #CadFuncionario{
-        font-size: 15px;
-    }
-    #editarFuncionario{
-        width: 80%;
-        height: 70vh;
-    }
-    #editarFuncionario h3{
-        width: 100%;
-        font-size: 15px;
-        color: #a3015a;
-    }
-    #editarDadosFunc{
-        height: auto;
-    }
-    #editarFuncionario img{
-        width: 10%;
-        margin: 5% 0% 2% 85%
-    }
-    #analisarCurriculos{
-        top: 12%;
-        left: 5%;
-        width: 90%;
-    }
     .curriculo{
         border: 2px solid #a3015a;
     }
@@ -385,10 +252,6 @@ form input,select{
     }
     .curriculo p{
         font-size: 10px;
-    }
-    #FecharCurriculos{
-        margin: 3% 0% 5% 85%;
-        width: 10%;
     }
     .chat{
         width: 90%;

@@ -19,53 +19,6 @@ redirectURL($url, 'indexGerente.php');
 
 <body>
 
-    <!--Div contendo o painel de funcionários, divididos em ativos e inativos-->
-    <!--
-        para organizar os funcionários com php, retorne dentro de ativos e inativos 
-        com a seguinte organização: 
-
-            <p>
-                <span>Teste2</span>
-                <button onclick="AbrirModal(GerFuncionarios,editarFuncionario)" style="background-color: #8b0d96;">Editar</button>
-                <button>"Desativar" quando estiver nos ATIVOS e "Reativar" quando estiver nos INATIVOS</button>
-            </p>
-
-        OBS: quando um funcionário estiver desativado, ele deve perder acesso ao sistema
-        -->
-    <div id="funcionarios">
-        <h2><img src="../Imagens/Icones/funcionarios.png" alt="icone funcionários">Funcionários<img src="../Imagens/Icones/funcionarios.png" alt="icone funcionários"></h2>
-        <div id="ativos">
-            <?php
-            $sql = ("SELECT id, CONCAT(first_name, ' ', last_name) AS nomeFunc FROM users WHERE tipo = :tipo AND active = :active");
-            $parametros = [
-                ':tipo' => 'employee',
-                ':active' => 1,
-            ];
-            $result = $db->executar($sql, $parametros, true);
-            foreach ($result as $funcionarios) {
-            ?>
-                <p><span><?= $funcionarios['nomeFunc'] ?></span><button onclick="AbrirModal(GerFuncionarios, editarFuncionario, <?=$funcionarios['id']?>)" style="background-color: #8b0d96;">Editar</button><button>Desativar</button></p>
-            <?php
-            }
-            ?>
-        </div>
-        <div id="inativos">
-        <?php
-            $sql = ("SELECT id, CONCAT(first_name, ' ', last_name) AS nomeFunc FROM users WHERE tipo = :tipo AND active = :active");
-            $parametros = [
-                ':tipo' => 'employee',
-                ':active' => 0,
-            ];
-            $result = $db->executar($sql, $parametros, true);
-            foreach ($result as $funcionarios) {
-            ?>
-                <p><span><?= $funcionarios['nomeFunc'] ?></span><button onclick="AbrirModal(GerFuncionarios, editarFuncionario, <?=$funcionarios['id']?>)" style="background-color: #8b0d96;">Editar</button><button>Desativar</button></p>
-            <?php
-            }
-            ?>
-        </div>
-    </div>
-
     <!--Formulário de cadastro de novos funcionários + botão de analisar currículos-->
     <!--
             OBS: 
@@ -82,10 +35,9 @@ redirectURL($url, 'indexGerente.php');
             O campo CONFIRME A NOVA SENHA, deve conter valor igual
             ao campo NOVA SENHA
         -->
-    <div class="right">
-        <button onclick="AbrirModal(GerFuncionarios,analisarCurriculos)" id="analisar">Analisar currículos</button>
-        <form action="../BackEnd/cadastros/processCadastroFunc.php" method="POST" onsubmit="return validateForm()" novalidate>
+        <form class="basicForm" action="../BackEnd/cadastros/processCadastroFunc.php" method="POST" onsubmit="return validateForm()" novalidate>
             <h2><img src="../Imagens/Icones/pessoaMais.png" alt="icone adicionar pessoa"> Novo funcionário <img src="../Imagens/Icones/pessoaMais.png" alt="icone adicionar pessoa"></h2>
+            <button onclick="AbrirModal(GerFuncionarios,analisarCurriculos)">Analisar currículos</button>
             <input type="text" id="nome" placeholder="Nome" name="nome">
             <input type="text" id="sobrenome" placeholder="Sobrenome" name="sobrenome">
             <input type="text" id="cpf" placeholder="CPF" name="cpf" oninput="maskCPF()">
@@ -94,7 +46,7 @@ redirectURL($url, 'indexGerente.php');
             <input type="text" id="numero" placeholder="Número" name="numero">
             <input type="text" id="bairro" placeholder="Bairro" name="bairro">
             <input type="text" id="telefone" placeholder="Telefone" name="telefone" oninput="maskPhone()">
-            <select name="departamento" id="">
+            <select name="departamento">
                 <option value="">Departamento</option>
                 <?php
                 $sql = "SELECT id, description_dep FROM departments";
@@ -109,7 +61,7 @@ redirectURL($url, 'indexGerente.php');
             </select>
             <input type="password" id="senha" placeholder="Nova senha" name="senha">
             <input type="password" id="confirmaSenha" placeholder="Confirme a nova senha" name="confirmaSenha">
-            <input id="CadFuncionario" type="submit" value="Cadastrar">
+            <input id="cadastrarFuncionário" type="submit" value="Cadastrar">
             <div class="msgN">
                 <span id="cadastroError">
                     <?php if (isset($cadastroError)) {
@@ -118,16 +70,62 @@ redirectURL($url, 'indexGerente.php');
                 </span>
             </div>
         </form>
-    </div>
+
+    <!--Div contendo o painel de funcionários, divididos em ativos e inativos-->
+    <!--
+        para organizar os funcionários com php, retorne dentro de ativos e inativos 
+        com a seguinte organização: 
+
+            <p>
+                <span>Teste2</span>
+                <button onclick="AbrirModal(GerFuncionarios,editarFuncionario)" style="background-color: #8b0d96;">Editar</button>
+                <button>"Desativar" quando estiver nos ATIVOS e "Reativar" quando estiver nos INATIVOS</button>
+            </p>
+
+        OBS: quando um funcionário estiver desativado, ele deve perder acesso ao sistema
+        -->
+        <div id="funcionarios">
+            <h2><img src="../Imagens/Icones/funcionarios.png" alt="icone funcionários">Funcionários<img src="../Imagens/Icones/funcionarios.png" alt="icone funcionários"></h2>
+            <div id="ativos">
+                <?php
+                $sql = ("SELECT id, CONCAT(first_name, ' ', last_name) AS nomeFunc FROM users WHERE tipo = :tipo AND active = :active");
+                $parametros = [
+                    ':tipo' => 'employee',
+                    ':active' => 1,
+                ];
+                $result = $db->executar($sql, $parametros, true);
+                foreach ($result as $funcionarios) {
+                ?>
+                    <p><span><?= $funcionarios['nomeFunc'] ?></span><button onclick="AbrirModal(GerFuncionarios, editarFuncionario, <?=$funcionarios['id']?>)" style="background-color: #8b0d96;">Editar</button><button>Desativar</button></p>
+                <?php
+                }
+                ?>
+            </div>
+            <div id="inativos">
+            <?php
+                $sql = ("SELECT id, CONCAT(first_name, ' ', last_name) AS nomeFunc FROM users WHERE tipo = :tipo AND active = :active");
+                $parametros = [
+                    ':tipo' => 'employee',
+                    ':active' => 0,
+                ];
+                $result = $db->executar($sql, $parametros, true);
+                foreach ($result as $funcionarios) {
+                ?>
+                    <p><span><?= $funcionarios['nomeFunc'] ?></span><button onclick="AbrirModal(GerFuncionarios, editarFuncionario, <?=$funcionarios['id']?>)" style="background-color: #8b0d96;">Editar</button><button>Desativar</button></p>
+                <?php
+                }
+                ?>
+            </div>
+        </div>
 
     <!--Fundo para os modais-->
     <div style="display: none;" id="GerFuncionarios" class="fundoModal"></div>
 
     <!--Modal para edição de funcionários-->
-    <div style="display: none;" class="modal" id="editarFuncionario">
+    <div style="display:none" class="modal" id="editarFuncionario">
         <img onclick="FecharModal(GerFuncionarios,editarFuncionario)" class="fecharModal" src="../Imagens/Icones/Fechar.png" alt="icone fechar">
-        <h3>Nome do funcionario</h3>
-        <form id="editarDadosFunc">
+        <h2>Nome do funcionario</h2>
+        <form class="basicForm">
             <input type="text" id="idFuncionario" name="idFuncionario" readonly>
             <input type="text" placeholder="Mudar endereço">
             <input type="text" placeholder="Mudar Número">
@@ -135,7 +133,7 @@ redirectURL($url, 'indexGerente.php');
             <input type="text" placeholder="Mudar Telefone">
             <input type="password" placeholder="Mudar senha">
             <input type="password" placeholder="Confirmar nova senha">
-            <input id="edtFunc" style="background-color: #a3015a;color: white;height: 10vh;font-size: 20px;" type="submit" value="Atualizar">
+            <input id="editarFuncionário" type="submit" value="Atualizar">
         </form>
     </div>
 
@@ -144,8 +142,8 @@ redirectURL($url, 'indexGerente.php');
         Não precisa habilitar por enquanto, vamos dar prioridade aos requisitos
         do dia 8 de fevereiro
         -->
-    <div style="display: none;" id="analisarCurriculos" class="modal">
-        <img id="FecharCurriculos" onclick="FecharModal(GerFuncionarios,analisarCurriculos)" class="fecharModal" src="../Imagens/Icones/Fechar.png" alt="icone fechar">
+    <div id="analisarCurriculos" style="display: none;" class="modal">
+        <img onclick="FecharModal(GerFuncionarios,analisarCurriculos)" class="fecharModal" src="../Imagens/Icones/Fechar.png" alt="icone fechar">
         <h2><img src="../Imagens/Icones/curriculo.png" alt="icone curriculos"> Currículos</h2>
         <div class="curriculo">
             <h3>Nome + Sobrenome</h3>

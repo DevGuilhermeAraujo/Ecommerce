@@ -1,6 +1,6 @@
 function AbrirModal(fundo, modal, idFunc) {
-    fundo.style.display = "block";
-    modal.style.display = "block";
+    fundo.style.display = "flex";
+    modal.style.display = "flex";
 
     document.getElementById("idFuncionario").value = idFunc;
 }
