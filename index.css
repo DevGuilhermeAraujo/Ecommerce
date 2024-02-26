@@ -351,10 +351,91 @@ Menssagens de erro
 }
 
 /*
+Demonstração de produtos
+*/
+.exposição{
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+}
+.produto{
+    width: 46%;
+    margin: 2%;
+    background-color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-flow: row wrap;
+    height: 40vh;
+    padding: 1%;
+}
+.produto img{
+    width: 40%;
+    height: 35vh;
+}
+.informações{
+    width: 60%;
+    padding: 1%;
+    display: flex;
+    flex-flow: row wrap;
+}
+.informações h2{ 
+    color: #a3015a;
+    font-size: 25px;
+    width: 82%;
+    margin: 0;
+}
+.informações h3{
+    font-size: 30px;
+    background-color: #a3015a;
+    color: white;
+    width: 40%;
+    padding: 1%;
+    margin: 0;
+    text-align: center;
+    border-radius: 10px 0px 0px 10px;
+    height: 8vh;
+}
+.informações i{
+    color: #a3015a;
+    width: 60%;
+    text-align: center;
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    border: 3px solid #a3015a;
+    border-radius: 0px 10px 10px 0px;
+}
+.comprar{
+    margin: 0;
+    width: 64%;
+    text-align: center;
+    background-color: #a3015a;
+    border: none;
+    border-radius: 5px;
+    height: 8vh;
+}
+.informações span{
+    margin: 1% 3% 1% 3%;
+    background-color: #a3015a;
+    color: white;
+    font-size: 35px;
+    border-radius: 100px;
+    width: 12%;
+    height: 7vh;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/*
 Responsividade para celulares
 em vertical
 */
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 850px){
     .menu img {
         width: 10%;
         height: 5vh;

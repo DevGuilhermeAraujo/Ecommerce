@@ -31,9 +31,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $parametros = null;
             $idProd = $db->executar($sql, $parametros);
             $urlProd = $idProd[0][0] . '.' . $extensaoArquivo;
-            $sql = "UPDATE products SET url_img = :urlImg";
+            $sql = "UPDATE products SET url_img = :urlImg WHERE id = :id";
             $parametros = [
                 ':urlImg' => $urlProd,
+                ':id' => $idProd[0][0],
                 ];
             $db->executar($sql, $parametros);
             $caminhoDestino = '../../Imagens/Produtos/' . $urlProd;
