@@ -80,39 +80,25 @@ redirectURL($url, 'indexGerente.php');
     </form>
 
     <!--Produtos em exposição-->
-    <div class="exposição">
-        <div class="produto">
-            <img src="../Imagens/Fundos/fundoPrincipal.jpg" alt="exemplo img">
-            <div class="informações">
-                <h2>Nome do produto</h2><span>?</span>
-                <h3>Preço</h3><i>Status</i>
-                <span>-</span><button class="comprar">Adicionar ao carrinho <b>(0)</b></button><span>+</span>
+    <div id="exposicao" class="exposição">
+        <?php
+        $sql = "SELECT id, prod_name, prod_value, url_img FROM products";
+        $parametros = null;
+        $result = $db->executar($sql, $parametros, true);
+        foreach ($result as $produtos) {
+            $idProd = $produtos['id'];
+        ?>
+            <div class="produto">
+                <img src="../Imagens/Produtos/<?= $produtos['url_img'] ?>" alt="exemplo img">
+                <div class="informações">
+                    <h2><?= $produtos['prod_name'] ?></h2><span>?</span>
+                    <h3>R$<?= $produtos['prod_value'] ?></h3><i>Compre já</i>
+                    <span>-</span><button class="comprar">Adicionar ao carrinho <b>(0)</b></button><span>+</span>
+                </div>
             </div>
-        </div>
-        <div class="produto">
-            <img src="../Imagens/Fundos/fundoPrincipal.jpg" alt="exemplo img">
-            <div class="informações">
-                <h2>Tinta de cabelo aqui</h2><span>?</span>
-                <h3>1000,00R$</h3><i>Compre já</i>
-                <span>-</span><button class="comprar">Adicionar ao carrinho <b>(0)</b></button><span>+</span>
-            </div>
-        </div>
-        <div class="produto">
-            <img src="../Imagens/Fundos/fundoPrincipal.jpg" alt="exemplo img">
-            <div class="informações">
-                <h2>Esmalte vermelho</h2><span>?</span>
-                <h3>1000,00R$</h3><i>Quase acabando</i>
-                <span>-</span><button class="comprar">Adicionar ao carrinho <b>(0)</b></button><span>+</span>
-            </div>
-        </div>
-        <div class="produto">
-            <img src="../Imagens/Fundos/fundoPrincipal.jpg" alt="exemplo img">
-            <div class="informações">
-                <h2>Maquiagem aleatória</h2><span>?</span>
-                <h3>1000,00R$</h3><i>Falta de estoque</i>
-                <span>-</span><button class="comprar">Adicionar ao carrinho <b>(0)</b></button><span>+</span>
-            </div>
-        </div>
+        <?php
+        }
+        ?>
     </div>
 
     <script src="../index.js"></script>
