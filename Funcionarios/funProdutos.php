@@ -31,7 +31,7 @@ redirectURL($url, 'indexFuncionarios.php');
         quando a checkBox NOVIDADE estiver marcada durante o caddastro, 
         o produto ir-a aparecer em uma tabela novidades por 30 dias
     -->
-     <!--Cadastro de produtos-->
+    <!--Cadastro de produtos-->
     <!--
         OBS:
         max de caracteres para o nome  do produto é: 22
@@ -40,32 +40,32 @@ redirectURL($url, 'indexFuncionarios.php');
         quando a checkBox NOVIDADE estiver marcada durante o caddastro, 
         o produto ir-a aparecer em uma tabela novidades por 30 dias
     -->
-    <form class="basicForm" action="../BackEnd/cadastros/processCadastroProd.php" method="POST" onsubmit="return validateFormProduct()" enctype="multipart/form-data" novalidate>
+    <form id="productForm" class="basicForm" action="" method="POST" enctype="multipart/form-data" novalidate onsubmit="return submitForm()">
         <h2><img src="../Imagens/Icones/compra.png" alt="icone de compra"> Novo produto <img src="../Imagens/Icones/compra.png" alt="icone compra"></h2>
-        <input type="text" placeholder="Nome do produto" name="nomeProd">
-        <input type="file" name="imgProd" accept=".jpg, .jpeg, .png">
-        <textarea cols="100%" rows="5" placeholder="Descrição do produto" name="descProd"></textarea>
-        <input type="text" placeholder="Valor do produto" name="valorProd">
-        <select name="categoria">
-            <option value="">Geral</option>
+        <input type="text" id="nomeProd" name="nomeProd" placeholder="Nome do produto">
+        <input type="file" id="imgProd" name="imgProd" accept=".jpg, .jpeg, .png">
+        <textarea cols="100%" rows="5" id="descProd" name="descProd" placeholder="Descrição do produto"></textarea>
+        <input type="text" id="valorProd" name="valorProd" placeholder="Valor do produto">
+        <select id="categoria" name="categoria">
+            <option value="">Categoria do produto</option>
             <?php
-                $sql = "SELECT id, description_cat FROM category";
-                $parametros = null;
-                $result = $db->executar($sql, $parametros);
-                foreach ($result as $categorias) {
-                    $idCat = $categorias['id'];
-                    $descCat = $categorias['description_cat'];
-                    echo "<option value='$idCat'>$descCat</option>";
-                }
+            $sql = "SELECT id, description_cat FROM category";
+            $parametros = null;
+            $result = $db->executar($sql, $parametros);
+            foreach ($result as $categorias) {
+                $idCat = $categorias['id'];
+                $descCat = $categorias['description_cat'];
+                echo "<option value='$idCat'>$descCat</option>";
+            }
             ?>
         </select>
         <div class="checkBox">
-            <input type="checkbox" name="novidade" value="1">
-            <label for="">Novidade</label>
+            <input type="checkbox" id="novidade" name="novidade" value="1">
+            <label for="novidade">Novidade</label>
         </div>
         <input id="cadastrarProduto" type="submit" value="Cadastrar">
         <div class="msgN">
-            <span id="cadastroProdError">
+            <span id="resultMessage">
                 <?php if (isset($cadastroProdError)) {
                     echo $cadastroProdError;
                 } ?>
@@ -94,39 +94,39 @@ redirectURL($url, 'indexFuncionarios.php');
 
     <!--Produtos em exposição-->
     <div class="exposição">
-                <div class="produto">
-                    <img src="../Imagens/Fundos/fundoPrincipal.jpg" alt="exemplo img">
-                    <div class="informações">
-                        <h2>Nome do produto</h2><span>?</span>
-                        <h3>Preço</h3><i>Status</i>
-                        <span>-</span><button class="comprar">Adicionar ao carrinho <b>(0)</b></button><span>+</span>
-                    </div>
-                </div>
-                <div class="produto">
-                    <img src="../Imagens/Fundos/fundoPrincipal.jpg" alt="exemplo img">
-                    <div class="informações">
-                        <h2>Tinta de cabelo aqui</h2><span>?</span>
-                        <h3>1000,00R$</h3><i>Compre já</i>
-                        <span>-</span><button class="comprar">Adicionar ao carrinho <b>(0)</b></button><span>+</span>
-                    </div>
-                </div>
-                <div class="produto">
-                    <img src="../Imagens/Fundos/fundoPrincipal.jpg" alt="exemplo img">
-                    <div class="informações">
-                        <h2>Esmalte vermelho</h2><span>?</span>
-                        <h3>1000,00R$</h3><i>Quase acabando</i>
-                        <span>-</span><button class="comprar">Adicionar ao carrinho <b>(0)</b></button><span>+</span>
-                    </div>
-                </div>
-                <div class="produto">
-                    <img src="../Imagens/Fundos/fundoPrincipal.jpg" alt="exemplo img">
-                    <div class="informações">
-                        <h2>Maquiagem aleatória</h2><span>?</span>
-                        <h3>1000,00R$</h3><i>Falta de estoque</i>
-                        <span>-</span><button class="comprar">Adicionar ao carrinho <b>(0)</b></button><span>+</span>
-                    </div>
-                </div>
+        <div class="produto">
+            <img src="../Imagens/Fundos/fundoPrincipal.jpg" alt="exemplo img">
+            <div class="informações">
+                <h2>Nome do produto</h2><span>?</span>
+                <h3>Preço</h3><i>Status</i>
+                <span>-</span><button class="comprar">Adicionar ao carrinho <b>(0)</b></button><span>+</span>
+            </div>
         </div>
+        <div class="produto">
+            <img src="../Imagens/Fundos/fundoPrincipal.jpg" alt="exemplo img">
+            <div class="informações">
+                <h2>Tinta de cabelo aqui</h2><span>?</span>
+                <h3>1000,00R$</h3><i>Compre já</i>
+                <span>-</span><button class="comprar">Adicionar ao carrinho <b>(0)</b></button><span>+</span>
+            </div>
+        </div>
+        <div class="produto">
+            <img src="../Imagens/Fundos/fundoPrincipal.jpg" alt="exemplo img">
+            <div class="informações">
+                <h2>Esmalte vermelho</h2><span>?</span>
+                <h3>1000,00R$</h3><i>Quase acabando</i>
+                <span>-</span><button class="comprar">Adicionar ao carrinho <b>(0)</b></button><span>+</span>
+            </div>
+        </div>
+        <div class="produto">
+            <img src="../Imagens/Fundos/fundoPrincipal.jpg" alt="exemplo img">
+            <div class="informações">
+                <h2>Maquiagem aleatória</h2><span>?</span>
+                <h3>1000,00R$</h3><i>Falta de estoque</i>
+                <span>-</span><button class="comprar">Adicionar ao carrinho <b>(0)</b></button><span>+</span>
+            </div>
+        </div>
+    </div>
 
     <script src="../index.js"></script>
 </body>

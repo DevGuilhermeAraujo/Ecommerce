@@ -132,7 +132,7 @@ function validateFormProduct(formData) {
     var fileName = fileInput.files.length > 0 ? fileInput.files[0].name : null;
     var fileExtension = fileName ? fileName.split('.').pop().toLowerCase() : null;
 
-    if (fileExtension != 'jpg') {
+    if (fileExtension != 'jpg' && fileExtension != 'png') {
         resultMessage.innerHTML = "Campo Imagem do Produto - Arquivo Inválido!";
         return false;
     }
