@@ -3,6 +3,6 @@
     include_once "sessao.php";
     logout();
     if(!isset($_GET["redirect"]) || $_GET["redirect"] == "")
-        header("Location: ../Cliente/homeCliente.php");
+        header("Location: ../index.php");
     else
         header("Location: ".$_GET["redirect"]);

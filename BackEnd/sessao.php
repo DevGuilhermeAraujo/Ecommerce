@@ -7,6 +7,7 @@ const SESSION_USER_EMAIL = "Useremail";
 const SESSION_USERNAME = "UserName";
 const SESSION_USER_IDPERMISSION = "UserIdPermission";
 const SESSION_USER_ID = "UserId";
+const SESSION_CARRINHO = "Carrinho";
 
 const PERMISSION_GERENTE = 'manager';
 const PERMISSION_FUNCIONARIO = 'employee';

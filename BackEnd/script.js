@@ -1,14 +1,51 @@
-//Função para receber informações do formulário de cadastro de funcionário
+
 function getData() {
-    var formData = {};
-    var inputsAndSelectsAndTextarea = document.querySelectorAll('input, select, textarea');
-
+    var formData = new FormData();
+    var inputsAndSelectsAndTextarea = document.querySelectorAll('input, select, textarea')
     inputsAndSelectsAndTextarea.forEach(function (element) {
-        formData[element.name] = element.value;
-    });
+        if (element.id && element.type !== 'submit') {
+            if (element.type === 'file') {
+                formData.append(element.id, element.files[0]);
+            } else if (element.type === 'checkbox') {
+                formData.append('novidade', document.getElementById('novidade').checked ? '1' : '0');
+            } else {
+                formData.append(element.id, element.value);
+            }
+        }
 
+    });
+    console.log(formData.get('novidade'));
     return formData;
 }
+function submitForm() {
+
+    var formData = getData();
+
+    if (!validateFormProduct(formData)) {
+        return false;
+    } else {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "../BackEnd/cadastros/processCadastroProd.php", true);
+        //xhr.setRequestHeader("Content-Type", "multipart/form-data");
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                if (xhr.status === 200) {
+                    //Processo concluído com sucesso
+                    document.getElementById("resultMessage").innerHTML = xhr.responseText;
+                } else {
+                    // Erro durante o processamento
+                    document.getElementById("resultMessage").innerHTML = "Erro durante o processamento.";
+                }
+            }
+        };
+        // Envie os dados do formulário
+        xhr.send(formData);
+        return true;
+        //return false; // Impedir o envio padrão do formulário
+    }
+}
+
 //Função para validar campos do formulário
 function validateForm() {
     var formData = getData();
@@ -72,48 +109,44 @@ function validateForm() {
     }
 }
 
-function validateFormProduct() {
-    var formData = getData();
-    var cadastroProdError = document.getElementById("cadastroProdError");
-    if (formData.nomeProd.trim() === "") {
-        cadastroProdError.innerHTML = "Campo Título do Produto - Obrigatório";
+function validateFormProduct(formData) {
+    var resultMessage = document.getElementById("resultMessage");
+    resultMessage.innerHTML = "";
+
+    if (formData.get('nomeProd').trim() == "") {
+        resultMessage.innerHTML = "Campo Título do Produto - Obrigatório";
         return false;
-    } else {
-        cadastroProdError.innerHTML = "";
-        if (formData.descProd.trim() === "") {
-            cadastroProdError.innerHTML = "Campo Descrição do Produto - Obrigatório";
-            return false;
-        } else {
-            cadastroProdError.innerHTML = "";
-            if (formData.imgProd.length == 0) {
-                cadastroProdError.innerHTML = "Campo Imagem do Produto - Obrigatório!";
-                return false;
-            } else {
-                cadastroProdError.innerHTML = "";
-                var fileName = formData.imgProd.files[0].name;
-                var fileExtension = fileName.split('.').pop().toLowerCase();
-                if (fileExtension == '.jpg') {
-                    cadastroProdError.innerHTML = "Campo Imagem do Produto - Arquivo Inválido!";
-                    return false;
-                } else {
-                    cadastroProdError.innerHTML = "";
-                    if (formData.valorProd.trim() == "") {
-                        cadastroProdError.innerHTML = "Campo Valor do Produto - Obrigatório!";
-                        return false;
-                    } else {
-                        cadastroProdError.innerHTML = "";
-                        if (formData.categoria.trim() == "") {
-                            cadastroProdError.innerHTML = "Campo Categoria do Produto - Obrigatório!";
-                            return false;
-                        } else {
-                            cadastroProdError.innerHTML = "";
-                            return true;
-                        }
-                    }
-                }
-            }
-        }
     }
+
+    if (formData.get('descProd').trim() == "") {
+        resultMessage.innerHTML = "Campo Descrição do Produto - Obrigatório";
+        return false;
+    }
+
+    if (!formData.get('imgProd')) {
+        resultMessage.innerHTML = "Campo Imagem do Produto - Obrigatório!";
+        return false;
+    }
+
+    var fileInput = document.getElementById('imgProd');
+    var fileName = fileInput.files.length > 0 ? fileInput.files[0].name : null;
+    var fileExtension = fileName ? fileName.split('.').pop().toLowerCase() : null;
+
+    if (fileExtension != 'jpg') {
+        resultMessage.innerHTML = "Campo Imagem do Produto - Arquivo Inválido!";
+        return false;
+    }
+
+    if (formData.get('valorProd') == "") {
+        resultMessage.innerHTML = "Campo Valor do Produto - Obrigatório!";
+        return false;
+    }
+
+    if (formData.get('categoria') == "") {
+        resultMessage.innerHTML = "Campo Categoria do Produto - Obrigatório!";
+        return false;
+    }
+    return true;
 }
 
 
@@ -166,8 +199,6 @@ function maskPhone() {
     });
 }
 
-
-
 //Animação de desaparecer menssagem na tela
 async function deleteMsg(_timer, _idObject) {
     //await new Promise(r => setTimeout(r, 5000));
@@ -183,4 +214,35 @@ async function deleteMsg(_timer, _idObject) {
     //Aguarda o tempo de 1s da animação CSS para remover o elemento do HTML
     await new Promise(r => setTimeout(r, 1000));
     obj.remove();
+}
+
+// document.getElementById('filtroProdutos').addEventListener('submit', function (e) {
+//     e.preventDefault(); // Evita o envio padrão do formulário
+//     searchProducts();
+// });
+
+function getProductSuggestions() {
+    var input = document.getElementById('searchInput').value;
+
+    if (input.trim() !== '') {
+        // Crie um objeto XMLHttpRequest
+        var xhr = new XMLHttpRequest();
+
+        // Configure a requisição
+        xhr.open('GET', '../BackEnd/search.php?query=' + encodeURIComponent(input), true);
+
+        // Defina a função de callback para lidar com a resposta
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                // Atualize a área de sugestões com a resposta do servidor
+                document.getElementById('suggestions').innerHTML = xhr.responseText;
+            }
+        };
+
+        // Envie a requisição
+        xhr.send();
+    } else {
+        // Limpe as sugestões se o campo de pesquisa estiver vazio
+        document.getElementById('suggestions').innerHTML = '';
+    }
 }
