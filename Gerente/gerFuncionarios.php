@@ -35,7 +35,7 @@ redirectURL($url, 'indexGerente.php');
             O campo CONFIRME A NOVA SENHA, deve conter valor igual
             ao campo NOVA SENHA
         -->
-        <form class="basicForm" action="../BackEnd/cadastros/processCadastroFunc.php" method="POST" onsubmit="return validateForm()" novalidate>
+        <form id="formCadFunc" class="basicForm" action="../BackEnd/cadastros/processCadastroFunc.php" method="POST" novalidate onsubmit="return submitForm('formCadFunc')">
             <h2><img src="../Imagens/Icones/pessoaMais.png" alt="icone adicionar pessoa"> Novo funcionário <img src="../Imagens/Icones/pessoaMais.png" alt="icone adicionar pessoa"></h2>
             <button onclick="AbrirModal(GerFuncionarios,analisarCurriculos)">Analisar currículos</button>
             <input type="text" id="nome" placeholder="Nome" name="nome">
@@ -46,7 +46,7 @@ redirectURL($url, 'indexGerente.php');
             <input type="text" id="numero" placeholder="Número" name="numero">
             <input type="text" id="bairro" placeholder="Bairro" name="bairro">
             <input type="text" id="telefone" placeholder="Telefone" name="telefone" oninput="maskPhone()">
-            <select name="departamento">
+            <select id="departamento" name="departamento">
                 <option value="">Departamento</option>
                 <?php
                 $sql = "SELECT id, description_dep FROM departments";

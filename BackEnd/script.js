@@ -1,7 +1,8 @@
-
-function getData() {
+function getData(formId) {
     var formData = new FormData();
-    var inputsAndSelectsAndTextarea = document.querySelectorAll('input, select, textarea')
+    var form = document.getElementById(formId);
+    formData.append('formName', formId);
+    var inputsAndSelectsAndTextarea = form.querySelectorAll('input, select, textarea')
     inputsAndSelectsAndTextarea.forEach(function (element) {
         if (element.id && element.type !== 'submit') {
             if (element.type === 'file') {
@@ -14,101 +15,109 @@ function getData() {
         }
 
     });
-    console.log(formData.get('novidade'));
+
     return formData;
 }
-function submitForm() {
 
-    var formData = getData();
+function submitForm(formId) {
 
-    if (!validateFormProduct(formData)) {
-        return false;
-    } else {
-        var xhr = new XMLHttpRequest();
-        xhr.open("POST", "../BackEnd/cadastros/processCadastroProd.php", true);
-        //xhr.setRequestHeader("Content-Type", "multipart/form-data");
-
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                if (xhr.status === 200) {
-                    //Processo concluído com sucesso
-                    document.getElementById("resultMessage").innerHTML = xhr.responseText;
-                } else {
-                    // Erro durante o processamento
-                    document.getElementById("resultMessage").innerHTML = "Erro durante o processamento.";
-                }
-            }
-        };
-        // Envie os dados do formulário
-        xhr.send(formData);
-        return true;
-        //return false; // Impedir o envio padrão do formulário
-    }
-}
-
-//Função para validar campos do formulário
-function validateForm() {
-    var formData = getData();
-    //Expressão regular para validar nome
-    var cadastroError = document.getElementById("cadastroError");
-    if (formData.nome.trim() === "" || formData.sobrenome.trim() === "") {
-        cadastroError.innerHTML = "Nome - Campo obrigatório";
-        return false;
-    } else {
-        cadastroError.innerHTML = "";
-        //Expressão regular para validar cpf
-        if (formData.cpf.length < 14) {
-            cadastroError.innerHTML = "CPF inválido";
+    var formData = getData(formId);
+    console.log(Object.fromEntries(formData));
+    console.log(formData.get('formName'));
+    if (formData.get('formName') == 'productForm' || formData.get('formName') == 'productFormFunc') {
+        if (!validateFormProduct(formData)) {
             return false;
         } else {
-            cadastroError.innerHTML = "";
-            // Expressão regular para validar e-mail
-            var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-            if (!emailPattern.test(formData.email)) {
-                cadastroError.innerHTML = "Digite um e-mail válido.";
-                return false;
-            } else {
-                cadastroError.innerHTML = "";
-                //Expressão regular para validar endereço
-                if (formData.logradouro.trim() === "" || formData.numero.trim() === "" || formData.bairro.trim() === "") {
-                    cadastroError.innerHTML = "É necessário o endereço para finalizar o cadastro";
-                    return false;
-                } else {
-                    cadastroError.innerHTML = "";
-                    //Expressão regular para validar número
-                    if (formData.telefone.length < 15) {
-                        cadastroError.innerHTML = "Número de telefone inválido";
-                        return false;
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "../BackEnd/cadastros/processCadastroProd.php", true);
+            //xhr.setRequestHeader("Content-Type", "multipart/form-data");
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        //Processo concluído com sucesso
+                        document.getElementById("resultMessage").innerHTML = xhr.responseText;
                     } else {
-                        cadastroError.innerHTML = "";
-                        //Expressão regular para validar departamento
-                        if (formData.departamento == "" || formData.departamento == null) {
-                            cadastroError.innerHTML = "É necessário um departamento finalizar o cadastro!";
-                            return false;
-                        } else {
-                            cadastroError.innerHTML = "";
-                            //Expressão regular para validar senha
-                            if (formData.senha.length < 8 || !/[!@#$%^&*(),.?":{}|<>]/.test(formData.senha)) {
-                                cadastroError.innerHTML = "A senha deve conter pelo menos 8 caracteres e incluir caracteres especiais.";
-                                return false;
-                            } else {
-                                cadastroError.innerHTML = "";
-                                if (formData.senha != formData.confirmaSenha) {
-                                    cadastroError.innerHTML = "As senhas não correspondem";
-                                    return false;
-                                } else {
-                                    cadastroError.innerHTML = "";
-                                    return true;
-                                }
-                            }
-                        }
+                        // Erro durante o processamento
+                        document.getElementById("resultMessage").innerHTML = "Erro durante o processamento.";
                     }
                 }
             }
         }
+    } else if (formData.get('formName') == 'formCadFunc') {
+        if (!validateFormFunc(formData)) {
+            return false;
+        } else {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "../BackEnd/cadastros/processCadastroFunc.php", true);
+            //xhr.setRequestHeader("Content-Type", "multipart/form-data");
+
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        //Processo concluído com sucesso
+                        document.getElementById("cadastroError").innerHTML = xhr.responseText;
+                    } else {
+                        // Erro durante o processamento
+                        document.getElementById("cadastroError").innerHTML = "Erro durante o processamento.";
+                    }
+                }
+            };
+        }
     }
+     // Envie os dados do formulário
+    xhr.send(formData);
+    return true;
 }
 
+//Função para validar campos do formulário- de cadastro do funcionário
+function validateFormFunc(formData) {
+    //Expressão regular para validar nome
+    var cadastroError = document.getElementById("cadastroError");
+    cadastroError.innerHTML = "";
+
+    if (formData.get('nome').trim() == "" || formData.get('sobrenome').trim() == "") {
+        cadastroError.innerHTML = "Nome - Campo obrigatório";
+        return false;
+    }
+    if (formData.get('cpf').length < 14) {
+        cadastroError.innerHTML = "CPF inválido";
+        return false;
+    }
+    // Expressão regular para validar e-mail
+    var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    if (!emailPattern.test(formData.get('email'))) {
+        cadastroError.innerHTML = "Digite um e-mail válido.";
+        return false;
+    }
+    //Expressão regular para validar endereço
+    if (formData.get('logradouro').trim() == "" || formData.get('numero').trim() == "" || formData.get('bairro').trim() == "") {
+        cadastroError.innerHTML = "É necessário o endereço para finalizar o cadastro";
+        return false;
+    }
+    //Expressão regular para validar número
+    if (formData.get('telefone').length < 15) {
+        cadastroError.innerHTML = "Número de telefone inválido";
+        return false;
+    }
+    //Expressão regular para validar departamento
+    if (formData.get('departamento') == "" || formData.get('departamento') == null) {
+        cadastroError.innerHTML = "É necessário um departamento finalizar o cadastro!";
+        return false;
+    }
+    //Expressão regular para validar senha
+    if (formData.get('senha').length < 8 || !/[!@#$%^&*(),.?":{}|<>]/.test(formData.get('senha'))) {
+        cadastroError.innerHTML = "A senha deve conter pelo menos 8 caracteres e incluir caracteres especiais.";
+        return false;
+    }
+    if (formData.get('senha') != formData.get('confirmaSenha')) {
+        cadastroError.innerHTML = "As senhas não correspondem";
+        return false;
+    }
+    return true;
+}
+
+//Função para validar campos do formulário- de cadastro de produtos
 function validateFormProduct(formData) {
     var resultMessage = document.getElementById("resultMessage");
     resultMessage.innerHTML = "";
@@ -148,7 +157,6 @@ function validateFormProduct(formData) {
     }
     return true;
 }
-
 
 // Máscara para CPF (formato: XXX.XXX.XXX-XX)
 function maskCPF() {

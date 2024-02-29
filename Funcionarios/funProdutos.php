@@ -1,7 +1,6 @@
 <?php
 include_once "../BackEnd/sessao.php";
-include_once "../BackEnd/conexao.php";
-$db = new Conexao();
+$db = getDb();
 $url = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : '';
 redirectURL($url, 'indexFuncionarios.php');
 ?>
@@ -14,6 +13,7 @@ redirectURL($url, 'indexFuncionarios.php');
     <title>Cadastro de produtos</title>
     <link rel="stylesheet" href="../index.css">
     <link rel="stylesheet" href="funcionario.css">
+    <script src="../BackEnd/script.js"></script>
 </head>
 
 <body>
@@ -40,7 +40,7 @@ redirectURL($url, 'indexFuncionarios.php');
         quando a checkBox NOVIDADE estiver marcada durante o caddastro, 
         o produto ir-a aparecer em uma tabela novidades por 30 dias
     -->
-    <form id="productForm" class="basicForm" action="" method="POST" enctype="multipart/form-data" novalidate onsubmit="return submitForm()">
+    <form id="productFormFunc" class="basicForm" action="" method="POST" enctype="multipart/form-data" novalidate onsubmit="return submitForm('productFormFunc')">
         <h2><img src="../Imagens/Icones/compra.png" alt="icone de compra"> Novo produto <img src="../Imagens/Icones/compra.png" alt="icone compra"></h2>
         <input type="text" id="nomeProd" name="nomeProd" placeholder="Nome do produto">
         <input type="file" id="imgProd" name="imgProd" accept=".jpg, .jpeg, .png">
