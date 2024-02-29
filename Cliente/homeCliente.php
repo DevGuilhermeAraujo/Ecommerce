@@ -18,21 +18,21 @@ $db = new Conexao();
             <h1>Olá, seja bem vindo(a)</h1>
         </div>
 
-        <!--Botão de menu (apenas para celulares-->
-        <div class="menuResponsivo">
-            <button onclick="Trocar(btnMenu,nav)" id="btnMenu" class="btnMenu"><img src="../Imagens/Icones/menu.png" alt="icone menu"></button>
-            <h2><img src="../Imagens/Icones/flor.png" alt="icone flor"> Espaço Beleza rosa <img src="../Imagens/Icones/flor.png" alt="icone flor"></h2>
-        </div>
-
         <!--Nav com os links das pags do cliente-->
         <div id="nav" class="nav">
-            <img onclick="Trocar(nav,btnMenu)" class="fecharMenuResponsivo" src="../Imagens/Icones/Fechar2.png" alt="icone fechar">
-            <img class="florResponsiva" src="../Imagens/Icones/rosa.png" alt="icone flor">
+            <img onclick="FecharModal(fundoMenu,nav)" id="fecharMenu" onclick="" src="../Imagens/Icones/Fechar2.png" alt="icone fechar">
+            <h2 id="belezaRosa">BELEZA ROSA</h2>
+            <a id="florResponsiva" href="flor responsiva"><img src="../Imagens/Icones/rosa.png" alt="icone flor"></a>
             <a href=""><img src="../Imagens/Icones/novidades.png" alt="icone novidades"> Novidades</a>
             <a href=""><img src="../Imagens/Icones/carrinho.png" alt="icone carrinho"> Carrinho</a>
             <a href=""><img src="../Imagens/Icones/comunicação.png" alt="icone comunicação">Comunicação</a>
             <button onclick="AbrirModal(HomeCliente,login)" href=""><img src="../Imagens/Icones/entrar.png" alt="icone entrar"> Login</button>
         </div>
+        <div class="topResponsivo">
+            <img onclick="AbrirModal(fundoMenu,nav)" src="../Imagens/Icones/menu.png" alt="icone menu">
+            <h2><img src="../Imagens/Icones/flor.png" alt="icone flor"> ESPAÇO BELEZA ROSA <img src="../Imagens/Icones/flor.png" alt="icone flor"></h2>
+        </div>
+        <div id="fundoMenu"></div>
 
         <!--Filtro de produtos-->
         <form class="filtroProdutos">

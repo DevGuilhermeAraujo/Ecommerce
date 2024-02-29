@@ -34,50 +34,114 @@
     height: 20vh;
 }
 
-
-
+/*Nav do cliente*/
+.nav {
+    display: flex;
+    background-color: #a3015a;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+}
+.nav a,button {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15%;
+    padding: 1%;
+}
+.nav button {
+    background-color: #a3015a;
+    border: none;
+}
+.nav a img {
+    width: 15%;
+    margin-right: 5%;
+}
+.nav button img {
+    width: 15%;
+    margin-right: 5%;
+}
+.nav a:hover {
+    background-color: #ca0073;
+    transition: 1s;
+}
+.nav button:hover {
+    background-color: #ca0073;
+    transition: 1s;
+}
+.barra2 {
+    display: none;
+}
+#florResponsiva{
+    display: none;
+}
+#fecharMenu{
+    display: none;
+}
+#fundoMenu{
+    display: none;
+}
+#belezaRosa{
+    display: none;
+}
 
 /*
 Tela para celular vertical
 menos de 350px
 */
 @media screen and (max-width: 850px){
+    /*Nav do cliente*/
     #Top{
         display: none;
     }
-    .produto{
-        width: 46%;
-        margin: 2%;
-        height: 50vh;
-        padding: 1%;
+    .nav{
+        display: none;
+        width: 60%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        flex-flow: row wrap;
+        align-content: center;
+        box-shadow: 10px 0px 10px #ca0073;
     }
-    .produto h3{
-        font-size: 13px;
-        height: 10vh;
-    }
-    .produto img{
-        height: 20vh;
+    .nav a,button{
+        font-size: 15px;
         width: 100%;
-        margin: 0;
-        border-radius: 0;
+        margin: 10% 0% 10% 0%;
     }
-    .produto h4{
+    #florResponsiva{
+        display: flex;
+        height: 30vh;
+        margin: 0;
+    }
+    #florResponsiva img{
+        width: 60%;
+    }
+    #fecharMenu{
+        display: flex;
+        width: 15%;
+        margin: 2% 0% 0% 80%;
+    }
+    #fundoMenu{
+        display: none;
+        background-color: gray;
+        opacity: 0.5;
+        width: 40%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        right: 0;
+    }
+    #belezaRosa{
+        display: block;
+        color: white;
         font-size: 20px;
         height: 10vh;
-    }
-    .comprar{
-        height: 10vh;
-    }
-    .comprar button{
-        width: 60%;
-        font-size: 8px;
-        height: 5vh;
-        border-radius: 5px;
-    }
-    .comprar span{
-        width: 17%;
-        margin: 1%;
-        font-size: 12px;
-        height: 4vh;
+        width: 100%;
+        text-align: center;
     }
 }

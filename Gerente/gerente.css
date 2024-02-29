@@ -50,7 +50,7 @@ body{
     margin: 0% 1% 0% 1%;
 }
 
-/*Modal para currículos*/
+/*Currículos*/
 .curriculo{
     padding: 1%;
     margin: 1%;
@@ -191,89 +191,6 @@ body{
 /*
  Responsividade para celulares
 */
-@media screen and (max-width: 350px){
-    #funcionarios{
-        width: 90%;
-        margin: 30% 0% 0% 5%;
-        height: auto;
-        overflow: auto;
-        border-radius: 10px 10px 0px 0px;
-        border: none;
-        background-color: #ff8bf9;
-    }
-    #funcionarios h2{
-        font-weight: 700;
-        font-size: 15px;
-        border-bottom: 2px solid #a3015a;
-    }
-    #funcionarios h2 img{
-        width: 10%;
-        margin-right: 3%;
-    }
-    #funcionarios p{
-        flex-flow: row wrap;
-        height: auto;
-        font-size: 10px;
-        text-align: center;
-        border: none;
-    }
-    #funcionarios p span{
-        width: 100%;
-    }
-    #funcionarios p button{
-        width: 48%;
-        margin: 0% 1% 0% 1%;
-        border: none;
-        font-size: 10px;
-    }
-    .curriculo{
-        border: 2px solid #a3015a;
-    }
-    .curriculo h3{
-        font-size: 12px;
-    }
-    .curriculo button{
-        width: 40%;
-        margin: 2% 5% 1% 5%;
-        font-size: 12px;
-    }
-    .curriculo button img{
-        width: 20%;
-        margin-right: 5%;
-    }
-    .curriculo span{
-        font-size: 12px;
-    }
-    #analisarCurriculos h2{
-        font-size: 25px;
-    }
-    #analisarCurriculos h2 img{
-        width: 15%;
-    }
-    .curriculo p{
-        font-size: 10px;
-    }
-    .chat{
-        width: 90%;
-        margin: 25% 0% 5% 5%;
-        height: auto;
-    }
-    .chat h2{
-        font-size: 15px;
-    }
-    .chat h3{
-        font-size: 12px;
-    }
-    .chat h3 button{
-        font-size: 10px;
-        width: 50%;
-        height: 7vh;
-        border-radius: 5px;
-    }
-    .chat p{
-        font-size: 10px;
-    }
-    .chat p i{
-        font-size: 12px;
-    }
+@media screen and (max-width: 850px){
+    
 }
