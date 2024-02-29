@@ -78,6 +78,17 @@ CREATE TABLE departments(
 		tipo VARCHAR(255) DEFAULT 'client',
 		input_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP NOT NULL
     );
+
+	/*CRIAÇÃO DA TABELA VENDAS*/
+	CREATE TABLE sales(
+		id INT(999) PRIMARY KEY AUTO_INCREMENT,
+		id_product INT(9),
+		id_user INT(5),
+		id_client INT(5),
+		quant INT(9),
+		date_sale DATE,
+		total DECIMAL(10, 2)
+	);
 	
 /*CRIAÇÃO DA VIEW ENTRE TABELA USUARIOS E CLIENTES*/
 	CREATE VIEW view_client_user_combined AS

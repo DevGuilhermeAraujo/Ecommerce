@@ -1,7 +1,7 @@
 <?php
-include_once "../conexao.php";
+
 include_once "../sessao.php";
-$db = new Conexao();
+$db = getDb();
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_FILES['imgProd']) && $_FILES['imgProd']['error'] === UPLOAD_ERR_OK) {
         $nomeProd = htmlspecialchars($_POST['nomeProd'], ENT_QUOTES, 'UTF-8');
@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ':descProd' => $descProd,
             ':valorProd' => $valorProd,
             ':categoria' => $categoria,
-            ':novidade' => $novidade,
+            ':novidade' => ($novidade == 1) ? $novidade : null,
             ':creatorUser' => getIdUser(),
             ':changeUser' => getIdUser(),
         ];
@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $parametros = [
                 ':urlImg' => $urlProd,
                 ':id' => $idProd[0][0],
-                ];
+            ];
             $db->executar($sql, $parametros);
             $caminhoDestino = '../../Imagens/Produtos/' . $urlProd;
             // Move o arquivo para o diretório desejado
