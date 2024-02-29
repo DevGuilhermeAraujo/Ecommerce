@@ -38,19 +38,19 @@ $db = getDb();
 
     <!--Filtro de produtos-->
     <form class="filtroProdutos">
-        <!-- <select id="categorySelect" class="tipoProduto" name="categoria">
+        <select id="categorySelect" class="tipoProduto" name="categoria" oninput="getProductSuggestions()">
             <option value="">Geral</option>
             <?php
-            // $sql = "SELECT id, description_cat FROM category";
-            // $parametros = null;
-            // $result = $db->executar($sql, $parametros);
-            // foreach ($result as $categorias) {
-            //     $idCat = $categorias['id'];
-            //     $descCat = $categorias['description_cat'];
-            //     echo "<option value='$idCat'>$descCat</option>";
-            // }
+            $sql = "SELECT id, description_cat FROM category";
+            $parametros = null;
+            $result = $db->executar($sql, $parametros);
+            foreach ($result as $categorias) {
+                $idCat = $categorias['id'];
+                $descCat = $categorias['description_cat'];
+                echo "<option value='$idCat'>$descCat</option>";
+            }
             ?>
-        </select> -->
+        </select>
         <input type="text" id="searchInput" class="nomeProduto" placeholder="Procura algo em específico ?" oninput="getProductSuggestions()">
         <!-- <input class="filtrarProduto" type="submit" value="Filtrar"> -->
         <div id="suggestions"></div>
@@ -75,7 +75,7 @@ $db = getDb();
             </div>
         <?php
         }
-        ?>  
+        ?>
     </div>
 
     <!--Fundo para os modals-->

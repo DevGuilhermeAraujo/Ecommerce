@@ -6,11 +6,13 @@ $db = getDb();
 
 // Receba os parâmetros da consulta
 $query = isset($_GET['query']) ? $_GET['query'] : '';
+$category = isset($_GET['category']) ? $_GET['category'] : '';
 // Execute a lógica de pesquisa e retorne os resultados
 $searchName = '%' . $query . '%';
-$sql = "SELECT prod_name FROM products WHERE prod_name LIKE :prod_name LIMIT 5";
+$sql = "SELECT prod_name FROM products WHERE prod_name LIKE :prod_name AND (:prod_category = '' OR prod_category = :prod_category)";
 $parametros = [
     ':prod_name' => $searchName,
+    ':prod_category' =>  $category,
 ];
 $result = $db->executar($sql, $parametros, true);
 if ($result->rowCount() > 0) {

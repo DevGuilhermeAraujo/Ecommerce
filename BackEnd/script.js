@@ -2,7 +2,7 @@ function getData(formId) {
     var formData = new FormData();
     var form = document.getElementById(formId);
     formData.append('formName', formId);
-    var inputsAndSelectsAndTextarea = form.querySelectorAll('input, select, textarea')
+    var inputsAndSelectsAndTextarea = form.querySelectorAll('input, select, textarea') //código para coletar os dados do formulário
     inputsAndSelectsAndTextarea.forEach(function (element) {
         if (element.id && element.type !== 'submit') {
             if (element.type === 'file') {
@@ -13,9 +13,7 @@ function getData(formId) {
                 formData.append(element.id, element.value);
             }
         }
-
     });
-
     return formData;
 }
 
@@ -62,10 +60,10 @@ function submitForm(formId) {
                         document.getElementById("cadastroError").innerHTML = "Erro durante o processamento.";
                     }
                 }
-            };
+            }
         }
     }
-     // Envie os dados do formulário
+    // Envie os dados do formulário
     xhr.send(formData);
     return true;
 }
@@ -231,13 +229,16 @@ async function deleteMsg(_timer, _idObject) {
 
 function getProductSuggestions() {
     var input = document.getElementById('searchInput').value;
+    var category = document.getElementById('categorySelect').value;
 
-    if (input.trim() !== '') {
+    if ((input.trim() !== '')) {
         // Crie um objeto XMLHttpRequest
         var xhr = new XMLHttpRequest();
 
         // Configure a requisição
-        xhr.open('GET', '../BackEnd/search.php?query=' + encodeURIComponent(input), true);
+        console.log(input);
+        console.log(category);
+        xhr.open('GET', '../BackEnd/search.php?query=' + encodeURIComponent(input) + '&category=' + encodeURIComponent(category) , true);
 
         // Defina a função de callback para lidar com a resposta
         xhr.onreadystatechange = function () {
