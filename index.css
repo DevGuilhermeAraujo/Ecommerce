@@ -111,15 +111,7 @@ iframe {
     font-size: 18px;
 }
 .nomeProduto{
-    width: 60%;
-    padding: 1%;
-    border: none;
-    font-size: 18px;
-}
-.filtrarProduto{
-    width: 20%;
-    background-color: #a3015a;
-    color: white;
+    width: 80%;
     padding: 1%;
     border: none;
     border-radius: 0px 10px 10px 0px;
@@ -385,6 +377,9 @@ Demonstração de produtos
 }
 
 
+
+
+
 /*
 Responsividade para celulares
 em vertical
@@ -395,7 +390,7 @@ em vertical
     .produto{
         width: 46%;
         margin: 2%;
-        height: 70vh;
+        height: 72vh;
         border-radius: 0px 0px 10px 10px;
     }
     .produto img{
@@ -406,9 +401,10 @@ em vertical
         width: 100%;
     }
     .informações h2{ 
-        font-size: 8px;
+        font-size: 12px;
         width: 100%;
         margin: 0;
+        overflow: hidden;
     }
     .informações h3{
         width: 100%;
@@ -443,13 +439,10 @@ em vertical
         font-size: 15px;
     }
     .nomeProduto{
-        width: 80%;
+        width: 100%;
         font-size: 10px;
-        border-radius: 5px 0px 0px 5px;
-    }
-    .filtrarProduto{
-        border-radius: 0px 5px 5px 0px;
-        font-size: 8px;
+        border-radius: 5px;
+        padding: 2%;
     }
 
     /*Top responsivo*/
@@ -469,7 +462,7 @@ em vertical
     }
     .topResponsivo h2{
         width: 83%;
-        font-size: 10px;
+        font-size: 12px;
         color: #a3015a;
         font-weight: 700;
         display: flex;
@@ -477,8 +470,16 @@ em vertical
         justify-content: center;
     }
     .topResponsivo h2 img{
-        width: 8%;
-        height: 5vh;
+        width: 9%;
+        height: 4vh;
         margin: 2%;
+    }
+    .btnMenu{
+        width: 12%;
+        background-color: #ffd8ee;
+        border: none;
+    }
+    .btnMenu img{
+        width: 150%;
     }
 }

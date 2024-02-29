@@ -1,3 +1,4 @@
+/*Top da homeCliente*/
 #Top{
     width: 100%;
     background-image: url(../Imagens/Fundos/fundoPrincipal.jpg);
@@ -6,6 +7,7 @@
     text-align: center;
     color: white;
 }
+
 #tokenEmail{
     width: 60%;
     background-color: white;
@@ -34,7 +36,7 @@
     height: 20vh;
 }
 
-/*Nav do cliente*/
+/*Nav do cliente + itens responsivos*/
 .nav {
     display: flex;
     background-color: #a3015a;
@@ -75,16 +77,16 @@
 .barra2 {
     display: none;
 }
-#florResponsiva{
+.florResponsiva{
     display: none;
 }
-#fecharMenu{
+.fecharMenu{
     display: none;
 }
-#fundoMenu{
+.fundoMenu{
     display: none;
 }
-#belezaRosa{
+.belezaRosa{
     display: none;
 }
 
@@ -93,7 +95,7 @@ Tela para celular vertical
 menos de 350px
 */
 @media screen and (max-width: 850px){
-    /*Nav do cliente*/
+    /*Nav do cliente + itens responsivos*/
     #Top{
         display: none;
     }
@@ -113,20 +115,19 @@ menos de 350px
         width: 100%;
         margin: 10% 0% 10% 0%;
     }
-    #florResponsiva{
+    .florResponsiva{
         display: flex;
-        height: 30vh;
+        height: 20vh;
         margin: 0;
-    }
-    #florResponsiva img{
         width: 60%;
+        margin-left: 20%;
     }
-    #fecharMenu{
+    .fecharMenu{
         display: flex;
         width: 15%;
         margin: 2% 0% 0% 80%;
     }
-    #fundoMenu{
+    .fundoMenu{
         display: none;
         background-color: gray;
         opacity: 0.5;
@@ -136,7 +137,7 @@ menos de 350px
         top: 0;
         right: 0;
     }
-    #belezaRosa{
+    .belezaRosa{
         display: block;
         color: white;
         font-size: 20px;
