@@ -10,6 +10,7 @@ $db = getDb();
         <title>HomeCliente</title>
         <link rel="stylesheet" href="cliente.css">
         <link rel="stylesheet" href="../index.css">
+        <script src="../BackEnd/script.js"></script>
     </head>
     <body>
         <!--Painel superior-->
