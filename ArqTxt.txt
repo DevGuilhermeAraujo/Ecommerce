@@ -1,5 +1,0 @@
-URL:
-    http://localhost/BelezaRosa/Cliente/homeCliente.php
-Acesso Gerente:
-    E-mail: devshostinger@gmail.com
-    Senha: Devs*hostMG00all
